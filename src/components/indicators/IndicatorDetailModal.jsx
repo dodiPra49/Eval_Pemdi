@@ -190,198 +190,11 @@ export default function IndicatorDetailModal({
             )}
           </div>
 
-          {/* Interactive Checklist Bukti Dukung */}
-          <div>
-            <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-              <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                <CheckSquare className="w-4 h-4 text-brand-600" />
-                Checklist Kelengkapan Dokumen Fisik / Digital
-              </h4>
-              <span className="text-xs text-slate-500">
-                Centang bukti yang sudah Anda miliki di instansi
-              </span>
-            </div>
+          {/* ========================================================================= */}
+          {/* UNDUH TEMPLATE BUKTI KHUSUS (WORD & EXCEL) - TAMPIL DI BAGIAN ATAS MODAL */}
+          {/* ========================================================================= */}
 
-            <div className="space-y-2">
-              {indicator.evidenceChecklist?.map(item => {
-                const isChecked = !!checkedItems[item.id];
-                const isItemRelevantForLevel = item.minLevel ? item.minLevel <= activeLevel : true;
-
-                return (
-                  <label
-                    key={item.id}
-                    onClick={() => onToggleCheck(indicator.id, item.id)}
-                    className={`flex items-start gap-3 p-3 rounded-xl border transition-all cursor-pointer select-none ${
-                      isChecked
-                        ? 'bg-emerald-50/80 border-emerald-300 text-emerald-950'
-                        : isItemRelevantForLevel
-                          ? 'bg-white border-slate-200 hover:bg-slate-50 text-slate-800'
-                          : 'bg-slate-50/50 border-slate-200/60 text-slate-400 opacity-80'
-                    }`}
-                  >
-                    <div className="mt-0.5 shrink-0 text-brand-600">
-                      {isChecked ? (
-                        <CheckSquare className="w-5 h-5 text-emerald-600" />
-                      ) : (
-                        <Square className="w-5 h-5 text-slate-400" />
-                      )}
-                    </div>
-                    <div className="text-xs sm:text-sm leading-relaxed flex-1">
-                      <span className={isChecked ? 'line-through text-slate-500' : 'font-medium'}>
-                        {item.label}
-                      </span>
-                      <div className="flex items-center gap-1.5 mt-1 flex-wrap">
-                        {item.required && (
-                          <span className="text-[10px] font-bold px-1.5 py-0.2 bg-rose-100 text-rose-700 rounded-sm">
-                            Wajib
-                          </span>
-                        )}
-                        {item.minLevel && (
-                          <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-sm ${
-                            activeLevel >= item.minLevel
-                              ? 'bg-brand-100 text-brand-700'
-                              : 'bg-slate-200 text-slate-600'
-                          }`}>
-                            Target Lvl {item.minLevel}+
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </label>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* UNDUH TEMPLATE BUKTI KHUSUS INDIKATOR 18 (SPLP / INTEROPERABILITAS) */}
-          {(indicator.id === 'ind-18' || indicator.code === 'IND-18' || indicator.id === 'ind-07' || indicator.code === 'IND-07') && (
-            <div className="bg-gradient-to-br from-indigo-50 via-sky-50 to-emerald-50 border-2 border-indigo-200 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3">
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-xs">
-                    <Download className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm sm:text-base font-black text-indigo-950">
-                      Template Dokumen Bukti Dukung Resmi (Word & Excel)
-                    </h4>
-                    <p className="text-xs text-indigo-700 font-medium">
-                      Format siap pakai sesuai standar evaluasi PermenPANRB No. 8/2026
-                    </p>
-                  </div>
-                </div>
-                <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-indigo-600 text-white shadow-xs">
-                  5 Berkas Siap Pakai
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                
-                {/* 1. SOP SPLP (Word) */}
-                <a
-                  href="/templates/ind_07/Template_SOP_Integrasi_Layanan_SPLP_Indikator07.docx"
-                  download
-                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-indigo-50/80 border border-indigo-200 hover:border-indigo-300 transition-all group shadow-xs"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
-                      DOCX
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 truncate">
-                        SOP Integrasi Layanan SPLP
-                      </div>
-                      <div className="text-[10px] text-slate-500">Standar Level 3 (Terstandarisasi)</div>
-                    </div>
-                  </div>
-                  <Download className="w-4 h-4 text-indigo-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
-                </a>
-
-                {/* 2. PKS Pertukaran Data (Word) */}
-                <a
-                  href="/templates/ind_07/Template_PKS_Pertukaran_Data_Elektronik_SPLP_Indikator07.docx"
-                  download
-                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-indigo-50/80 border border-indigo-200 hover:border-indigo-300 transition-all group shadow-xs"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
-                      DOCX
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 truncate">
-                        Naskah PKS / NDA Berbagi Pakai Data
-                      </div>
-                      <div className="text-[10px] text-slate-500">Standar Level 3 & 4 (Perjanjian Kerja Sama)</div>
-                    </div>
-                  </div>
-                  <Download className="w-4 h-4 text-indigo-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
-                </a>
-
-                {/* 3. Laporan Evaluasi SPLP (Word) */}
-                <a
-                  href="/templates/ind_07/Template_Laporan_Evaluasi_Kinerja_SPLP_Indikator07.docx"
-                  download
-                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-indigo-50/80 border border-indigo-200 hover:border-indigo-300 transition-all group shadow-xs"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
-                      DOCX
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 truncate">
-                        Laporan Evaluasi Kinerja SPLP Berkala
-                      </div>
-                      <div className="text-[10px] text-slate-500">Standar Level 5 (Optimum / Monev)</div>
-                    </div>
-                  </div>
-                  <Download className="w-4 h-4 text-indigo-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
-                </a>
-
-                {/* 4. Buku Katalog API (Excel) */}
-                <a
-                  href="/templates/ind_07/Template_Buku_Katalog_Layanan_API_SPLP_Indikator07.xlsx"
-                  download
-                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-emerald-50/80 border border-emerald-200 hover:border-emerald-300 transition-all group shadow-xs"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xs shrink-0">
-                      XLSX
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 truncate">
-                        Buku Katalog Layanan API & Registry
-                      </div>
-                      <div className="text-[10px] text-slate-500">Standar Level 3 & 4 (Daftar Endpoint & Consumer)</div>
-                    </div>
-                  </div>
-                  <Download className="w-4 h-4 text-emerald-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
-                </a>
-
-                {/* 5. Log Audit Trail SPLP (Excel) */}
-                <a
-                  href="/templates/ind_07/Template_Log_Audit_Trail_Transaksi_SPLP_Indikator07.xlsx"
-                  download
-                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-emerald-50/80 border border-emerald-200 hover:border-emerald-300 transition-all group shadow-xs sm:col-span-2"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xs shrink-0">
-                      XLSX
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 truncate">
-                        Log Audit Trail Transaksi & Rekapitulasi Trafik Bulanan
-                      </div>
-                      <div className="text-[10px] text-slate-500">Standar Level 4 & 5 (Monitoring Real-time, SLA & Keamanan)</div>
-                    </div>
-                  </div>
-                  <Download className="w-4 h-4 text-emerald-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
-                </a>
-
-              </div>
-            </div>
-          )}
-
-          {/* UNDUH TEMPLATE BUKTI KHUSUS INDIKATOR 03 (SUMBER DAYA MANUSIA PEMERINTAH DIGITAL & AI) */}
+          {/* 1. INDIKATOR 03: SUMBER DAYA MANUSIA PEMERINTAH DIGITAL & AI */}
           {(indicator.id === 'ind-03' || indicator.code === 'IND-03') && (
             <div className="bg-gradient-to-br from-indigo-50 via-purple-50 to-blue-50 border-2 border-indigo-200 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3">
               <div className="flex items-center justify-between flex-wrap gap-2">
@@ -509,7 +322,452 @@ export default function IndicatorDetailModal({
             </div>
           )}
 
-          {/* Link Bukti & Catatan Mandiri */}
+          {/* 2. INDIKATOR 07 / 18: KETERPADUAN SISTEM PENGHUBUNG LAYANAN PEMERINTAH (SPLP) */}
+          {(indicator.id === 'ind-18' || indicator.code === 'IND-18' || indicator.id === 'ind-07' || indicator.code === 'IND-07') && (
+            <div className="bg-gradient-to-br from-indigo-50 via-sky-50 to-emerald-50 border-2 border-indigo-200 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-xs">
+                    <Download className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm sm:text-base font-black text-indigo-950">
+                      Template Dokumen Bukti Dukung Resmi SPLP (Word & Excel)
+                    </h4>
+                    <p className="text-xs text-indigo-700 font-medium">
+                      Format siap pakai sesuai standar evaluasi PermenPANRB No. 8/2026
+                    </p>
+                  </div>
+                </div>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-indigo-600 text-white shadow-xs">
+                  5 Berkas Siap Pakai
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                
+                {/* 1. SOP SPLP (Word) */}
+                <a
+                  href="/templates/ind_07/Template_SOP_Integrasi_Layanan_SPLP_Indikator07.docx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-indigo-50/80 border border-indigo-200 hover:border-indigo-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
+                      DOCX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 truncate">
+                        SOP Integrasi Layanan SPLP
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 3 (Terstandarisasi)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-indigo-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 2. PKS Pertukaran Data (Word) */}
+                <a
+                  href="/templates/ind_07/Template_PKS_Pertukaran_Data_Elektronik_SPLP_Indikator07.docx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-indigo-50/80 border border-indigo-200 hover:border-indigo-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
+                      DOCX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 truncate">
+                        Naskah PKS / NDA Berbagi Pakai Data
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 3 & 4 (Perjanjian Kerja Sama)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-indigo-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 3. Laporan Evaluasi SPLP (Word) */}
+                <a
+                  href="/templates/ind_07/Template_Laporan_Evaluasi_Kinerja_SPLP_Indikator07.docx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-indigo-50/80 border border-indigo-200 hover:border-indigo-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
+                      DOCX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 truncate">
+                        Laporan Evaluasi Kinerja SPLP Berkala
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 5 (Optimum / Monev)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-indigo-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 4. Buku Katalog API (Excel) */}
+                <a
+                  href="/templates/ind_07/Template_Buku_Katalog_Layanan_API_SPLP_Indikator07.xlsx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-emerald-50/80 border border-emerald-200 hover:border-emerald-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xs shrink-0">
+                      XLSX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 truncate">
+                        Buku Katalog Layanan API & Registry
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 3 & 4 (Daftar Endpoint & Consumer)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-emerald-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 5. Log Audit Trail SPLP (Excel) */}
+                <a
+                  href="/templates/ind_07/Template_Log_Audit_Trail_Transaksi_SPLP_Indikator07.xlsx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-emerald-50/80 border border-emerald-200 hover:border-emerald-300 transition-all group shadow-xs sm:col-span-2"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xs shrink-0">
+                      XLSX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 truncate">
+                        Log Audit Trail Transaksi & Rekapitulasi Trafik Bulanan
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 4 & 5 (Monitoring Real-time, SLA & Keamanan)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-emerald-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+              </div>
+            </div>
+          )}
+
+          {/* 3. INDIKATOR 11: LAYANAN KEPEGAWAIAN PEMERINTAH DIGITAL */}
+          {(indicator.id === 'ind-11' || indicator.code === 'IND-11') && (
+            <div className="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 border-2 border-emerald-200 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-xs">
+                    <Download className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm sm:text-base font-black text-emerald-950">
+                      Template Bukti Dukung Resmi Layanan Kepegawaian Digital (Word & Excel)
+                    </h4>
+                    <p className="text-xs text-emerald-700 font-medium">
+                      Sesuai PermenPANRB No. 8/2026 Indikator 11 (SOP Kepegawaian, BA Integrasi SIASN BKN, Evaluasi Talenta, Matriks NineBox & Rekapitulasi)
+                    </p>
+                  </div>
+                </div>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-600 text-white shadow-xs">
+                  5 Berkas Siap Pakai
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                
+                {/* 1. SOP Kepegawaian (Word) */}
+                <a
+                  href="/templates/ind_11/Template_SOP_Layanan_Kepegawaian_Elektronik_Indikator11.docx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-emerald-50/80 border border-emerald-200 hover:border-emerald-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
+                      DOCX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-600 truncate">
+                        SOP Layanan Kepegawaian Elektronik
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 3 (Kenaikan Pangkat, KGB & Pensiun)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-emerald-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 2. BA Integrasi SIASN (Word) */}
+                <a
+                  href="/templates/ind_11/Template_BA_Integrasi_SIMPEG_SIASN_BKN_Indikator11.docx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-emerald-50/80 border border-emerald-200 hover:border-emerald-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
+                      DOCX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-600 truncate">
+                        BA Integrasi SIMPEG dengan SIASN BKN
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 4 (Web Service Dua Arah & UAT Valid)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-emerald-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 3. Laporan Evaluasi Talenta (Word) */}
+                <a
+                  href="/templates/ind_11/Template_Laporan_Evaluasi_Talenta_ASN_Indikator11.docx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-emerald-50/80 border border-emerald-200 hover:border-emerald-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
+                      DOCX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-600 truncate">
+                        Laporan Evaluasi Penerapan Manajemen Talenta
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 5 (Optimum / Reviu Berkala)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-emerald-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 4. Pemetaan Nine-Box Grid (Excel) */}
+                <a
+                  href="/templates/ind_11/Template_Pemetaan_Manajemen_Talenta_NineBox_Indikator11.xlsx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-emerald-50/80 border border-emerald-200 hover:border-emerald-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xs shrink-0">
+                      XLSX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 truncate">
+                        Pemetaan Talenta Nine-Box Grid Matrix
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 4 & 5 (Kinerja vs Potensi ASN)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-emerald-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 5. Rekapitulasi Layanan SIASN (Excel) */}
+                <a
+                  href="/templates/ind_11/Template_Rekapitulasi_Layanan_Kepegawaian_SIASN_Indikator11.xlsx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-emerald-50/80 border border-emerald-200 hover:border-emerald-300 transition-all group shadow-xs sm:col-span-2"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xs shrink-0">
+                      XLSX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 truncate">
+                        Rekapitulasi Layanan Kepegawaian & Log Transaksi SIASN
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 4 & 5 (Trafik Layanan Otomatis Bulanan)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-emerald-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+              </div>
+            </div>
+          )}
+
+          {/* 4. INDIKATOR 16: INTEGRASI APLIKASI DAN SISTEM LAYANAN */}
+          {(indicator.id === 'ind-16' || indicator.code === 'IND-16') && (
+            <div className="bg-gradient-to-br from-indigo-50 via-cyan-50 to-blue-50 border-2 border-indigo-200 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-xs">
+                    <Download className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm sm:text-base font-black text-indigo-950">
+                      Template Bukti Dukung Resmi Integrasi Aplikasi & Sistem Layanan (Word & Excel)
+                    </h4>
+                    <p className="text-xs text-indigo-700 font-medium">
+                      Sesuai PermenPANRB No. 8/2026 Indikator 16 (SOP Integrasi, Arsitektur SIASN/SIPD/SRIKANDI, Laporan Efisiensi, Matriks API & Log SLA)
+                    </p>
+                  </div>
+                </div>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-indigo-600 text-white shadow-xs">
+                  5 Berkas Siap Pakai
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                
+                {/* 1. SOP Integrasi Aplikasi & Sistem (Word) */}
+                <a
+                  href="/templates/ind_16/Template_SOP_Tata_Kelola_Integrasi_Aplikasi_dan_Sistem_Indikator16.docx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-indigo-50/80 border border-indigo-200 hover:border-indigo-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
+                      DOCX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 truncate">
+                        SOP Tata Kelola Integrasi Aplikasi & Sistem
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 3 (Alur Permohonan, Sandbox, Token & SLA)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-indigo-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 2. Arsitektur & Topologi Integrasi (Word) */}
+                <a
+                  href="/templates/ind_16/Template_Dokumen_Arsitektur_dan_Topologi_Integrasi_Sistem_Indikator16.docx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-indigo-50/80 border border-indigo-200 hover:border-indigo-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
+                      DOCX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 truncate">
+                        Arsitektur & Topologi Integrasi Sistem
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 3 & 4 (SIASN, SIPD-RI, SRIKANDI, TTE BSrE)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-indigo-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 3. Laporan Monitoring Kinerja & Efisiensi (Word) */}
+                <a
+                  href="/templates/ind_16/Template_Laporan_Monitoring_Kinerja_Integrasi_dan_Evaluasi_Efisiensi_Indikator16.docx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-indigo-50/80 border border-indigo-200 hover:border-indigo-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
+                      DOCX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-indigo-600 truncate">
+                        Laporan Monitoring Integrasi & Efisiensi
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 4 & 5 (Zero Data Duplication & Uptime SLA)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-indigo-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 4. Matriks Pemetaan Integrasi & Kamus Data (Excel) */}
+                <a
+                  href="/templates/ind_16/Template_Matriks_Pemetaan_Integrasi_Aplikasi_dan_Kamus_Data_API_Indikator16.xlsx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-emerald-50/80 border border-emerald-200 hover:border-emerald-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xs shrink-0">
+                      XLSX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 truncate">
+                        Matriks Integrasi Sistem & Kamus Data API
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 3 & 4 (Pemetaan Endpoint & Sistem Nasional)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-emerald-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 5. Log Transaksi API, SLA & Evaluasi Zero Duplikasi (Excel) */}
+                <a
+                  href="/templates/ind_16/Template_Log_Transaksi_API_Monitoring_SLA_dan_Audit_Trail_Indikator16.xlsx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-emerald-50/80 border border-emerald-200 hover:border-emerald-300 transition-all group shadow-xs sm:col-span-2"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xs shrink-0">
+                      XLSX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 truncate">
+                        Log Transaksi API, Dashboard SLA & Audit Zero Data Duplication
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 4 & 5 (Log Real-time, Kepatuhan SLA ≥ 99.5% & Rumus Penghematan Jam Kerja)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-emerald-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+              </div>
+            </div>
+          )}
+
+          {/* Interactive Checklist Bukti Dukung */}
+          <div>
+            <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+              <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                <CheckSquare className="w-4 h-4 text-brand-600" />
+                Checklist Kelengkapan Dokumen Fisik / Digital
+              </h4>
+              <span className="text-xs text-slate-500">
+                Centang bukti yang sudah Anda miliki di instansi
+              </span>
+            </div>
+
+            <div className="space-y-2">
+              {indicator.evidenceChecklist?.map(item => {
+                const isChecked = !!checkedItems[item.id];
+                const isItemRelevantForLevel = item.minLevel ? item.minLevel <= activeLevel : true;
+
+                return (
+                  <label
+                    key={item.id}
+                    onClick={() => onToggleCheck(indicator.id, item.id)}
+                    className={`flex items-start gap-3 p-3 rounded-xl border transition-all cursor-pointer select-none ${
+                      isChecked
+                        ? 'bg-emerald-50/80 border-emerald-300 text-emerald-950'
+                        : isItemRelevantForLevel
+                          ? 'bg-white border-slate-200 hover:bg-slate-50 text-slate-800'
+                          : 'bg-slate-50/50 border-slate-200/60 text-slate-400 opacity-80'
+                    }`}
+                  >
+                    <div className="mt-0.5 shrink-0 text-brand-600">
+                      {isChecked ? (
+                        <CheckSquare className="w-5 h-5 text-emerald-600" />
+                      ) : (
+                        <Square className="w-5 h-5 text-slate-400" />
+                      )}
+                    </div>
+                    <div className="text-xs sm:text-sm leading-relaxed flex-1">
+                      <span className={isChecked ? 'line-through text-slate-500' : 'font-medium'}>
+                        {item.label}
+                      </span>
+                      <div className="flex items-center gap-1.5 mt-1 flex-wrap">
+                        {item.required && (
+                          <span className="text-[10px] font-bold px-1.5 py-0.2 bg-rose-100 text-rose-700 rounded-sm">
+                            Wajib
+                          </span>
+                        )}
+                        {item.minLevel && (
+                          <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-sm ${
+                            activeLevel >= item.minLevel
+                              ? 'bg-brand-100 text-brand-700'
+                              : 'bg-slate-200 text-slate-600'
+                          }`}>
+                            Target Lvl {item.minLevel}+
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1.5">

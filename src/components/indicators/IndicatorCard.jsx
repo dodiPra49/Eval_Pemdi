@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileCheck, Sparkles, ChevronRight, CheckCircle2, AlertCircle, FileSearch } from 'lucide-react';
+import { FileCheck, Sparkles, ChevronRight, CheckCircle2, AlertCircle, FileSearch, FolderDown, Download } from 'lucide-react';
 import { MATURITY_LEVELS } from '../../data/domainsData';
 
 export default function IndicatorCard({ 
@@ -17,8 +17,15 @@ export default function IndicatorCard({
   const currentLevel = indicatorState?.selfLevel || 1;
   const levelInfo = MATURITY_LEVELS.find(l => l.level === currentLevel) || MATURITY_LEVELS[0];
 
+  const hasTemplates = ['ind-03', 'ind-07', 'ind-11', 'ind-16', 'ind-18'].includes(indicator.id) || 
+                       ['IND-03', 'IND-07', 'IND-11', 'IND-16', 'IND-18'].includes(indicator.code);
+
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/90 hover:border-brand-300 hover:shadow-xl transition-all duration-200 p-4 sm:p-5 flex flex-col justify-between group">
+    <div className={`bg-white rounded-2xl border transition-all duration-200 p-4 sm:p-5 flex flex-col justify-between group ${
+      hasTemplates 
+        ? 'border-indigo-200 hover:border-indigo-400 hover:shadow-xl shadow-xs' 
+        : 'border-slate-200/90 hover:border-brand-300 hover:shadow-xl'
+    }`}>
       
       {/* Top Header */}
       <div>
@@ -30,7 +37,13 @@ export default function IndicatorCard({
             <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200">
               {indicator.aspectName}
             </span>
-            {indicator.weight && (
+            {hasTemplates && (
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-800 border border-indigo-200 animate-pulse">
+                <FolderDown className="w-3 h-3 text-indigo-600" />
+                5 Template Word & Excel
+              </span>
+            )}
+            {indicator.weight && !hasTemplates && (
               <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">
                 Bobot {indicator.weight}%
               </span>
@@ -99,14 +112,24 @@ export default function IndicatorCard({
 
         {/* Action Buttons Row */}
         <div className="flex items-center gap-2 pt-1">
-          {/* Main button: View Detail Evidence */}
-          <button
-            onClick={() => onOpenDetail(indicator)}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold text-slate-800 bg-slate-100 hover:bg-brand-50 hover:text-brand-700 border border-slate-200 hover:border-brand-200 transition-colors"
-          >
-            <span>Cek Bukti</span>
-            <ChevronRight className="w-3.5 h-3.5" />
-          </button>
+          {/* Main button: View Detail Evidence & Templates */}
+          {hasTemplates ? (
+            <button
+              onClick={() => onOpenDetail(indicator)}
+              className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-brand-600 hover:from-indigo-700 hover:to-brand-700 shadow-sm shadow-indigo-500/25 transition-all"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Bukti & Template</span>
+            </button>
+          ) : (
+            <button
+              onClick={() => onOpenDetail(indicator)}
+              className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-bold text-slate-800 bg-slate-100 hover:bg-brand-50 hover:text-brand-700 border border-slate-200 hover:border-brand-200 transition-colors"
+            >
+              <span>Cek Bukti</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </button>
+          )}
 
           {/* AI Gap Review Button */}
           <button

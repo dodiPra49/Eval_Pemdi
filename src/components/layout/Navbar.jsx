@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, KeyRound, RefreshCw, Smartphone } from 'lucide-react';
+import { Sparkles, KeyRound, RefreshCw, Smartphone, FolderDown } from 'lucide-react';
 
 export default function Navbar({ onOpenApiKey, onOpenAi, stats, activeTab, setActiveTab }) {
   return (
@@ -31,7 +31,7 @@ export default function Navbar({ onOpenApiKey, onOpenAi, stats, activeTab, setAc
           <div className="hidden md:flex items-center gap-1 bg-slate-100/90 p-1.5 rounded-2xl border border-slate-200">
             <button
               onClick={() => setActiveTab('indicators')}
-              className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+              className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === 'indicators'
                   ? 'bg-white text-brand-700 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
@@ -40,8 +40,22 @@ export default function Navbar({ onOpenApiKey, onOpenAi, stats, activeTab, setAc
               Katalog Indikator
             </button>
             <button
+              onClick={() => setActiveTab('templates')}
+              className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-1.5 ${
+                activeTab === 'templates'
+                  ? 'bg-white text-indigo-700 shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <FolderDown className="w-4 h-4 text-indigo-600" />
+              <span>Template Bukti</span>
+              <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-800">
+                20 Berkas
+              </span>
+            </button>
+            <button
               onClick={() => setActiveTab('dashboard')}
-              className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+              className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === 'dashboard'
                   ? 'bg-white text-brand-700 shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'

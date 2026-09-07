@@ -11,7 +11,8 @@ import {
   TrendingUp,
   ShieldCheck,
   Zap,
-  Info
+  Info,
+  FolderDown
 } from 'lucide-react';
 
 import Navbar from './components/layout/Navbar';
@@ -22,6 +23,7 @@ import GeminiAssistantModal from './components/ai/GeminiAssistantModal';
 import EvidenceReviewerModal from './components/ai/EvidenceReviewerModal';
 import ApiKeyModal from './components/indicators/ApiKeyModal';
 import SummaryDashboard from './components/checklist/SummaryDashboard';
+import TemplatesView from './components/templates/TemplatesView';
 
 import { DOMAINS, MATURITY_LEVELS } from './data/domainsData';
 import { INDICATORS } from './data/indicatorsData';
@@ -37,6 +39,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDomain, setSelectedDomain] = useState('all');
   const [selectedStatus, setSelectedStatus] = useState('all'); // 'all' | 'incomplete' | 'complete'
+  const [filterTemplatesOnly, setFilterTemplatesOnly] = useState(false);
 
   // Modals state
   const [selectedIndicatorForDetail, setSelectedIndicatorForDetail] = useState(null);
@@ -48,6 +51,13 @@ export default function App() {
   // Filtering indicators
   const filteredIndicators = useMemo(() => {
     return INDICATORS.filter(ind => {
+      // Filter template only
+      if (filterTemplatesOnly) {
+        const hasTpl = ['ind-03', 'ind-07', 'ind-11', 'ind-16', 'ind-18'].includes(ind.id) || 
+                       ['IND-03', 'IND-07', 'IND-11', 'IND-16', 'IND-18'].includes(ind.code);
+        if (!hasTpl) return false;
+      }
+
       // Domain filter
       if (selectedDomain !== 'all' && ind.domainId !== selectedDomain) {
         return false;
@@ -85,7 +95,7 @@ export default function App() {
 
       return true;
     });
-  }, [searchQuery, selectedDomain, selectedStatus, data]);
+  }, [searchQuery, selectedDomain, selectedStatus, filterTemplatesOnly, data]);
 
   const handleOpenAiWithContext = (indicator) => {
     setContextIndicatorForAi(indicator);
@@ -153,9 +163,51 @@ export default function App() {
         )}
 
         {/* TAB 1: KATALOG INDIKATOR */}
-        {activeTab === 'indicators' ? (
+        {activeTab === 'indicators' && (
           <div>
             
+            {/* Quick Banner Pusat Template Resmi */}
+            <div className="mb-6 p-4 sm:p-5 rounded-3xl bg-gradient-to-r from-indigo-50 via-sky-50 to-purple-50 border-2 border-indigo-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-indigo-600 to-brand-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-indigo-500/20">
+                  <FolderDown className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap mb-0.5">
+                    <h4 className="text-sm sm:text-base font-black text-indigo-950">
+                      Pusat Template Berkas Bukti Dukung (20 Dokumen Word & Excel)
+                    </h4>
+                    <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-indigo-600 text-white">
+                      PermenPANRB 8/2026
+                    </span>
+                  </div>
+                  <p className="text-xs text-indigo-700 leading-relaxed">
+                    Tersedia berkas siap pakai untuk <strong>IND-03 (SDM Digital & AI)</strong>, <strong>IND-07 (SPLP)</strong>, <strong>IND-11 (Kepegawaian)</strong>, dan <strong>IND-16 (Integrasi Aplikasi & Sistem)</strong>.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                <button
+                  onClick={() => setFilterTemplatesOnly(!filterTemplatesOnly)}
+                  className={`flex-1 sm:flex-initial px-3.5 py-2 rounded-xl text-xs font-bold transition-all border ${
+                    filterTemplatesOnly 
+                      ? 'bg-indigo-700 text-white border-indigo-700 shadow-xs' 
+                      : 'bg-white text-indigo-700 border-indigo-300 hover:bg-indigo-100/50'
+                  }`}
+                >
+                  {filterTemplatesOnly ? 'Tampilkan Semua' : 'Filter 4 Indikator Ini'}
+                </button>
+                <button
+                  onClick={() => setActiveTab('templates')}
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-sm shadow-indigo-500/25 transition-all shrink-0"
+                >
+                  <span>Buka Semua Template</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
             {/* Filter & Search Bar */}
             <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm mb-6 space-y-4">
               
@@ -201,9 +253,12 @@ export default function App() {
               {/* Aspek Filter Pills */}
               <div className="flex items-center gap-2 overflow-x-auto pb-1">
                 <button
-                  onClick={() => setSelectedDomain('all')}
+                  onClick={() => {
+                    setSelectedDomain('all');
+                    setFilterTemplatesOnly(false);
+                  }}
                   className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
-                    selectedDomain === 'all'
+                    selectedDomain === 'all' && !filterTemplatesOnly
                       ? 'bg-slate-900 text-white shadow-xs'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
@@ -211,13 +266,28 @@ export default function App() {
                   Semua Aspek ({INDICATORS.length})
                 </button>
 
+                <button
+                  onClick={() => setFilterTemplatesOnly(!filterTemplatesOnly)}
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
+                    filterTemplatesOnly
+                      ? 'bg-indigo-600 text-white shadow-xs'
+                      : 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200'
+                  }`}
+                >
+                  <FolderDown className="w-3.5 h-3.5" />
+                  <span>Ada Template Bukti (4 Indikator)</span>
+                </button>
+
                 {DOMAINS.map(domain => {
                   const count = INDICATORS.filter(ind => ind.domainId === domain.id).length;
-                  const isSelected = selectedDomain === domain.id;
+                  const isSelected = selectedDomain === domain.id && !filterTemplatesOnly;
                   return (
                     <button
                       key={domain.id}
-                      onClick={() => setSelectedDomain(domain.id)}
+                      onClick={() => {
+                        setSelectedDomain(domain.id);
+                        setFilterTemplatesOnly(false);
+                      }}
                       className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                         isSelected
                           ? 'bg-brand-600 text-white shadow-xs'
@@ -266,6 +336,7 @@ export default function App() {
                     setSearchQuery('');
                     setSelectedDomain('all');
                     setSelectedStatus('all');
+                    setFilterTemplatesOnly(false);
                   }}
                   className="px-4 py-2 rounded-xl bg-brand-600 text-white text-xs font-bold"
                 >
@@ -275,8 +346,22 @@ export default function App() {
             )}
 
           </div>
-        ) : (
-          /* TAB 2: STATISTIK & PROGRES */
+        )}
+
+        {/* TAB 2: PUSAT TEMPLATE BUKTI DUKUNG */}
+        {activeTab === 'templates' && (
+          <TemplatesView
+            onOpenIndicatorDetail={(indId) => {
+              const found = INDICATORS.find(i => i.id === indId || i.code.toLowerCase() === indId.toLowerCase());
+              if (found) {
+                setSelectedIndicatorForDetail(found);
+              }
+            }}
+          />
+        )}
+
+        {/* TAB 3: STATISTIK & PROGRES */}
+        {activeTab === 'dashboard' && (
           <SummaryDashboard
             stats={stats}
             checklistData={data}

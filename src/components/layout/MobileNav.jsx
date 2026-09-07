@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutGrid, BarChart3, Sparkles, KeyRound } from 'lucide-react';
+import { LayoutGrid, BarChart3, Sparkles, KeyRound, FolderDown } from 'lucide-react';
 
 export default function MobileNav({ activeTab, setActiveTab, onOpenAi, onOpenApiKey, stats }) {
   return (
@@ -9,7 +9,7 @@ export default function MobileNav({ activeTab, setActiveTab, onOpenAi, onOpenApi
         {/* Tab Indikator */}
         <button
           onClick={() => setActiveTab('indicators')}
-          className={`flex flex-col items-center gap-1 py-1 px-3 rounded-xl transition-all ${
+          className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition-all ${
             activeTab === 'indicators'
               ? 'text-brand-600 font-bold'
               : 'text-slate-500 hover:text-slate-800'
@@ -17,6 +17,19 @@ export default function MobileNav({ activeTab, setActiveTab, onOpenAi, onOpenApi
         >
           <LayoutGrid className="w-5 h-5" />
           <span className="text-[11px]">Indikator</span>
+        </button>
+
+        {/* Tab Template */}
+        <button
+          onClick={() => setActiveTab('templates')}
+          className={`flex flex-col items-center gap-1 py-1 px-2.5 rounded-xl transition-all ${
+            activeTab === 'templates'
+              ? 'text-indigo-600 font-bold'
+              : 'text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <FolderDown className="w-5 h-5 text-indigo-600" />
+          <span className="text-[11px]">Template</span>
         </button>
 
         {/* Tab Dashboard / Progres */}
