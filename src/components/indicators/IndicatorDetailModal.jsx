@@ -376,6 +376,134 @@ export default function IndicatorDetailModal({
             </div>
           )}
 
+          {/* UNDUH TEMPLATE BUKTI KHUSUS INDIKATOR 11 (WORD & EXCEL) */}
+          {(indicator.id === 'ind-11' || indicator.code === 'IND-11') && (
+            <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50 border-2 border-purple-200 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3">
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-xl bg-purple-600 text-white flex items-center justify-center shadow-xs">
+                    <Download className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm sm:text-base font-black text-purple-950">
+                      Template Dokumen Bukti Dukung Resmi Kepegawaian (Word & Excel)
+                    </h4>
+                    <p className="text-xs text-purple-700 font-medium">
+                      Format resmi siap pakai Indikator 11 (Layanan Manajemen ASN & SIMPEG-SIASN)
+                    </p>
+                  </div>
+                </div>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-purple-600 text-white shadow-xs">
+                  5 Berkas Siap Pakai
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                
+                {/* 1. SOP Kepegawaian (Word) */}
+                <a
+                  href="/templates/ind_11/Template_SOP_Layanan_Kepegawaian_Elektronik_Indikator11.docx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-purple-50/80 border border-purple-200 hover:border-purple-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
+                      DOCX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-purple-600 truncate">
+                        SOP Layanan Kepegawaian Daring
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 3 (Cuti, Presensi & KGB)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-purple-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 2. BA Integrasi SIASN BKN (Word) */}
+                <a
+                  href="/templates/ind_11/Template_BA_Integrasi_SIMPEG_SIASN_BKN_Indikator11.docx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-purple-50/80 border border-purple-200 hover:border-purple-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
+                      DOCX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-purple-600 truncate">
+                        BA Integrasi SIMPEG ke SIASN BKN
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 4 (UAT API Kenaikan Pangkat & Pensiun)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-purple-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 3. Laporan Evaluasi Talenta (Word) */}
+                <a
+                  href="/templates/ind_11/Template_Laporan_Evaluasi_Talenta_ASN_Indikator11.docx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-purple-50/80 border border-purple-200 hover:border-purple-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-black text-xs shrink-0">
+                      DOCX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-purple-600 truncate">
+                        Laporan Evaluasi & Kepuasan ASN
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 5 (Monev, IKL & Merit System)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-purple-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 4. Rekap Transaksi SIASN (Excel) */}
+                <a
+                  href="/templates/ind_11/Template_Rekapitulasi_Layanan_Kepegawaian_SIASN_Indikator11.xlsx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-emerald-50/80 border border-emerald-200 hover:border-emerald-300 transition-all group shadow-xs"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xs shrink-0">
+                      XLSX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 truncate">
+                        Rekapitulasi Layanan & Log SIASN
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 3 & 4 (Volume Pengajuan & Status Pertek)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-emerald-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+                {/* 5. Matriks 9-Box Talenta (Excel) */}
+                <a
+                  href="/templates/ind_11/Template_Pemetaan_Manajemen_Talenta_NineBox_Indikator11.xlsx"
+                  download
+                  className="flex items-center justify-between p-3 rounded-xl bg-white hover:bg-emerald-50/80 border border-emerald-200 hover:border-emerald-300 transition-all group shadow-xs sm:col-span-2"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xs shrink-0">
+                      XLSX
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-xs font-bold text-slate-900 group-hover:text-emerald-700 truncate">
+                        Matriks Manajemen Talenta ASN (Nine-Box Talent Matrix)
+                      </div>
+                      <div className="text-[10px] text-slate-500">Standar Level 5 (Pemetaan e-Kinerja, Asesmen & Talent Pool)</div>
+                    </div>
+                  </div>
+                  <Download className="w-4 h-4 text-emerald-600 shrink-0 ml-2 group-hover:scale-110 transition-transform" />
+                </a>
+
+              </div>
+            </div>
+          )}
+
           {/* Link Bukti & Catatan Mandiri */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
             <div>
