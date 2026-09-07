@@ -131,14 +131,24 @@ export default function SummaryDashboard({ stats, checklistData, onResetAll, onO
 
       </div>
 
-      {/* Domain Breakdown Progress */}
+      {/* Domain / Aspek Breakdown Progress */}
       <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-md">
-        <h3 className="text-base sm:text-lg font-black text-slate-900 mb-4 flex items-center gap-2">
-          <BarChart2 className="w-5 h-5 text-brand-600" />
-          Kesiapan Dokumen Berdasarkan 4 Domain Utama
-        </h3>
+        <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+          <div>
+            <h3 className="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2">
+              <BarChart2 className="w-5 h-5 text-brand-600" />
+              Kesiapan Dokumen Berdasarkan 7 Aspek Utama
+            </h3>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Instrumen Evaluasi Kinerja Pemerintah Digital (PermenPANRB No. 8 Tahun 2026)
+            </p>
+          </div>
+          <span className="text-xs font-bold px-3 py-1 bg-brand-50 text-brand-700 rounded-full border border-brand-200">
+            Total Bobot: 100% | 20 Indikator
+          </span>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {DOMAINS.map(domain => {
             const domainIndicators = INDICATORS.filter(ind => ind.domainId === domain.id);
             let domainTotalChecks = 0;
@@ -164,9 +174,14 @@ export default function SummaryDashboard({ stats, checklistData, onResetAll, onO
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="font-mono text-xs font-black px-2 py-0.5 rounded-md bg-slate-200 text-slate-800">
-                      {domain.code}
-                    </span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-mono text-xs font-black px-2 py-0.5 rounded-md bg-slate-900 text-white shadow-xs">
+                        {domain.code}
+                      </span>
+                      <span className="text-[11px] font-bold px-1.5 py-0.5 rounded-md bg-amber-100 text-amber-800 border border-amber-200">
+                        Bobot {domain.weight}%
+                      </span>
+                    </div>
                     <span className="text-xs font-bold text-slate-700">
                       {percent}%
                     </span>

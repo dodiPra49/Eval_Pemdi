@@ -137,7 +137,7 @@ export default function App() {
               <div className="flex flex-wrap gap-3 text-xs sm:text-sm font-semibold">
                 <div className="bg-white/15 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 flex items-center gap-2">
                   <FileText className="w-4 h-4 text-sunshine-300" />
-                  <span>12 Indikator Inti</span>
+                  <span>20 Indikator Kinerja Pemdi</span>
                 </div>
                 <div className="bg-white/15 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-emerald-300" />
@@ -145,7 +145,7 @@ export default function App() {
                 </div>
                 <div className="bg-white/15 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 flex items-center gap-2">
                   <TrendingUp className="w-4 h-4 text-cyan-200" />
-                  <span>Indeks Mandiri: {stats.averageMaturityIndex}</span>
+                  <span>Indeks Pemdi: {stats.averageMaturityIndex}</span>
                 </div>
               </div>
             </div>
@@ -169,7 +169,7 @@ export default function App() {
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Cari indikator, kata kunci bukti (contoh: SK Tim, SOP, PDN, API, VAPT)..."
+                    placeholder="Cari indikator, kata kunci bukti (contoh: PDP, Geospasial, Statistik, SPLP, AI, Kriptografi)..."
                     className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-brand-500 focus:outline-hidden"
                   />
                   {searchQuery && (
@@ -198,7 +198,7 @@ export default function App() {
 
               </div>
 
-              {/* Domain Pills */}
+              {/* Aspek Filter Pills */}
               <div className="flex items-center gap-2 overflow-x-auto pb-1">
                 <button
                   onClick={() => setSelectedDomain('all')}
@@ -208,7 +208,7 @@ export default function App() {
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
-                  Semua Domain ({INDICATORS.length})
+                  Semua Aspek ({INDICATORS.length})
                 </button>
 
                 {DOMAINS.map(domain => {
@@ -224,7 +224,7 @@ export default function App() {
                           : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                       }`}
                     >
-                      <span>{domain.code}: {domain.name}</span>
+                      <span>{domain.code}: {domain.name} ({domain.weight}%)</span>
                       <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${
                         isSelected ? 'bg-white/20' : 'bg-slate-200 text-slate-700'
                       }`}>

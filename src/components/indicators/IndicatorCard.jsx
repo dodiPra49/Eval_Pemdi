@@ -30,6 +30,11 @@ export default function IndicatorCard({
             <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 border border-slate-200">
               {indicator.aspectName}
             </span>
+            {indicator.weight && (
+              <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">
+                Bobot {indicator.weight}%
+              </span>
+            )}
           </div>
 
           {/* Level Pill */}

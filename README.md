@@ -6,11 +6,18 @@ Aplikasi berbasis web modern yang dibangun dengan **React.js**, **Tailwind CSS**
 
 ## 🌟 Fitur Utama
 
-1. **Katalog Indikator Komprehensif (PermenPANRB No. 8 Tahun 2026):**
-   - Menampilkan 4 Domain Utama (Kebijakan, Tata Kelola, Manajemen, dan Layanan).
+1. **Katalog 20 Indikator Komprehensif (PermenPANRB No. 8 Tahun 2026):**
+   - Menampilkan **7 Aspek Penilaian Resmi** dengan pembobotan 100%:
+     1. Tata Kelola dan Manajemen (10% - IND 1 & 2)
+     2. Penyelenggara: SDM & Kolaborasi (10% - IND 3 & 4)
+     3. Data: SDI, Geospasial, Statistik, PDP (15% - IND 5 s.d. 8)
+     4. Keamanan Pemerintah Digital: Audit, SMKI, Kriptografi/TTE, CSIRT (15% - IND 9 s.d. 12)
+     5. Teknologi: Aplikasi & Infrastruktur/PDN (10% - IND 13 & 14)
+     6. Keterpaduan Layanan Digital: Probis, Integrasi, Super-App, SPLP (15% - IND 15 s.d. 18)
+     7. Kepuasan Pengguna Layanan: Helpdesk 24/7 & e-SKM (25% - IND 19 & 20)
    - Rincian kriteria penilaian tingkat kematangan (Level 1: Rintisan s.d. Level 5: Optimum).
-2. **Narasi Lengkap Dokumen Bukti (*Evidence Requirement*):**
-   - Setiap indikator dilengkapi narasi eksplisit jenis dokumen bukti yang diperlukan (SK Tim, Regulasi/Perda, SOP, Topologi Jaringan, Hasil VAPT/Audit, Tangkapan Layar, Log Transaksi, dll).
+2. **Narasi Lengkap Dokumen Bukti Dinamis (*Evidence Requirement*):**
+   - Narasi dokumen bukti berubah dinamis mengikuti Level kematangan yang dipilih (Level 1 s.d. 5).
    - Checklist interaktif dengan penyimpanan otomatis ke LocalStorage.
 3. **Asisten AI Cerdas (Google Gemini API):**
    - **Konsultasi Regulasi:** Tanya jawab interaktif seputar pemenuhan indikator.

@@ -65,6 +65,11 @@ export default function IndicatorDetailModal({
               <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                 {indicator.aspectName}
               </span>
+              {indicator.weight && (
+                <span className="text-xs font-bold px-2.5 py-1 rounded-md bg-amber-400 text-slate-900 shadow-xs">
+                  Bobot: {indicator.weight}%
+                </span>
+              )}
             </div>
             <h2 className="text-lg sm:text-2xl font-black text-white tracking-tight">
               {indicator.name}
@@ -248,8 +253,8 @@ export default function IndicatorDetailModal({
             </div>
           </div>
 
-          {/* UNDUH TEMPLATE BUKTI KHUSUS INDIKATOR 07 (WORD & EXCEL) */}
-          {(indicator.id === 'ind-07' || indicator.code === 'IND-07') && (
+          {/* UNDUH TEMPLATE BUKTI KHUSUS INDIKATOR 18 (SPLP / INTEROPERABILITAS) */}
+          {(indicator.id === 'ind-18' || indicator.code === 'IND-18' || indicator.id === 'ind-07' || indicator.code === 'IND-07') && (
             <div className="bg-gradient-to-br from-indigo-50 via-sky-50 to-emerald-50 border-2 border-indigo-200 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2">
@@ -376,8 +381,8 @@ export default function IndicatorDetailModal({
             </div>
           )}
 
-          {/* UNDUH TEMPLATE BUKTI KHUSUS INDIKATOR 11 (WORD & EXCEL) */}
-          {(indicator.id === 'ind-11' || indicator.code === 'IND-11') && (
+          {/* UNDUH TEMPLATE BUKTI KHUSUS INDIKATOR 03 & 11 (SDM / KEPEGAWAIAN) */}
+          {(indicator.id === 'ind-03' || indicator.code === 'IND-03' || indicator.id === 'ind-11' || indicator.code === 'IND-11') && (
             <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-indigo-50 border-2 border-purple-200 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2">

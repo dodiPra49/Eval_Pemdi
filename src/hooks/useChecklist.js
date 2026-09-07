@@ -82,25 +82,29 @@ export function useChecklist() {
     setData(fresh);
   };
 
-  // Kalkulasi statistik keseluruhan
+  // Kalkulasi statistik keseluruhan berdasarkan rumus bobot PermenPANRB No. 8 Tahun 2026
   let totalChecklistItems = 0;
   let totalCheckedItems = 0;
-  let totalSelfScore = 0;
+  let totalWeightedScore = 0;
+  let totalWeights = 0;
 
   INDICATORS.forEach(ind => {
     const checklist = ind.evidenceChecklist || [];
     totalChecklistItems += checklist.length;
     
+    const indWeight = ind.weight || 5;
+    totalWeights += indWeight;
+
     const indState = data[ind.id];
-    if (indState) {
-      totalSelfScore += (indState.selfLevel || 1);
+    const level = indState?.selfLevel || 1;
+    totalWeightedScore += (level * indWeight);
+
+    if (indState?.checkedItems) {
       checklist.forEach(item => {
-        if (indState.checkedItems && indState.checkedItems[item.id]) {
+        if (indState.checkedItems[item.id]) {
           totalCheckedItems++;
         }
       });
-    } else {
-      totalSelfScore += 1;
     }
   });
 
@@ -108,8 +112,9 @@ export function useChecklist() {
     ? Math.round((totalCheckedItems / totalChecklistItems) * 100) 
     : 0;
 
-  const averageMaturityIndex = INDICATORS.length > 0 
-    ? (totalSelfScore / INDICATORS.length).toFixed(2) 
+  // Indeks Pemdi = Total Nilai Terbobot / Total Bobot (Skala 1.00 s.d. 5.00)
+  const averageMaturityIndex = totalWeights > 0 
+    ? (totalWeightedScore / totalWeights).toFixed(2) 
     : "1.00";
 
   return {
