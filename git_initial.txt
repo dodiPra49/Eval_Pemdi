@@ -1,0 +1,7 @@
+echo "# Eval_Pemdi" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M master
+git remote add origin https://github.com/dodiPra49/Eval_Pemdi.git
+git push -u origin master

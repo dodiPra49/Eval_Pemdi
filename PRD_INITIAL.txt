@@ -1,0 +1,7 @@
+saya ingin membuat aplikasi dengan menggunakan react.jsdan google gemini API dan di deploy secara otomatis ke netlify ketika di push ke GitHub.
+spesifikasi adalah sebagai berikut:
+1.berdasarkan permenpan nomor 8 tahun 2026 tentang evaluasi pemerintahan digital,saya ingin dibuatkan aplikasi yang menampilkan  seluruh indikator indikator evaluasi pemerintahan digital serta narasi yang menyatakan dokumen bukti  yang diperlukan.
+2.buat aplikasi yang  user friendly di buka dengan ponsel atau tablet
+
+
+ 
