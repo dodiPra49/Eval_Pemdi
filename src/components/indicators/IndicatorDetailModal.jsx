@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { X, CheckSquare, Square, FileText, Sparkles, ExternalLink, Lightbulb, ShieldAlert, Award } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { X, CheckSquare, Square, FileText, Sparkles, ExternalLink, Lightbulb, ShieldAlert, Award, ArrowRight } from 'lucide-react';
 import { MATURITY_LEVELS } from '../../data/domainsData';
 
 export default function IndicatorDetailModal({
@@ -13,10 +13,27 @@ export default function IndicatorDetailModal({
 }) {
   if (!indicator) return null;
 
-  const currentLevel = indicatorState?.selfLevel || 1;
+  // Level aktif yang sedang dilihat/dipilih oleh user (1 s.d. 5)
+  const [activeLevel, setActiveLevel] = useState(indicatorState?.selfLevel || 3);
   const checkedItems = indicatorState?.checkedItems || {};
   const [localNotes, setLocalNotes] = useState(indicatorState?.notes || '');
   const [localLink, setLocalLink] = useState(indicatorState?.evidenceLink || '');
+
+  // Sinkronisasi jika indikator berubah
+  useEffect(() => {
+    if (indicatorState?.selfLevel) {
+      setActiveLevel(indicatorState.selfLevel);
+    } else {
+      setActiveLevel(3);
+    }
+    setLocalNotes(indicatorState?.notes || '');
+    setLocalLink(indicatorState?.evidenceLink || '');
+  }, [indicator?.id, indicatorState?.selfLevel]);
+
+  const handleSelectLevel = (levelNumber) => {
+    setActiveLevel(levelNumber);
+    onUpdateState(indicator.id, { selfLevel: levelNumber });
+  };
 
   const handleSaveNotes = () => {
     onUpdateState(indicator.id, {
@@ -24,6 +41,10 @@ export default function IndicatorDetailModal({
       evidenceLink: localLink
     });
   };
+
+  // Ambil narasi bukti yang spesifik untuk level yang sedang dipilih
+  const currentEvidenceNarration = indicator.evidenceByLevel?.[activeLevel] || indicator.evidenceNarration;
+  const activeLevelObj = MATURITY_LEVELS.find(l => l.level === activeLevel) || MATURITY_LEVELS[2];
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 md:p-6 animate-fadeIn">
@@ -35,7 +56,7 @@ export default function IndicatorDetailModal({
         <div className="relative p-5 sm:p-6 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white flex items-start justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-2 flex-wrap">
-              <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-md bg-brand-500 text-white">
+              <span className="font-mono text-xs font-bold px-2.5 py-1 rounded-md bg-brand-500 text-white shadow-xs">
                 {indicator.code}
               </span>
               <span className="text-xs font-semibold px-2.5 py-1 rounded-md bg-white/10 text-slate-200">
@@ -72,27 +93,30 @@ export default function IndicatorDetailModal({
             </p>
           </div>
 
-          {/* Level Kematangan (1-5) Grid */}
+          {/* MATRIKS KRITERIA LEVEL KEMATANGAN (1-5) */}
           <div>
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
               <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                 <Award className="w-4 h-4 text-sunshine-500" />
                 Matriks Kriteria Level Kematangan
               </h4>
-              <span className="text-xs text-slate-500">Klik level untuk memilih target/estimasi</span>
+              <span className="text-xs text-brand-600 font-bold bg-brand-50 px-2.5 py-1 rounded-lg border border-brand-200">
+                Level Terpilih: Lvl {activeLevel} ({activeLevelObj.name})
+              </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-5 gap-2.5">
               {MATURITY_LEVELS.map(lvl => {
-                const isSelected = currentLevel === lvl.level;
+                const isSelected = activeLevel === lvl.level;
                 return (
                   <button
                     key={lvl.level}
-                    onClick={() => onUpdateState(indicator.id, { selfLevel: lvl.level })}
+                    type="button"
+                    onClick={() => handleSelectLevel(lvl.level)}
                     className={`p-3 rounded-xl border text-left transition-all relative ${
                       isSelected
-                        ? 'border-brand-500 bg-brand-50/70 shadow-md ring-2 ring-brand-500/30'
-                        : 'border-slate-200 hover:border-slate-300 bg-white'
+                        ? 'border-brand-600 bg-brand-50/80 shadow-md ring-2 ring-brand-500/40'
+                        : 'border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1.5">
@@ -100,7 +124,7 @@ export default function IndicatorDetailModal({
                         {lvl.short}
                       </span>
                       {isSelected && (
-                        <span className="text-[10px] font-bold text-brand-700 bg-brand-100 px-1.5 py-0.5 rounded-sm">
+                        <span className="text-[10px] font-bold text-brand-700 bg-brand-200/70 px-1.5 py-0.5 rounded-sm animate-pulse">
                           Aktif
                         </span>
                       )}
@@ -115,26 +139,46 @@ export default function IndicatorDetailModal({
             </div>
           </div>
 
-          {/* NARASI DOKUMEN BUKTI (CRITICAL SPECIFICATION #1) */}
-          <div className="bg-gradient-to-br from-amber-50/80 via-white to-orange-50/80 border border-amber-200 rounded-2xl p-4 sm:p-5 shadow-xs">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-7 h-7 rounded-lg bg-amber-500 text-white flex items-center justify-center shadow-xs">
-                <FileText className="w-4 h-4" />
+          {/* NARASI DOKUMEN BUKTI BERUBAH DINAMIS SESUAI LEVEL TERPILIH */}
+          <div className="bg-gradient-to-br from-amber-50/90 via-white to-orange-50/90 border-2 border-amber-300 rounded-2xl p-4 sm:p-5 shadow-md transition-all">
+            
+            <div className="flex items-center justify-between gap-2 mb-3 flex-wrap border-b border-amber-200/80 pb-3">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center shadow-xs">
+                  <FileText className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-sm sm:text-base font-black text-amber-950">
+                    Narasi Dokumen Bukti yang Diperlukan (Evidence Requirement)
+                  </h4>
+                  <div className="text-xs text-amber-800 font-medium">
+                    Kebutuhan bukti dukung khusus untuk target kematangan:
+                  </div>
+                </div>
               </div>
-              <h4 className="text-sm sm:text-base font-extrabold text-amber-950">
-                Narasi Dokumen Bukti yang Diperlukan (Evidence Requirement)
-              </h4>
+
+              {/* Badge Level Terpilih */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black shadow-xs bg-amber-500 text-white">
+                <span>Level {activeLevel}: {activeLevelObj.name}</span>
+              </div>
             </div>
 
-            <div className="prose prose-sm max-w-none text-slate-800 text-xs sm:text-sm whitespace-pre-line leading-relaxed font-medium bg-white/80 p-4 rounded-xl border border-amber-200/60 shadow-inner">
-              {indicator.evidenceNarration}
+            {/* Kriteria ringkas level ini */}
+            <div className="mb-3 text-xs bg-amber-100/70 p-2.5 rounded-xl border border-amber-300/60 text-amber-900">
+              <span className="font-bold">Kriteria Resmi Level {activeLevel}: </span>
+              {indicator.criteria[activeLevel]}
+            </div>
+
+            {/* Konten Narasi Bukti Dinamis */}
+            <div className="prose prose-sm max-w-none text-slate-800 text-xs sm:text-sm whitespace-pre-line leading-relaxed font-medium bg-white/95 p-4 rounded-xl border border-amber-200 shadow-inner">
+              {currentEvidenceNarration}
             </div>
 
             {indicator.tips && (
               <div className="mt-3 flex items-start gap-2 text-xs text-amber-900 bg-amber-100/70 p-3 rounded-xl border border-amber-300/60">
                 <Lightbulb className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold">Tips Asesor: </span>
+                  <span className="font-bold">Tips Asesor Evaluator: </span>
                   {indicator.tips}
                 </div>
               </div>
@@ -143,22 +187,31 @@ export default function IndicatorDetailModal({
 
           {/* Interactive Checklist Bukti Dukung */}
           <div>
-            <h4 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <CheckSquare className="w-4 h-4 text-brand-600" />
-              Checklist Kelengkapan Dokumen Fisik / Digital
-            </h4>
+            <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+              <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                <CheckSquare className="w-4 h-4 text-brand-600" />
+                Checklist Kelengkapan Dokumen Fisik / Digital
+              </h4>
+              <span className="text-xs text-slate-500">
+                Centang bukti yang sudah Anda miliki di instansi
+              </span>
+            </div>
 
             <div className="space-y-2">
               {indicator.evidenceChecklist?.map(item => {
                 const isChecked = !!checkedItems[item.id];
+                const isItemRelevantForLevel = item.minLevel ? item.minLevel <= activeLevel : true;
+
                 return (
                   <label
                     key={item.id}
                     onClick={() => onToggleCheck(indicator.id, item.id)}
                     className={`flex items-start gap-3 p-3 rounded-xl border transition-all cursor-pointer select-none ${
                       isChecked
-                        ? 'bg-emerald-50/70 border-emerald-300 text-emerald-950'
-                        : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-800'
+                        ? 'bg-emerald-50/80 border-emerald-300 text-emerald-950'
+                        : isItemRelevantForLevel
+                          ? 'bg-white border-slate-200 hover:bg-slate-50 text-slate-800'
+                          : 'bg-slate-50/50 border-slate-200/60 text-slate-400 opacity-80'
                     }`}
                   >
                     <div className="mt-0.5 shrink-0 text-brand-600">
@@ -172,11 +225,22 @@ export default function IndicatorDetailModal({
                       <span className={isChecked ? 'line-through text-slate-500' : 'font-medium'}>
                         {item.label}
                       </span>
-                      {item.required && (
-                        <span className="ml-2 text-[10px] font-bold px-1.5 py-0.5 bg-rose-100 text-rose-700 rounded-sm">
-                          Wajib
-                        </span>
-                      )}
+                      <div className="flex items-center gap-1.5 mt-1 flex-wrap">
+                        {item.required && (
+                          <span className="text-[10px] font-bold px-1.5 py-0.2 bg-rose-100 text-rose-700 rounded-sm">
+                            Wajib
+                          </span>
+                        )}
+                        {item.minLevel && (
+                          <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-sm ${
+                            activeLevel >= item.minLevel
+                              ? 'bg-brand-100 text-brand-700'
+                              : 'bg-slate-200 text-slate-600'
+                          }`}>
+                            Target Lvl {item.minLevel}+
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </label>
                 );
