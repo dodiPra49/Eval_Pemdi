@@ -60,7 +60,7 @@ async function generateContentWithFallback(genAI, modelParams, prompt) {
       lastError.message?.includes('API key not valid') ||
       lastError.message?.includes('400')
     ) {
-      throw new Error(`Format API Key perlu diverifikasi. Silakan periksa Google AI Studio API Key Anda di menu Pengaturan API. (Detail: ${lastError.message})`);
+      throw new Error(`Layanan AI belum dapat terhubung atau konfigurasi API Key perlu diverifikasi di environment variable. (Detail: ${lastError.message})`);
     } else if (lastError.message?.includes('429') || lastError.message?.includes('RESOURCE_EXHAUSTED')) {
       throw new Error("Batas kuota gratis Gemini tercapai untuk sementara waktu. Silakan coba kembali sesaat lagi.");
     }

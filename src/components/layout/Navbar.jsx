@@ -1,7 +1,7 @@
 import React from 'react';
-import { Sparkles, KeyRound, RefreshCw, Smartphone, FolderDown } from 'lucide-react';
+import { Sparkles, FolderDown } from 'lucide-react';
 
-export default function Navbar({ onOpenApiKey, onOpenAi, stats, activeTab, setActiveTab }) {
+export default function Navbar({ onOpenAi, activeTab, setActiveTab }) {
   return (
     <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,7 +22,7 @@ export default function Navbar({ onOpenApiKey, onOpenAi, stats, activeTab, setAc
                 </span>
               </div>
               <p className="text-xs text-slate-500 line-clamp-1">
-                Evaluasi Pemerintahan Digital & Kesiapan Dokumen Bukti
+                Pedoman & Template Bukti Dukung PermenPANRB 8/2026
               </p>
             </div>
           </div>
@@ -53,16 +53,6 @@ export default function Navbar({ onOpenApiKey, onOpenAi, stats, activeTab, setAc
                 20 Berkas
               </span>
             </button>
-            <button
-              onClick={() => setActiveTab('dashboard')}
-              className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all ${
-                activeTab === 'dashboard'
-                  ? 'bg-white text-brand-700 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              Statistik Kesiapan
-            </button>
           </div>
 
           {/* Action Buttons */}
@@ -75,16 +65,6 @@ export default function Navbar({ onOpenApiKey, onOpenAi, stats, activeTab, setAc
               <Sparkles className="w-4 h-4 text-sunshine-400 animate-pulse" />
               <span className="hidden xs:inline">Asisten AI</span>
               <span className="xs:hidden">AI</span>
-            </button>
-
-            {/* API Key settings button */}
-            <button
-              onClick={onOpenApiKey}
-              title="Pengaturan Kunci Google Gemini API"
-              className="p-2 sm:px-3 sm:py-2 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-600 hover:text-slate-900 transition-colors flex items-center gap-1.5 text-xs font-semibold"
-            >
-              <KeyRound className="w-4 h-4 text-amber-500" />
-              <span className="hidden sm:inline">API Key</span>
             </button>
           </div>
 

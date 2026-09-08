@@ -21,8 +21,6 @@ import IndicatorCard from './components/indicators/IndicatorCard';
 import IndicatorDetailModal from './components/indicators/IndicatorDetailModal';
 import GeminiAssistantModal from './components/ai/GeminiAssistantModal';
 import EvidenceReviewerModal from './components/ai/EvidenceReviewerModal';
-import ApiKeyModal from './components/indicators/ApiKeyModal';
-import SummaryDashboard from './components/checklist/SummaryDashboard';
 import TemplatesView from './components/templates/TemplatesView';
 
 import { DOMAINS, MATURITY_LEVELS } from './data/domainsData';
@@ -32,7 +30,7 @@ import { useChecklist } from './hooks/useChecklist';
 export default function App() {
   const { data, toggleCheckItem, updateIndicatorState, resetAllData, stats } = useChecklist();
 
-  // Navigation state: 'indicators' | 'dashboard'
+  // Navigation state: 'indicators' | 'templates'
   const [activeTab, setActiveTab] = useState('indicators');
 
   // Filter & Search states
@@ -46,7 +44,6 @@ export default function App() {
   const [selectedIndicatorForReview, setSelectedIndicatorForReview] = useState(null);
   const [contextIndicatorForAi, setContextIndicatorForAi] = useState(null);
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
-  const [isApiKeyModalOpen, setIsApiKeyModalOpen] = useState(false);
 
   // Filtering indicators
   const filteredIndicators = useMemo(() => {
@@ -112,11 +109,9 @@ export default function App() {
       
       {/* Navbar */}
       <Navbar
-        stats={stats}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onOpenAi={handleOpenAiGeneral}
-        onOpenApiKey={() => setIsApiKeyModalOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -140,22 +135,22 @@ export default function App() {
               </h1>
 
               <p className="text-sm sm:text-base text-brand-50/90 leading-relaxed font-normal mb-6">
-                Eksplorasi seluruh indikator evaluasi, pelajari narasi dokumen bukti wajib per tingkat kematangan, dan manfaatkan asisten cerdas <strong>Google Gemini AI</strong> untuk memastikan instansi Anda siap meraih predikat tertinggi.
+                Eksplorasi seluruh 20 indikator evaluasi, pelajari narasi dokumen bukti wajib per tingkat kematangan, dan manfaatkan asisten cerdas <strong>Google Gemini AI</strong> untuk bimbingan regulasi serta reviewer kelayakan dokumen.
               </p>
 
-              {/* Quick Highlight Stats Pills */}
+              {/* Quick Highlight Pills */}
               <div className="flex flex-wrap gap-3 text-xs sm:text-sm font-semibold">
                 <div className="bg-white/15 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 flex items-center gap-2">
                   <FileText className="w-4 h-4 text-sunshine-300" />
                   <span>20 Indikator Kinerja Pemdi</span>
                 </div>
                 <div className="bg-white/15 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-300" />
-                  <span>{stats.completionPercentage}% Dokumen Siap</span>
+                  <FolderDown className="w-4 h-4 text-indigo-300" />
+                  <span>20 Berkas Template Word & Excel</span>
                 </div>
                 <div className="bg-white/15 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4 text-cyan-200" />
-                  <span>Indeks Pemdi: {stats.averageMaturityIndex}</span>
+                  <Sparkles className="w-4 h-4 text-cyan-200" />
+                  <span>Konsultan AI Google Gemini</span>
                 </div>
               </div>
             </div>
@@ -360,16 +355,6 @@ export default function App() {
           />
         )}
 
-        {/* TAB 3: STATISTIK & PROGRES */}
-        {activeTab === 'dashboard' && (
-          <SummaryDashboard
-            stats={stats}
-            checklistData={data}
-            onResetAll={resetAllData}
-            onOpenAi={handleOpenAiGeneral}
-          />
-        )}
-
       </main>
 
       {/* Mobile Bottom Navigation Bar (Visible on phone/tablet) */}
@@ -377,8 +362,6 @@ export default function App() {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onOpenAi={handleOpenAiGeneral}
-        onOpenApiKey={() => setIsApiKeyModalOpen(true)}
-        stats={stats}
       />
 
       {/* MODAL 1: Detail Indikator & Narasi Dokumen Bukti */}
@@ -404,12 +387,6 @@ export default function App() {
         isOpen={isAiModalOpen}
         onClose={() => setIsAiModalOpen(false)}
         contextIndicator={contextIndicatorForAi}
-      />
-
-      {/* MODAL 4: Pengaturan Kunci Google Gemini API */}
-      <ApiKeyModal
-        isOpen={isApiKeyModalOpen}
-        onClose={() => setIsApiKeyModalOpen(false)}
       />
 
     </div>
