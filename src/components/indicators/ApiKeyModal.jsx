@@ -60,7 +60,7 @@ export default function ApiKeyModal({ isOpen, onClose }) {
               className="w-full text-xs font-mono p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-hidden"
             />
             <p className="text-[11px] text-slate-500 mt-1.5 leading-relaxed">
-              Kunci API ini digunakan untuk menjalankan konsultasi indikator dan reviewer kelayakan dokumen bukti melalui model <code>gemini-1.5-flash</code>.
+              Kunci API ini digunakan untuk menjalankan konsultasi indikator dan reviewer kelayakan dokumen bukti melalui model <code>Gemini Flash (gemini-flash-latest)</code>.
             </p>
           </div>
 
