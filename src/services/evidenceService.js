@@ -166,6 +166,11 @@ export async function uploadEvidencePdf({
   }
 
   // 2. Fallback: Gunakan Netlify Functions API / MySQL lokal
+  // Netlify Functions memiliki limit payload 6 MB (maksimal ~4.5 MB sebelum base64)
+  if (file.size > 4.5 * 1024 * 1024) {
+    throw new Error('Ukuran berkas melebihi batas upload API Netlify Functions (maks. 4.5 MB). Pastikan Supabase Cloud aktif untuk mengunggah dokumen hingga 25 MB.');
+  }
+
   const base64Data = await fileToBase64(file);
 
   const response = await fetch(API_BASE_URL, {
@@ -187,9 +192,17 @@ export async function uploadEvidencePdf({
     })
   });
 
+  if (!response.ok) {
+    if (response.status === 413) {
+      throw new Error('Ukuran berkas terlalu besar untuk payload serverless (HTTP 413 Payload Too Large). Pastikan Supabase Cloud aktif untuk mengunggah berkas hingga 25 MB.');
+    }
+    const errData = await response.json().catch(() => ({}));
+    throw new Error(errData.message || `Gagal mengunggah berkas (HTTP ${response.status})`);
+  }
+
   const result = await response.json().catch(() => ({}));
-  if (!response.ok || !result.success) {
-    throw new Error(result.message || `Gagal mengunggah berkas (HTTP ${response.status})`);
+  if (!result.success) {
+    throw new Error(result.message || 'Gagal mengunggah berkas ke server');
   }
 
   return result.data;
