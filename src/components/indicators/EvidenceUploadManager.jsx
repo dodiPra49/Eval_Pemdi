@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Upload, FileText, CheckCircle2, AlertCircle, Trash2, 
-  ExternalLink, Loader2, Eye, ShieldCheck, FileCheck
+  ExternalLink, Loader2, Eye, ShieldCheck, FileCheck, Cloud, Database
 } from 'lucide-react';
 import { getEvidenceList, uploadEvidencePdf, deleteEvidence } from '../../services/evidenceService';
+import { isSupabaseConfigured } from '../../services/supabaseClient';
 
 export default function EvidenceUploadManager({
   indicator,
@@ -149,14 +150,14 @@ export default function EvidenceUploadManager({
     }
   };
 
-  const handleDelete = async (id, title) => {
+  const handleDelete = async (id, title, storagePath) => {
     if (!window.confirm(`Hapus dokumen bukti "${title}" dari database?`)) {
       return;
     }
 
     setErrorMsg('');
     try {
-      await deleteEvidence(id);
+      await deleteEvidence(id, storagePath);
       setSuccessMsg(`Dokumen bukti "${title}" berhasil dihapus.`);
       await loadEvidence();
     } catch (err) {
@@ -181,14 +182,29 @@ export default function EvidenceUploadManager({
             <FileCheck className="w-4 h-4" />
           </div>
           <div>
-            <h4 className="text-sm font-black text-slate-900 flex items-center gap-1.5">
-              <span>Unggah Bukti Dukung Resmi (Format PDF)</span>
-              <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-200">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h4 className="text-sm font-black text-slate-900">
+                Unggah Bukti Dukung Resmi (Format PDF)
+              </h4>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-200">
                 Wajib PDF
               </span>
-            </h4>
-            <p className="text-xs text-slate-500">
-              Berkas PDF disimpan langsung ke basis data MySQL <span className="font-mono text-slate-700 font-semibold">EvalPemdi</span>
+              {isSupabaseConfigured ? (
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 flex items-center gap-1">
+                  <Cloud className="w-3 h-3 text-emerald-600" />
+                  Supabase Cloud Active
+                </span>
+              ) : (
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-200 flex items-center gap-1">
+                  <Database className="w-3 h-3 text-blue-600" />
+                  MySQL Local (Laragon)
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-slate-500 mt-0.5">
+              {isSupabaseConfigured 
+                ? 'Berkas PDF & metadata tersimpan langsung di Cloud Database Supabase (PostgreSQL + S3 Storage Bucket)'
+                : 'Berkas PDF tersimpan di MySQL database EvalPemdi (Siap dimigrasi ke Supabase Cloud)'}
             </p>
           </div>
         </div>
@@ -435,9 +451,9 @@ export default function EvidenceUploadManager({
 
                 {/* Aksi Berkas */}
                 <div className="flex items-center gap-1.5 shrink-0 ml-2">
-                  {doc.file_path_storage && (
+                  {(doc.external_url || doc.file_path_storage) && (
                     <a
-                      href={doc.file_path_storage}
+                      href={doc.external_url || doc.file_path_storage}
                       target="_blank"
                       rel="noreferrer"
                       title="Buka / Unduh Berkas PDF"
@@ -449,7 +465,7 @@ export default function EvidenceUploadManager({
 
                   <button
                     type="button"
-                    onClick={() => handleDelete(doc.id, doc.judul_dokumen)}
+                    onClick={() => handleDelete(doc.id, doc.judul_dokumen, doc.file_path_storage)}
                     title="Hapus Dokumen"
                     className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors"
                   >

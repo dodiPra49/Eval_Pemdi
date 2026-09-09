@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
+    "@supabase/supabase-js": "^2.109.0",
     "canvas-confetti": "^1.9.3",
     "lucide-react": "^0.468.0",
     "mysql2": "^3.24.4",
