@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, CheckSquare, Square, FileText, Sparkles, ExternalLink, Lightbulb, ShieldAlert, Award, ArrowRight, Download, FileSpreadsheet } from 'lucide-react';
 import { MATURITY_LEVELS } from '../../data/domainsData';
+import EvidenceUploadManager from './EvidenceUploadManager';
 
 export default function IndicatorDetailModal({
   indicator,
@@ -768,6 +769,18 @@ export default function IndicatorDetailModal({
               })}
             </div>
           </div>
+
+          {/* ========================================================================= */}
+          {/* MANAJEMEN UNGGAH BUKTI DUKUNG RESMI (PDF KE DATABASE MYSQL VIA NETLIFY)    */}
+          {/* ========================================================================= */}
+          <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+            <EvidenceUploadManager
+              indicator={indicator}
+              activeLevel={activeLevel}
+              checklistItems={indicator.evidenceChecklist || []}
+            />
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1.5">
