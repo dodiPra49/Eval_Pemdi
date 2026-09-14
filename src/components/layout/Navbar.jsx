@@ -1,14 +1,22 @@
 import React from 'react';
-import { Sparkles, FolderDown } from 'lucide-react';
+import { Sparkles, FolderDown, ShieldCheck } from 'lucide-react';
 
-export default function Navbar({ onOpenAi, activeTab, setActiveTab }) {
+export default function Navbar({ onOpenAi, activeTab, setActiveTab, isAdminLoggedIn, onOpenAdminLogin }) {
+  const handleAdminClick = () => {
+    if (isAdminLoggedIn) {
+      setActiveTab('admin');
+    } else {
+      onOpenAdminLogin();
+    }
+  };
+
   return (
     <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           
           {/* Logo & Title */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActiveTab('indicators')}>
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-brand-600 via-tealAccent-500 to-sunshine-400 flex items-center justify-center shadow-md shadow-brand-500/20">
               <span className="text-white font-extrabold text-lg sm:text-xl tracking-tight">EP</span>
             </div>
@@ -53,10 +61,34 @@ export default function Navbar({ onOpenAi, activeTab, setActiveTab }) {
                 20 Berkas
               </span>
             </button>
+            <button
+              onClick={handleAdminClick}
+              className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-1.5 ${
+                activeTab === 'admin'
+                  ? 'bg-white text-slate-900 shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <ShieldCheck className={`w-4 h-4 ${isAdminLoggedIn ? 'text-emerald-600' : 'text-slate-500'}`} />
+              <span>Admin {isAdminLoggedIn ? '(Aktif)' : ''}</span>
+            </button>
           </div>
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Quick Admin Access Button (Mobile/Tablet helper) */}
+            <button
+              onClick={handleAdminClick}
+              className={`md:hidden inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all border ${
+                activeTab === 'admin' || isAdminLoggedIn
+                  ? 'bg-slate-900 text-white border-slate-800'
+                  : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+              }`}
+            >
+              <ShieldCheck className="w-4 h-4 text-amber-500" />
+              <span>Admin</span>
+            </button>
+
             {/* AI Assistant Button */}
             <button
               onClick={onOpenAi}

@@ -25,7 +25,11 @@ Aplikasi berbasis web modern yang dibangun dengan **React.js**, **Tailwind CSS**
 4. **Desain Ceria, Modern & Mobile-Friendly:**
    - Palet warna cerah (*vibrant blue, emerald, amber, purple*).
    - Dilengkapi *Bottom Navigation Bar* khusus ponsel dan tablet untuk kemudahan akses jempol (*thumb-friendly*).
-5. **Auto-Deploy ke Netlify via GitHub:**
+5. **Modul Administrator & Pengelolaan Bukti Dukung (PDF):**
+   - Portal login admin khusus dengan kredensial default (`dodi` / `agusri`).
+   - Dashboard pengelolaan 20 indikator evaluasi dengan daftar berkas bukti dukung PDF.
+   - Fitur unduh berkas (*direct download*) dan penghapusan berkas (*delete*) dengan konfirmasi keamanan.
+6. **Auto-Deploy ke Netlify via GitHub:**
    - Dilengkapi file konfigurasi `netlify.toml` untuk otomatisasi build dan deploy setiap kali melakukan push kode ke GitHub.
 
 ---

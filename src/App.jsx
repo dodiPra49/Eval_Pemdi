@@ -22,16 +22,23 @@ import IndicatorDetailModal from './components/indicators/IndicatorDetailModal';
 import GeminiAssistantModal from './components/ai/GeminiAssistantModal';
 import EvidenceReviewerModal from './components/ai/EvidenceReviewerModal';
 import TemplatesView from './components/templates/TemplatesView';
+import AdminLoginModal from './components/admin/AdminLoginModal';
+import AdminDashboard from './components/admin/AdminDashboard';
 
 import { DOMAINS, MATURITY_LEVELS } from './data/domainsData';
 import { INDICATORS } from './data/indicatorsData';
 import { useChecklist } from './hooks/useChecklist';
+import { getAdminSession, logoutAdmin } from './services/adminAuthService';
 
 export default function App() {
   const { data, toggleCheckItem, updateIndicatorState, resetAllData, stats } = useChecklist();
 
-  // Navigation state: 'indicators' | 'templates'
+  // Navigation state: 'indicators' | 'templates' | 'admin'
   const [activeTab, setActiveTab] = useState('indicators');
+
+  // Admin authentication state
+  const [adminUser, setAdminUser] = useState(() => getAdminSession());
+  const [isAdminLoginOpen, setIsAdminLoginOpen] = useState(false);
 
   // Filter & Search states
   const [searchQuery, setSearchQuery] = useState('');
@@ -104,6 +111,17 @@ export default function App() {
     setIsAiModalOpen(true);
   };
 
+  const handleLoginSuccess = (user) => {
+    setAdminUser(user);
+    setActiveTab('admin');
+  };
+
+  const handleLogout = () => {
+    logoutAdmin();
+    setAdminUser(null);
+    setActiveTab('indicators');
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col text-slate-900 pb-20 md:pb-8">
       
@@ -112,6 +130,8 @@ export default function App() {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onOpenAi={handleOpenAiGeneral}
+        isAdminLoggedIn={Boolean(adminUser)}
+        onOpenAdminLogin={() => setIsAdminLoginOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -148,10 +168,19 @@ export default function App() {
                   <FolderDown className="w-4 h-4 text-indigo-300" />
                   <span>20 Berkas Template Word & Excel</span>
                 </div>
-                <div className="bg-white/15 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-cyan-200" />
-                  <span>Konsultan AI Google Gemini</span>
-                </div>
+                <button
+                  onClick={() => {
+                    if (adminUser) {
+                      setActiveTab('admin');
+                    } else {
+                      setIsAdminLoginOpen(true);
+                    }
+                  }}
+                  className="bg-amber-400/20 hover:bg-amber-400/30 backdrop-blur-md px-3.5 py-2 rounded-xl border border-amber-300/30 flex items-center gap-2 transition-colors cursor-pointer text-white"
+                >
+                  <ShieldCheck className="w-4 h-4 text-amber-300" />
+                  <span>Modul Administrator & Bukti PDF</span>
+                </button>
               </div>
             </div>
           </div>
@@ -355,6 +384,33 @@ export default function App() {
           />
         )}
 
+        {/* TAB 3: MODUL ADMINISTRATOR (admin.md) */}
+        {activeTab === 'admin' && (
+          adminUser ? (
+            <AdminDashboard
+              adminUser={adminUser}
+              onLogout={handleLogout}
+              onBackToPublic={() => setActiveTab('indicators')}
+            />
+          ) : (
+            <div className="max-w-md mx-auto my-12 p-8 bg-white rounded-3xl border border-slate-200 text-center shadow-lg space-y-4">
+              <div className="w-16 h-16 rounded-2xl bg-amber-50 text-amber-600 border border-amber-200 flex items-center justify-center mx-auto shadow-inner">
+                <ShieldCheck className="w-8 h-8" />
+              </div>
+              <h2 className="text-xl font-bold text-slate-900">Autentikasi Administrator</h2>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Anda perlu login sebagai administrator untuk mengelola indikator dan dokumen bukti dukung Evaluasi Pemdi.
+              </p>
+              <button
+                onClick={() => setIsAdminLoginOpen(true)}
+                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 text-white font-bold text-sm shadow-md hover:from-brand-700 hover:to-indigo-700 transition-all cursor-pointer"
+              >
+                Buka Form Login Administrator
+              </button>
+            </div>
+          )
+        )}
+
       </main>
 
       {/* Mobile Bottom Navigation Bar (Visible on phone/tablet) */}
@@ -362,6 +418,8 @@ export default function App() {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onOpenAi={handleOpenAiGeneral}
+        isAdminLoggedIn={Boolean(adminUser)}
+        onOpenAdminLogin={() => setIsAdminLoginOpen(true)}
       />
 
       {/* MODAL 1: Detail Indikator & Narasi Dokumen Bukti */}
@@ -387,6 +445,13 @@ export default function App() {
         isOpen={isAiModalOpen}
         onClose={() => setIsAiModalOpen(false)}
         contextIndicator={contextIndicatorForAi}
+      />
+
+      {/* MODAL 4: Login Administrator (admin.md) */}
+      <AdminLoginModal
+        isOpen={isAdminLoginOpen}
+        onClose={() => setIsAdminLoginOpen(false)}
+        onLoginSuccess={handleLoginSuccess}
       />
 
     </div>
