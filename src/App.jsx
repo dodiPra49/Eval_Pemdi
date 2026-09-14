@@ -166,7 +166,7 @@ export default function App() {
                 </div>
                 <div className="bg-white/15 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/20 flex items-center gap-2">
                   <FolderDown className="w-4 h-4 text-indigo-300" />
-                  <span>20 Berkas Template Word & Excel</span>
+                  <span>52 Berkas Template Word & Excel</span>
                 </div>
                 <button
                   onClick={() => {

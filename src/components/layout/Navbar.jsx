@@ -58,7 +58,7 @@ export default function Navbar({ onOpenAi, activeTab, setActiveTab, isAdminLogge
               <FolderDown className="w-4 h-4 text-indigo-600" />
               <span>Template Bukti</span>
               <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-800">
-                20 Berkas
+                52 Berkas
               </span>
             </button>
             <button
