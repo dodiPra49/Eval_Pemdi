@@ -23,7 +23,7 @@ export default function Navbar({ onOpenAi, activeTab, setActiveTab, isAdminLogge
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-slate-900 tracking-tight text-base sm:text-xl">
-                  EVAL<span className="text-brand-600">-PEMDI</span>
+                  EVALUASI<span className="text-brand-600">-PEMDI</span>
                 </span>
                 <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200">
                   PermenPANRB 8/2026
