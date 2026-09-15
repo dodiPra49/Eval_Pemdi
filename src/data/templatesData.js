@@ -7,7 +7,7 @@
  */
 
 export const TEMPLATES_DATA = [
-  // IND-01
+  // IND-01 (Lengkap 4 Berkas Resmi)
   {
     indicatorId: 'ind-01',
     indicatorCode: 'IND-01',
@@ -17,17 +17,31 @@ export const TEMPLATES_DATA = [
     files: [
       {
         name: 'Peraturan Kepala Daerah/Instansi tentang Arsitektur & Peta Rencana Pemdi',
-        desc: 'Regulasi formal penetapan 6 domain arsitektur SPBE instansi dan inisiatif strategis 5 tahunan.',
+        desc: 'Regulasi formal penetapan 6 domain arsitektur SPBE instansi, peta rencana 5 tahunan & mekanisme evaluasi berkala.',
         level: 'Standar Level 3 (Terstandarisasi)',
         format: 'DOCX',
         url: '/templates/ind_01/Template_Peraturan_Arsitektur_dan_Peta_Rencana_Pemdi_Indikator01.docx'
       },
       {
-        name: 'Matriks Penyelarasan 6 Domain Arsitektur ke SIA-SPBE Nasional',
-        desc: 'Kertas kerja pemetaan referensi arsitektur instansi ke platform arsitektur nasional KemenPANRB.',
+        name: 'Buku Induk Dokumen Arsitektur Pemdi (Lampiran Utuh 6 Domain)',
+        desc: 'Dokumen teknis komprehensif 6 domain arsitektur: Proses Bisnis, Data & Informasi, Layanan, Aplikasi, Infrastruktur, dan Keamanan.',
+        level: 'Standar Level 3 & 4 (Terpadu)',
+        format: 'DOCX',
+        url: '/templates/ind_01/Template_Buku_Induk_6_Domain_Arsitektur_Pemerintah_Digital_Indikator01.docx'
+      },
+      {
+        name: 'Matriks Penyelarasan 6 Domain ke SIA-SPBE Nasional & Roadmap Renja/DPA',
+        desc: 'Buku kerja 4 sheet: Dashboard Validasi SIA-SPBE KemenPANRB, Pemetaan Referensi Arsitektur Nasional, Roadmap 2026-2030, dan Kamus SIA.',
         level: 'Standar Level 4 (Terpadu Nasional)',
         format: 'XLSX',
         url: '/templates/ind_01/Template_Matriks_Penyelarasan_Arsitektur_SIA_SPBE_Indikator01.xlsx'
+      },
+      {
+        name: 'Laporan Resmi Evaluasi Berkala & Reviu Tata Kelola Pemerintah Digital',
+        desc: 'Laporan evaluasi 2 tahunan: audit keterpaduan arsitektur, gap analysis arah regulasi nasional (GovTech/Digital ID), dan adendum peta rencana.',
+        level: 'Standar Level 5 (Optimum)',
+        format: 'DOCX',
+        url: '/templates/ind_01/Template_Laporan_Evaluasi_Berkala_dan_Reviu_Tata_Kelola_Indikator01.docx'
       }
     ]
   },
