@@ -63,7 +63,7 @@ export default function SummaryDashboard({ stats, checklistData, onResetAll, onO
           </div>
 
           <p className="text-xs text-brand-100/90 leading-relaxed">
-            Berdasarkan penetapan target mandiri pada 12 indikator evaluasi.
+            Berdasarkan penetapan target mandiri pada {INDICATORS.length} indikator evaluasi.
           </p>
         </div>
 

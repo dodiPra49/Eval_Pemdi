@@ -345,7 +345,7 @@ export const TEMPLATES_DATA = [
     ]
   },
 
-  // IND-12
+  // IND-12 (Lengkap 4 Berkas Resmi)
   {
     indicatorId: 'ind-12',
     indicatorCode: 'IND-12',
@@ -355,17 +355,31 @@ export const TEMPLATES_DATA = [
     files: [
       {
         name: 'Surat Keputusan Tim CSIRT & Dokumen Profil Resmi (RFC 2350)',
-        desc: 'Penetapan gugus tugas penanganan insiden keamanan siber, PGP key, kontak darurat & eskalasi BSSN.',
+        desc: 'Penetapan gugus tugas CSIRT, uraian tugas operasional, PGP key, dan profil publik standar RFC 2350 registrasi BSSN.',
         level: 'Standar Level 3 (Terstandarisasi)',
         format: 'DOCX',
         url: '/templates/ind_12/Template_SK_Tim_CSIRT_dan_Profil_RFC2350_Indikator12.docx'
       },
       {
-        name: 'Log Register Penanganan Insiden Siber & Respon Triase CSIRT',
-        desc: 'Rekapitulasi penanganan serangan defacement, malware, brute-force dan pencapaian RTO/RPO pemulihan.',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        name: 'SOP Penanggulangan dan Pemulihan Insiden Keamanan Siber',
+        desc: 'Prosedur baku 6 fase NIST SP 800-61/BSSN: Persiapan, Deteksi & Triase, Penahanan, Pembasmian, Pemulihan & PIR.',
+        level: 'Standar Level 3 & 4 (Terpadu)',
+        format: 'DOCX',
+        url: '/templates/ind_12/Template_SOP_Penanganan_Insiden_Keamanan_Siber_Indikator12.docx'
+      },
+      {
+        name: 'Log Register Insiden Siber, Dashboard KPI & Lembar Kerja Forensik',
+        desc: 'Buku kerja 4 sheet: Dashboard KPI MTTD/MTTR, Register Insiden, Triase Forensik Hash SHA-256 & Kontak Darurat BSSN.',
+        level: 'Standar Level 4 (Terpadu BSSN)',
         format: 'XLSX',
         url: '/templates/ind_12/Template_Log_Register_Insiden_Keamanan_Siber_CSIRT_Indikator12.xlsx'
+      },
+      {
+        name: 'Laporan Pelaksanaan Simulasi Cyber Drill & Post-Incident Review',
+        desc: 'Uji kesiapsiagaan krisis siber skenario ransomware, pengukuran RTO/RPO pemulihan backup & rencana aksi hardening.',
+        level: 'Standar Level 5 (Optimum)',
+        format: 'DOCX',
+        url: '/templates/ind_12/Template_Laporan_Simulasi_Cyber_Drill_dan_PIR_Indikator12.docx'
       }
     ]
   },

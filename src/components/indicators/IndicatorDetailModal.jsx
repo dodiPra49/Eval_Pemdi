@@ -146,54 +146,8 @@ export default function IndicatorDetailModal({
             </div>
           </div>
 
-          {/* NARASI DOKUMEN BUKTI BERUBAH DINAMIS SESUAI LEVEL TERPILIH */}
-          <div className="bg-gradient-to-br from-amber-50/90 via-white to-orange-50/90 border-2 border-amber-300 rounded-2xl p-4 sm:p-5 shadow-md transition-all">
-            
-            <div className="flex items-center justify-between gap-2 mb-3 flex-wrap border-b border-amber-200/80 pb-3">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center shadow-xs">
-                  <FileText className="w-4 h-4" />
-                </div>
-                <div>
-                  <h4 className="text-sm sm:text-base font-black text-amber-950">
-                    Narasi Dokumen Bukti yang Diperlukan (Evidence Requirement)
-                  </h4>
-                  <div className="text-xs text-amber-800 font-medium">
-                    Kebutuhan bukti dukung khusus untuk target kematangan:
-                  </div>
-                </div>
-              </div>
-
-              {/* Badge Level Terpilih */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black shadow-xs bg-amber-500 text-white">
-                <span>Level {activeLevel}: {activeLevelObj.name}</span>
-              </div>
-            </div>
-
-            {/* Kriteria ringkas level ini */}
-            <div className="mb-3 text-xs bg-amber-100/70 p-2.5 rounded-xl border border-amber-300/60 text-amber-900">
-              <span className="font-bold">Kriteria Resmi Level {activeLevel}: </span>
-              {indicator.criteria[activeLevel]}
-            </div>
-
-            {/* Konten Narasi Bukti Dinamis */}
-            <div className="prose prose-sm max-w-none text-slate-800 text-xs sm:text-sm whitespace-pre-line leading-relaxed font-medium bg-white/95 p-4 rounded-xl border border-amber-200 shadow-inner">
-              {currentEvidenceNarration}
-            </div>
-
-            {indicator.tips && (
-              <div className="mt-3 flex items-start gap-2 text-xs text-amber-900 bg-amber-100/70 p-3 rounded-xl border border-amber-300/60">
-                <Lightbulb className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold">Tips Asesor Evaluator: </span>
-                  {indicator.tips}
-                </div>
-              </div>
-            )}
-          </div>
-
           {/* ========================================================================= */}
-          {/* UNDUH TEMPLATE BUKTI DUKUNG RESMI (WORD & EXCEL) - UNTUK SELURUH INDIKATOR */}
+          {/* UNDUH TEMPLATE BUKTI DUKUNG RESMI (WORD & EXCEL) - DI BAWAH MATRIKS KRITERIA */}
           {/* ========================================================================= */}
           {(() => {
             const currentTemplates = getTemplatesForIndicator(indicator.id) || getTemplatesForIndicator(indicator.code) || [];
@@ -248,6 +202,52 @@ export default function IndicatorDetailModal({
               </div>
             );
           })()}
+
+          {/* NARASI DOKUMEN BUKTI BERUBAH DINAMIS SESUAI LEVEL TERPILIH */}
+          <div className="bg-gradient-to-br from-amber-50/90 via-white to-orange-50/90 border-2 border-amber-300 rounded-2xl p-4 sm:p-5 shadow-md transition-all">
+            
+            <div className="flex items-center justify-between gap-2 mb-3 flex-wrap border-b border-amber-200/80 pb-3">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center shadow-xs">
+                  <FileText className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-sm sm:text-base font-black text-amber-950">
+                    Narasi Dokumen Bukti yang Diperlukan (Evidence Requirement)
+                  </h4>
+                  <div className="text-xs text-amber-800 font-medium">
+                    Kebutuhan bukti dukung khusus untuk target kematangan:
+                  </div>
+                </div>
+              </div>
+
+              {/* Badge Level Terpilih */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black shadow-xs bg-amber-500 text-white">
+                <span>Level {activeLevel}: {activeLevelObj.name}</span>
+              </div>
+            </div>
+
+            {/* Kriteria ringkas level ini */}
+            <div className="mb-3 text-xs bg-amber-100/70 p-2.5 rounded-xl border border-amber-300/60 text-amber-900">
+              <span className="font-bold">Kriteria Resmi Level {activeLevel}: </span>
+              {indicator.criteria[activeLevel]}
+            </div>
+
+            {/* Konten Narasi Bukti Dinamis */}
+            <div className="prose prose-sm max-w-none text-slate-800 text-xs sm:text-sm whitespace-pre-line leading-relaxed font-medium bg-white/95 p-4 rounded-xl border border-amber-200 shadow-inner">
+              {currentEvidenceNarration}
+            </div>
+
+            {indicator.tips && (
+              <div className="mt-3 flex items-start gap-2 text-xs text-amber-900 bg-amber-100/70 p-3 rounded-xl border border-amber-300/60">
+                <Lightbulb className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-bold">Tips Asesor Evaluator: </span>
+                  {indicator.tips}
+                </div>
+              </div>
+            )}
+          </div>
 
           {/* Interactive Checklist Bukti Dukung */}
           <div>
