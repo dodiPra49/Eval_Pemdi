@@ -1,0 +1,57 @@
+name: Deploy Eval Pemdi to VPS
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Linux VPS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH to VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            TARGET_DIR="${{ secrets.TARGET_DIR || '/var/www/eval_pemdi' }}"
+
+            echo "🚀 Menyiapkan direktori proyek di VPS ($TARGET_DIR)..."
+            if [ ! -d "$TARGET_DIR/.git" ]; then
+              echo "📂 Direktori belum memiliki repo Git. Melakukan clone..."
+              mkdir -p "$TARGET_DIR"
+              git clone https://github.com/dodiPra49/Eval_Pemdi.git "$TARGET_DIR"
+            fi
+
+            cd "$TARGET_DIR" || exit 1
+
+            echo "📥 Mengambil source code terbaru dari GitHub..."
+            git fetch --all
+            git reset --hard origin/master 2>/dev/null || git reset --hard origin/main
+
+            echo "📝 Membuat konfigurasi file .env..."
+            cat << 'EOF' > .env
+            PORT=${{ secrets.APP_PORT || '80' }}
+            VITE_GEMINI_API_KEY=${{ secrets.VITE_GEMINI_API_KEY }}
+            VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}
+            VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }}
+            EOF
+
+            echo "🐳 Build dan jalankan Docker container..."
+            docker compose down --remove-orphans || true
+            docker compose up -d --build
+
+            echo "🧹 Membersihkan image lama yang tidak terpakai..."
+            docker image prune -f
+
+            echo "✅ Deployment selesai! Aplikasi aktif di http://${{ secrets.VPS_HOST }}:${{ secrets.APP_PORT || '80' }}"

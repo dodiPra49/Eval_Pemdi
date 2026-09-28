@@ -56,7 +56,7 @@ export default function AdminLoginModal({ isOpen, onClose, onLoginSuccess }) {
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-white tracking-tight">Portal Administrator</h3>
+              <h3 className="text-lg font-bold text-white tracking-tight">Portal Administrator BKT</h3>
               <p className="text-xs text-slate-300">Aplikasi Evaluasi Pemerintahan Digital 2026</p>
             </div>
           </div>

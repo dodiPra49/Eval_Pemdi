@@ -1,0 +1,18 @@
+name: eval_pemdi
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_GEMINI_API_KEY: ${VITE_GEMINI_API_KEY:-}
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL:-}
+        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY:-}
+    image: eval-pemdi-web:latest
+    container_name: eval_pemdi_app
+    restart: unless-stopped
+    ports:
+      - "${PORT:-80}:80"
+    environment:
+      - NODE_ENV=production
