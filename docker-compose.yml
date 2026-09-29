@@ -66,6 +66,23 @@ services:
     networks:
       - eval_pemdi_net
 
+  # 4. Web GUI Manajemen Basis Data: phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: eval_pemdi_pma
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      UPLOAD_LIMIT: 64M
+    ports:
+      - "${PMA_PORT:-8085}:80"
+    networks:
+      - eval_pemdi_net
+
 volumes:
   mariadb_data:
     name: eval_pemdi_mariadb_data

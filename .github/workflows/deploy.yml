@@ -25,7 +25,7 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
-            TARGET_DIR="${{ secrets.TARGET_DIR || '/var/www/eval_pemdi' }}"
+            TARGET_DIR="${{ secrets.TARGET_DIR || '/var/www/eval-pemdi' }}"
 
             echo "🚀 Menyiapkan direktori proyek di VPS ($TARGET_DIR)..."
             if [ ! -d "$TARGET_DIR/.git" ]; then
@@ -40,9 +40,10 @@ jobs:
             git fetch --all
             git reset --hard origin/master 2>/dev/null || git reset --hard origin/main
 
-            echo "📝 Menyiapkan konfigurasi environment .env untuk Docker & MariaDB..."
+            echo "📝 Menyiapkan konfigurasi environment .env untuk Docker, MariaDB & phpMyAdmin..."
             cat << EOF > .env
             PORT=${{ secrets.APP_PORT || '80' }}
+            PMA_PORT=${{ secrets.PMA_PORT || '8085' }}
             DB_ROOT_PASSWORD=${{ secrets.DB_ROOT_PASSWORD || 'root_evalpemdi_2026' }}
             DB_USER=${{ secrets.DB_USER || 'evalpemdi_user' }}
             DB_PASSWORD=${{ secrets.DB_PASSWORD || 'evalpemdi_pass_2026' }}
@@ -52,11 +53,13 @@ jobs:
             GEMINI_API_KEY=${{ secrets.VITE_GEMINI_API_KEY || '' }}
             EOF
 
-            echo "🐳 Build dan jalankan seluruh container (MariaDB, API, Web)..."
+            echo "🐳 Build dan jalankan seluruh container (MariaDB, API, Web, phpMyAdmin)..."
             docker compose down --remove-orphans || true
             docker compose up -d --build
 
             echo "🧹 Membersihkan image lama yang tidak terpakai..."
             docker image prune -f
 
-            echo "✅ Deployment selesai! Seluruh layanan aktif di http://${{ secrets.VPS_HOST }}:${{ secrets.APP_PORT || '80' }}"
+            echo "✅ Deployment selesai!"
+            echo "🌐 Aplikasi Web: http://${{ secrets.VPS_HOST }}:${{ secrets.APP_PORT || '80' }}"
+            echo "🗄️ phpMyAdmin:   http://${{ secrets.VPS_HOST }}:${{ secrets.PMA_PORT || '8085' }}"

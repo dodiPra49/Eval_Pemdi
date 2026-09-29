@@ -1,6 +1,6 @@
-# Panduan CI/CD GitHub Actions ke VPS Linux (Docker & MariaDB)
+# Panduan CI/CD GitHub Actions ke VPS Linux (Docker, MariaDB, & phpMyAdmin)
 
-Panduan ini menjelaskan konfigurasi dan alur CI/CD otomatis untuk proyek **Eval Pemdi** dari repository GitHub ke server VPS Linux Anda menggunakan arsitektur **Docker Multi-Container** (Frontend Nginx SPA, Backend Express API, dan Basis Data MariaDB 10.11 LTS).
+Panduan ini menjelaskan konfigurasi dan alur CI/CD otomatis untuk proyek **Eval Pemdi** dari repository GitHub ke server VPS Linux Anda menggunakan arsitektur **Docker Multi-Container** (Frontend Nginx SPA, Backend Express API, Basis Data MariaDB 10.11 LTS, dan GUI phpMyAdmin).
 
 ---
 
@@ -8,8 +8,9 @@ Panduan ini menjelaskan konfigurasi dan alur CI/CD otomatis untuk proyek **Eval 
 
 - **IP Server**: `206.237.98.71`
 - **User**: `root`
-- **Target Direktori di VPS**: `/var/www/eval_pemdi`
-- **Port Aplikasi**: `80` (Dapat diakses langsung via browser: `http://206.237.98.71`)
+- **Target Direktori di VPS**: `/var/www/eval-pemdi`
+- **Port Aplikasi Web**: `80` (Akses: `http://206.237.98.71`)
+- **Port phpMyAdmin**: `8085` (Akses: `http://206.237.98.71:8085`)
 
 ---
 
@@ -24,10 +25,12 @@ Tambahkan repository secrets berikut satu per satu:
 |---|---|---|
 | `VPS_HOST` | `206.237.98.71` | Alamat IP atau domain VPS Anda (Wajib) |
 | `VPS_USERNAME` | `root` | Username SSH VPS (Wajib) |
-| `VPS_PASSWORD` | Password SSH baru yang kuat | Password SSH VPS Anda (Wajib) |
+| `VPS_PASSWORD` | Password SSH baru yang kuat | Password SSH VPS Anda (Wajib bila tidak pakai SSH Key) |
+| `VPS_SSH_KEY` | *(Teks private key)* | Private key SSH (Sangat disarankan) |
 | `VPS_PORT` | `22` | Port SSH (default: 22) |
-| `TARGET_DIR` | `/var/www/eval_pemdi` | Direktori target penempatan aplikasi di VPS |
-| `APP_PORT` | `80` | Port HTTP publik aplikasi |
+| `TARGET_DIR` | `/var/www/eval-pemdi` | Direktori target penempatan aplikasi di VPS |
+| `APP_PORT` | `80` | Port HTTP publik aplikasi web |
+| `PMA_PORT` | `8085` | Port web phpMyAdmin untuk kelola database |
 | `DB_ROOT_PASSWORD` | *(Password rahasia kuat)* | Password root MariaDB 10.11 |
 | `DB_USER` | `evalpemdi_user` | Akun database aplikasi |
 | `DB_PASSWORD` | *(Password rahasia user)* | Password database aplikasi |
@@ -35,58 +38,43 @@ Tambahkan repository secrets berikut satu per satu:
 | `JWT_SECRET` | *(Kunci rahasia acak)* | Kunci enkripsi autentikasi sesi admin |
 | `VITE_GEMINI_API_KEY` | API Key Gemini dari Google AI Studio | Digunakan untuk fitur konsultasi AI |
 
-> **Catatan Keamanan:** Seluruh rahasia database dan JWT terlindungi di server internal dan tidak bocor ke publik. Port MariaDB (3306) hanya terhubung di dalam jaringan internal Docker (`eval_pemdi_net`) dan tidak diekspos ke internet publik.
-
 ---
 
 ## 3. Komponen Arsitektur Kontainer
 
-1. **`web` (`eval_pemdi_app`)**: Frontend SPA berbasis React 18 & Vite yang dibungkus Nginx Alpine, menangani routing SPA tanpa error 404, serta me-reverse-proxy rute `/api/` dan `/uploads/` ke backend.
-2. **`api` (`eval_pemdi_api`)**: Layanan Node.js Express REST API yang melayani upload dokumen bukti PDF (hingga 50MB via Multer), validasi PDF, dan autentikasi admin.
-3. **`database` (`eval_pemdi_db`)**: Kontainer MariaDB 10.11 LTS yang otomatis menginisialisasi skema `schema_mariadb.sql`, data awal `seed_data.sql`, dan akun superadmin (`dodi` / `agusri`).
-4. **Volume Docker Persisten**:
-   - `eval_pemdi_mariadb_data`: Menjamin data tabel dan reviu evaluasi tetap utuh meski container diperbarui.
-   - `eval_pemdi_evidence_uploads`: Menyimpan berkas fisik PDF bukti dukung di disk fisik VPS.
+1. **`web` (`eval_pemdi_app`)**: Frontend SPA berbasis React 18 & Vite disajikan oleh Nginx Alpine pada port 80.
+2. **`api` (`eval_pemdi_api`)**: Layanan Node.js Express REST API melayani upload berkas bukti PDF hingga 50MB dan endpoint auth.
+3. **`database` (`eval_pemdi_db`)**: MariaDB 10.11 LTS dengan inisialisasi skema otomatis `schema_mariadb.sql` dan `seed_data.sql`.
+4. **`phpmyadmin` (`eval_pemdi_pma`)**: Web GUI phpMyAdmin di port 8085 untuk melihat, mengedit, dan mengekspor tabel MariaDB dengan mudah melalui browser.
+5. **Volume Docker Persisten**:
+   - `eval_pemdi_mariadb_data`: Data MariaDB tersimpan aman.
+   - `eval_pemdi_evidence_uploads`: Berkas fisik PDF bukti dukung tersimpan di disk VPS.
 
 ---
 
-## 4. Cara Menjalankan Deployment Pertama Kali
+## 4. Cara Akses phpMyAdmin
 
-Lakukan commit dan push file-file baru ini ke GitHub:
+Buka browser di:
+👉 **`http://206.237.98.71:8085`**
 
-```bash
-git add .
-git commit -m "feat: implementasi docker multi-container, mariadb, dan deployment vps linux"
-git push origin master
-```
-
-Setelah di-push:
-1. Buka tab **Actions** di GitHub repository Anda.
-2. Anda akan melihat workflow **Deploy Eval Pemdi to VPS** berjalan secara otomatis.
-3. Setelah proses selesai (centang hijau), buka browser Anda di:
-   ```
-   http://206.237.98.71
-   ```
+- **Server**: `database` *(otomatis terhubung)*
+- **Username**: `evalpemdi_user` *(atau `root`)*
+- **Password**: Nilai `DB_PASSWORD` *(atau `DB_ROOT_PASSWORD`)*
 
 ---
 
 ## 5. Perintah Berguna di Terminal VPS
 
-Jika Anda ingin memantau kontainer secara langsung dari terminal VPS Linux:
-
 ```bash
-# 1. Cek status 3 kontainer yang sedang berjalan
+# 1. Cek status 4 kontainer yang sedang berjalan
 docker ps
 
-# 2. Pantau log backend API
+# 2. Pantau log phpMyAdmin
+docker logs -f eval_pemdi_pma
+
+# 3. Pantau log backend API
 docker logs -f eval_pemdi_api
 
-# 3. Pantau log basis data MariaDB
-docker logs -f eval_pemdi_db
-
-# 4. Masuk ke console MariaDB di dalam kontainer
-docker exec -it eval_pemdi_db mariadb -uevalpemdi_user -p EvalPemdi
-
-# 5. Cek penggunaan resource memori dan CPU
-docker stats
+# 4. Restart seluruh service di VPS
+cd /var/www/eval-pemdi && docker compose restart
 ```
