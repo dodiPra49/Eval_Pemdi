@@ -41,7 +41,7 @@ export default function EvidenceUploadManager({
         onEvidenceCountChange(indicator.id, data.length);
       }
     } catch (err) {
-      console.warn('Gagal memuat bukti dari MySQL:', err.message);
+      console.warn('Gagal memuat bukti dari MySQL X:', err.message);
       // Fallback jika API belum aktif di mode tertentu
     } finally {
       setLoading(false);
