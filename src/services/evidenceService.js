@@ -1,7 +1,7 @@
 /**
  * Service untuk Pengelolaan Berkas Bukti Dukung (PDF)
- * Mendukung Cloud Database Supabase (Storage + PostgreSQL)
- * dengan fallback ke Netlify Functions / Local API.
+ * Mendukung Docker Multi-Container Backend (MariaDB + Express)
+ * dengan opsi fallback ke Supabase Cloud jika dikonfigurasi.
  */
 
 import { supabase, isSupabaseConfigured } from './supabaseClient';
@@ -10,7 +10,7 @@ const API_BASE_URL = '/api/evidence';
 const SUPABASE_BUCKET = 'eval-pemdi-evidence';
 
 /**
- * Mengonversi objek File ke format Base64 string (untuk API Netlify Functions)
+ * Mengonversi objek File ke format Base64 string
  * @param {File} file 
  * @returns {Promise<string>}
  */
@@ -28,7 +28,31 @@ export function fileToBase64(file) {
  * @param {Object} filter - { indicator_id, checklist_id, target_level }
  */
 export async function getEvidenceList({ indicator_id, checklist_id, target_level } = {}) {
-  // 1. Jika Supabase dikonfigurasi, gunakan Supabase Cloud
+  // 1. Utamakan MariaDB Backend API (/api/evidence)
+  try {
+    const params = new URLSearchParams();
+    if (indicator_id) params.append('indicator_id', indicator_id);
+    if (checklist_id) params.append('checklist_id', checklist_id);
+    if (target_level) params.append('target_level', target_level);
+
+    const url = `${API_BASE_URL}${params.toString() ? `?${params.toString()}` : ''}`;
+    
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      return result.data || [];
+    }
+  } catch (err) {
+    console.warn('API MariaDB tidak dapat dijangkau, mencoba fallback:', err.message);
+  }
+
+  // 2. Fallback: Jika Supabase dikonfigurasi, gunakan Supabase Cloud
   if (isSupabaseConfigured && supabase) {
     try {
       let query = supabase
@@ -44,36 +68,15 @@ export async function getEvidenceList({ indicator_id, checklist_id, target_level
       if (error) throw error;
       return data || [];
     } catch (err) {
-      console.warn('Gagal memuat bukti dari Supabase, beralih ke local API fallback:', err.message);
+      console.warn('Gagal memuat bukti dari Supabase:', err.message);
     }
   }
 
-  // 2. Fallback: Gunakan Netlify Functions API / MySQL lokal
-  const params = new URLSearchParams();
-  if (indicator_id) params.append('indicator_id', indicator_id);
-  if (checklist_id) params.append('checklist_id', checklist_id);
-  if (target_level) params.append('target_level', target_level);
-
-  const url = `${API_BASE_URL}${params.toString() ? `?${params.toString()}` : ''}`;
-  
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json'
-    }
-  });
-
-  if (!response.ok) {
-    const errData = await response.json().catch(() => ({}));
-    throw new Error(errData.message || `Gagal mengambil daftar bukti (HTTP ${response.status})`);
-  }
-
-  const result = await response.json();
-  return result.data || [];
+  return [];
 }
 
 /**
- * Mengunggah berkas bukti dukung PDF ke server / Supabase Storage
+ * Mengunggah berkas bukti dukung PDF ke server MariaDB / Supabase Storage
  * @param {Object} payload 
  */
 export async function uploadEvidencePdf({
@@ -90,20 +93,60 @@ export async function uploadEvidencePdf({
     throw new Error('Pilih berkas dokumen terlebih dahulu.');
   }
 
-  // Validasi ketat format PDF
+  // Validasi format PDF
   const isPdfExtension = file.name.toLowerCase().endsWith('.pdf');
   const isPdfMime = file.type === 'application/pdf' || file.type === '';
   if (!isPdfExtension || !isPdfMime) {
     throw new Error('Format file tidak didukung! Bukti dukung wajib berupa dokumen PDF (.pdf).');
   }
 
-  // Validasi ukuran berkas (Maksimal 25MB)
-  const MAX_SIZE_BYTES = 25 * 1024 * 1024;
+  // Validasi ukuran berkas (Maksimal 50MB)
+  const MAX_SIZE_BYTES = 50 * 1024 * 1024;
   if (file.size > MAX_SIZE_BYTES) {
-    throw new Error('Ukuran file terlalu besar! Maksimal ukuran PDF adalah 25 MB.');
+    throw new Error('Ukuran file terlalu besar! Maksimal ukuran PDF adalah 50 MB.');
   }
 
-  // 1. Jika Supabase dikonfigurasi, simpan langsung ke Supabase Cloud
+  // 1. Coba unggah ke Backend MariaDB (/api/evidence) menggunakan FormData
+  try {
+    const formData = new FormData();
+    formData.append('indicator_id', indicator_id);
+    if (checklist_id) formData.append('checklist_id', checklist_id);
+    formData.append('target_level', target_level);
+    formData.append('judul_dokumen', judul_dokumen);
+    if (nomor_surat_resmi) formData.append('nomor_surat_resmi', nomor_surat_resmi);
+    if (tahun_terbit) formData.append('tahun_terbit', tahun_terbit);
+    if (deskripsi_singkat) formData.append('deskripsi_singkat', deskripsi_singkat);
+    formData.append('file_name', file.name);
+    formData.append('file', file);
+
+    const response = await fetch(API_BASE_URL, {
+      method: 'POST',
+      body: formData
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      if (result.success && result.data) {
+        return result.data;
+      }
+    } else {
+      const errData = await response.json().catch(() => ({}));
+      if (response.status === 413) {
+        throw new Error('Ukuran berkas terlalu besar untuk server (HTTP 413 Payload Too Large).');
+      }
+      if (errData.message) {
+        throw new Error(errData.message);
+      }
+    }
+  } catch (apiErr) {
+    // Jika bukan error validasi atau ukuran berkas, teruskan ke fallback jika ada
+    if (apiErr.message.includes('Maksimal') || apiErr.message.includes('Format file') || apiErr.message.includes('413')) {
+      throw apiErr;
+    }
+    console.warn('Upload via API MariaDB gagal, mencoba fallback jika Supabase aktif:', apiErr.message);
+  }
+
+  // 2. Fallback: Jika Supabase dikonfigurasi, simpan langsung ke Supabase Cloud
   if (isSupabaseConfigured && supabase) {
     const uniqueSuffix = crypto.randomUUID();
     const sanitizedName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
@@ -157,7 +200,6 @@ export async function uploadEvidencePdf({
       .single();
 
     if (dbError) {
-      // Rollback file jika insert database gagal
       await supabase.storage.from(SUPABASE_BUCKET).remove([storagePath]);
       throw new Error(`Gagal menyimpan metadata ke database Supabase: ${dbError.message}`);
     }
@@ -165,58 +207,35 @@ export async function uploadEvidencePdf({
     return insertedData;
   }
 
-  // 2. Fallback: Gunakan Netlify Functions API / MySQL lokal
-  // Netlify Functions memiliki limit payload 6 MB (maksimal ~4.5 MB sebelum base64)
-  if (file.size > 4.5 * 1024 * 1024) {
-    throw new Error('Ukuran berkas melebihi batas upload API Netlify Functions (maks. 4.5 MB). Pastikan Supabase Cloud aktif untuk mengunggah dokumen hingga 25 MB.');
-  }
-
-  const base64Data = await fileToBase64(file);
-
-  const response = await fetch(API_BASE_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({
-      indicator_id,
-      checklist_id: checklist_id || null,
-      target_level: Number(target_level),
-      judul_dokumen,
-      nomor_surat_resmi: nomor_surat_resmi || null,
-      tahun_terbit: tahun_terbit ? Number(tahun_terbit) : new Date().getFullYear(),
-      deskripsi_singkat: deskripsi_singkat || '',
-      file_name: file.name,
-      file_base64: base64Data
-    })
-  });
-
-  if (!response.ok) {
-    if (response.status === 413) {
-      throw new Error('Ukuran berkas terlalu besar untuk payload serverless (HTTP 413 Payload Too Large). Pastikan Supabase Cloud aktif untuk mengunggah berkas hingga 25 MB.');
-    }
-    const errData = await response.json().catch(() => ({}));
-    throw new Error(errData.message || `Gagal mengunggah berkas (HTTP ${response.status})`);
-  }
-
-  const result = await response.json().catch(() => ({}));
-  if (!result.success) {
-    throw new Error(result.message || 'Gagal mengunggah berkas ke server');
-  }
-
-  return result.data;
+  throw new Error('Gagal mengunggah berkas bukti dukung. Pastikan layanan backend MariaDB aktif.');
 }
 
 /**
- * Menghapus bukti dukung dari database dan penyimpanan
+ * Menghapus bukti dukung dari database dan media penyimpanan
  * @param {string} id - UUID bukti dukung
  * @param {string} [storagePath] - Path di storage jika menggunakan Supabase
  */
 export async function deleteEvidence(id, storagePath) {
   if (!id) throw new Error('ID bukti dukung tidak valid.');
 
-  // 1. Jika Supabase dikonfigurasi
+  // 1. Coba hapus via MariaDB REST API
+  try {
+    const response = await fetch(`${API_BASE_URL}/${encodeURIComponent(id)}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      const result = await response.json().catch(() => ({}));
+      if (result.success) return true;
+    }
+  } catch (apiErr) {
+    console.warn('Hapus via API MariaDB gagal, mencoba fallback:', apiErr.message);
+  }
+
+  // 2. Fallback: Jika Supabase dikonfigurasi
   if (isSupabaseConfigured && supabase) {
     if (storagePath) {
       await supabase.storage.from(SUPABASE_BUCKET).remove([storagePath]);
@@ -230,19 +249,6 @@ export async function deleteEvidence(id, storagePath) {
       throw new Error(`Gagal menghapus dari database Supabase: ${error.message}`);
     }
     return true;
-  }
-
-  // 2. Fallback: Netlify Functions API
-  const response = await fetch(`${API_BASE_URL}?id=${encodeURIComponent(id)}`, {
-    method: 'DELETE',
-    headers: {
-      'Accept': 'application/json'
-    }
-  });
-
-  const result = await response.json().catch(() => ({}));
-  if (!response.ok || !result.success) {
-    throw new Error(result.message || `Gagal menghapus bukti dukung (HTTP ${response.status})`);
   }
 
   return true;

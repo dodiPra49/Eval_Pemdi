@@ -1,0 +1,21 @@
+{
+  "name": "eval-pemdi-backend",
+  "version": "1.0.0",
+  "description": "Backend REST API & Upload Server untuk EVAL-PEMDI (MariaDB + Express)",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.12.0"
+  },
+  "keywords": ["eval-pemdi", "mariadb", "express", "permenpanrb8-2026"],
+  "author": "Dodi Agusri, S.Kom",
+  "license": "ISC"
+}

@@ -34,8 +34,35 @@ export async function loginAdmin(username, password) {
 
   let authenticatedUser = null;
 
-  // 1. Coba verifikasi dengan tabel admins di Supabase Cloud (jika tersedia)
-  if (isSupabaseConfigured && supabase) {
+  // 1. Coba verifikasi melalui MariaDB Backend API (/api/auth/login)
+  try {
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ username: cleanUser, password: cleanPass })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success && data.user) {
+        authenticatedUser = data.user;
+      }
+    } else if (res.status === 401) {
+      const errData = await res.json().catch(() => ({}));
+      throw new Error(errData.message || 'Kombinasi username atau password administrator tidak valid!');
+    }
+  } catch (apiErr) {
+    if (apiErr.message.includes('tidak valid')) {
+      throw apiErr;
+    }
+    console.warn('API /api/auth/login MariaDB tidak dapat diakses, mencoba fallback:', apiErr.message);
+  }
+
+  // 2. Fallback: Coba verifikasi dengan tabel admins di Supabase Cloud (jika tersedia)
+  if (!authenticatedUser && isSupabaseConfigured && supabase) {
     try {
       const { data, error } = await supabase
         .from('admins')
@@ -45,7 +72,6 @@ export async function loginAdmin(username, password) {
         .maybeSingle();
 
       if (!error && data) {
-        // Cek kecocokan password (plain text atau default)
         if (data.password_hash === cleanPass || cleanPass === DEFAULT_ADMIN.password) {
           authenticatedUser = {
             id: data.id,
@@ -55,7 +81,6 @@ export async function loginAdmin(username, password) {
             role: data.role || 'superadmin'
           };
 
-          // Update last_login_at secara non-blocking
           supabase
             .from('admins')
             .update({ last_login_at: new Date().toISOString() })
@@ -69,7 +94,7 @@ export async function loginAdmin(username, password) {
     }
   }
 
-  // 2. Verifikasi Fallback: Kredensial Default sesuai spesifikasi admin.md (dodi / agusri)
+  // 3. Fallback: Kredensial Default sesuai spesifikasi admin.md (dodi / agusri)
   if (!authenticatedUser) {
     if (cleanUser === DEFAULT_ADMIN.username && cleanPass === DEFAULT_ADMIN.password) {
       authenticatedUser = {
@@ -90,8 +115,8 @@ export async function loginAdmin(username, password) {
   // Simpan sesi ke localStorage
   const sessionData = {
     ...authenticatedUser,
-    loginAt: new Date().toISOString(),
-    token: `adm_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`
+    loginAt: authenticatedUser.loginAt || new Date().toISOString(),
+    token: authenticatedUser.token || `adm_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`
   };
 
   try {

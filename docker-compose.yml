@@ -1,18 +1,78 @@
 name: eval_pemdi
 
 services:
+  # 1. Basis Data MariaDB 10.11 LTS
+  database:
+    image: mariadb:10.11
+    container_name: eval_pemdi_db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_evalpemdi_2026}
+      MARIADB_DATABASE: ${DB_NAME:-EvalPemdi}
+      MARIADB_USER: ${DB_USER:-evalpemdi_user}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-evalpemdi_pass_2026}
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./schema_mariadb.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - ./seed_data.sql:/docker-entrypoint-initdb.d/02_seed.sql:ro
+    networks:
+      - eval_pemdi_net
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 2. Backend REST API & Upload Service (Node.js Express)
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: eval-pemdi-api:latest
+    container_name: eval_pemdi_api
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      DB_HOST: database
+      DB_PORT: 3306
+      DB_USER: ${DB_USER:-evalpemdi_user}
+      DB_PASSWORD: ${DB_PASSWORD:-evalpemdi_pass_2026}
+      DB_NAME: ${DB_NAME:-EvalPemdi}
+      JWT_SECRET: ${JWT_SECRET:-eval_pemdi_jwt_secret_key_2026}
+      UPLOADS_DIR: /app/uploads
+    volumes:
+      - evidence_uploads:/app/uploads
+    networks:
+      - eval_pemdi_net
+
+  # 3. Frontend Web SPA (React + Nginx Alpine)
   web:
     build:
       context: .
       dockerfile: Dockerfile
       args:
         VITE_GEMINI_API_KEY: ${VITE_GEMINI_API_KEY:-}
-        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL:-}
-        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY:-}
     image: eval-pemdi-web:latest
     container_name: eval_pemdi_app
     restart: unless-stopped
+    depends_on:
+      - api
     ports:
       - "${PORT:-80}:80"
-    environment:
-      - NODE_ENV=production
+    networks:
+      - eval_pemdi_net
+
+volumes:
+  mariadb_data:
+    name: eval_pemdi_mariadb_data
+  evidence_uploads:
+    name: eval_pemdi_evidence_uploads
+
+networks:
+  eval_pemdi_net:
+    name: eval_pemdi_network
+    driver: bridge
