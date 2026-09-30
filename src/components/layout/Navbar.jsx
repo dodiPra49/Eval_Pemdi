@@ -1,7 +1,6 @@
-import React from 'react';
-import { Sparkles, FolderDown, ShieldCheck } from 'lucide-react';
+import { Sparkles, FolderDown, ShieldCheck, KeyRound } from 'lucide-react';
 
-export default function Navbar({ onOpenAi, activeTab, setActiveTab, isAdminLoggedIn, onOpenAdminLogin }) {
+export default function Navbar({ onOpenAi, onOpenApiKey, activeTab, setActiveTab, isAdminLoggedIn, onOpenAdminLogin }) {
   const handleAdminClick = () => {
     if (isAdminLoggedIn) {
       setActiveTab('admin');
@@ -89,10 +88,20 @@ export default function Navbar({ onOpenAi, activeTab, setActiveTab, isAdminLogge
               <span>Admin</span>
             </button>
 
+            {/* Tombol Kunci API Gemini */}
+            <button
+              onClick={onOpenApiKey}
+              title="Atur Kunci API Google Gemini"
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200/80 transition-all cursor-pointer"
+            >
+              <KeyRound className="w-3.5 h-3.5 text-amber-600" />
+              <span className="hidden sm:inline">Kunci AI</span>
+            </button>
+
             {/* AI Assistant Button */}
             <button
               onClick={onOpenAi}
-              className="relative inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600 hover:from-brand-700 hover:to-purple-700 shadow-md shadow-brand-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="relative inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600 hover:from-brand-700 hover:to-purple-700 shadow-md shadow-brand-500/25 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
             >
               <Sparkles className="w-4 h-4 text-sunshine-400 animate-pulse" />
               <span className="hidden xs:inline">Asisten AI</span>

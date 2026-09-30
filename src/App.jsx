@@ -24,6 +24,7 @@ import EvidenceReviewerModal from './components/ai/EvidenceReviewerModal';
 import TemplatesView from './components/templates/TemplatesView';
 import AdminLoginModal from './components/admin/AdminLoginModal';
 import AdminDashboard from './components/admin/AdminDashboard';
+import ApiKeyModal from './components/indicators/ApiKeyModal';
 
 import { DOMAINS, MATURITY_LEVELS } from './data/domainsData';
 import { INDICATORS } from './data/indicatorsData';
@@ -51,6 +52,7 @@ export default function App() {
   const [selectedIndicatorForReview, setSelectedIndicatorForReview] = useState(null);
   const [contextIndicatorForAi, setContextIndicatorForAi] = useState(null);
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
+  const [isApiKeyModalOpen, setIsApiKeyModalOpen] = useState(false);
 
   // Filtering indicators
   const filteredIndicators = useMemo(() => {
@@ -130,6 +132,7 @@ export default function App() {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onOpenAi={handleOpenAiGeneral}
+        onOpenApiKey={() => setIsApiKeyModalOpen(true)}
         isAdminLoggedIn={Boolean(adminUser)}
         onOpenAdminLogin={() => setIsAdminLoginOpen(true)}
       />
@@ -438,6 +441,7 @@ export default function App() {
         isOpen={!!selectedIndicatorForReview}
         onClose={() => setSelectedIndicatorForReview(null)}
         indicator={selectedIndicatorForReview}
+        onOpenApiKey={() => setIsApiKeyModalOpen(true)}
       />
 
       {/* MODAL 3: Asisten AI Interaktif Regulasi */}
@@ -445,6 +449,7 @@ export default function App() {
         isOpen={isAiModalOpen}
         onClose={() => setIsAiModalOpen(false)}
         contextIndicator={contextIndicatorForAi}
+        onOpenApiKey={() => setIsApiKeyModalOpen(true)}
       />
 
       {/* MODAL 4: Login Administrator (admin.md) */}
@@ -452,6 +457,12 @@ export default function App() {
         isOpen={isAdminLoginOpen}
         onClose={() => setIsAdminLoginOpen(false)}
         onLoginSuccess={handleLoginSuccess}
+      />
+
+      {/* MODAL 5: Pengaturan Kunci API Google Gemini */}
+      <ApiKeyModal
+        isOpen={isApiKeyModalOpen}
+        onClose={() => setIsApiKeyModalOpen(false)}
       />
 
     </div>

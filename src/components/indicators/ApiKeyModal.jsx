@@ -56,28 +56,56 @@ export default function ApiKeyModal({ isOpen, onClose }) {
               type="text"
               value={currentKey}
               onChange={(e) => setCurrentKeyState(e.target.value)}
-              placeholder="Masukkan kunci API Gemini..."
+              placeholder="Masukkan kunci API Gemini (contoh: AIzaSy...)"
               className="w-full text-xs font-mono p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:outline-hidden"
             />
+            {currentKey && !currentKey.startsWith('AIzaSy') && (
+              <p className="text-[11px] text-amber-600 mt-1 font-medium flex items-center gap-1">
+                <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                Catatan: Kunci resmi Gemini dari Google AI Studio biasanya diawali dengan "AIzaSy...".
+              </p>
+            )}
             <p className="text-[11px] text-slate-500 mt-1.5 leading-relaxed">
-              Kunci API ini digunakan untuk menjalankan konsultasi indikator dan reviewer kelayakan dokumen bukti melalui model <code>Gemini Flash (gemini-flash-latest)</code>.
+              Kunci API ini digunakan untuk konsultasi indikator dan analisis reviewer dokumen bukti melalui model <code>Gemini Flash</code>.
             </p>
+          </div>
+
+          <div className="bg-amber-50/70 p-3.5 rounded-xl border border-amber-200 text-xs text-amber-900 space-y-1.5">
+            <div className="font-bold flex items-center justify-between">
+              <span className="flex items-center gap-1.5">
+                <KeyRound className="w-3.5 h-3.5 text-amber-700" />
+                Cara Mendapatkan Kunci API Gratis:
+              </span>
+              <a
+                href="https://aistudio.google.com/app/apikey"
+                target="_blank"
+                rel="noreferrer"
+                className="text-brand-600 hover:text-brand-800 underline font-bold inline-flex items-center gap-0.5"
+              >
+                Buka AI Studio &rarr;
+              </a>
+            </div>
+            <ol className="list-decimal list-inside space-y-0.5 text-[11px] text-amber-800">
+              <li>Kunjungi <strong>aistudio.google.com/app/apikey</strong> dengan akun Google Anda.</li>
+              <li>Klik tombol <strong>"Create API key"</strong>.</li>
+              <li>Salin token yang diawali dengan <code>AIzaSy...</code> dan tempelkan di kotak isian di atas, lalu klik <strong>Simpan Kunci</strong>.</li>
+            </ol>
           </div>
 
           <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1.5">
             <div className="font-bold text-slate-800 flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-brand-600" />
-              Untuk Netlify Deployment:
+              Untuk Deploy VPS / Docker / Netlify:
             </div>
-            <p>
-              Di dashboard Netlify, tambahkan environment variable <code>VITE_GEMINI_API_KEY</code> pada menu <strong>Site configuration &gt; Environment variables</strong> agar otomatis aktif saat di-deploy.
+            <p className="text-[11px]">
+              Tambahkan environment variable <code>VITE_GEMINI_API_KEY=AIzaSy...</code> di file <code>.env</code> atau konfigurasi dashboard server Anda.
             </p>
           </div>
 
           {isSaved && (
             <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs rounded-xl flex items-center gap-2">
               <Check className="w-4 h-4 text-emerald-600" />
-              <span>Kunci API berhasil disimpan!</span>
+              <span>Kunci API berhasil disimpan di peramban (LocalStorage)!</span>
             </div>
           )}
 

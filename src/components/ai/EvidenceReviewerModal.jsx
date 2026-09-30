@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { X, FileSearch, Sparkles, Loader2, AlertCircle, CheckCircle2, ArrowRight } from 'lucide-react';
-import { reviewEvidenceDocument } from '../../services/geminiService';
+import { X, FileSearch, Sparkles, Loader2, AlertCircle, CheckCircle2, ArrowRight, KeyRound } from 'lucide-react';
+import { reviewEvidenceDocument, getApiKey } from '../../services/geminiService';
 
-export default function EvidenceReviewerModal({ isOpen, onClose, indicator }) {
+export default function EvidenceReviewerModal({ isOpen, onClose, indicator, onOpenApiKey }) {
   if (!isOpen || !indicator) return null;
 
   const [targetLevel, setTargetLevel] = useState(3);
@@ -58,6 +58,21 @@ export default function EvidenceReviewerModal({ isOpen, onClose, indicator }) {
 
         {/* Content */}
         <div className="p-5 sm:p-6 overflow-y-auto space-y-5">
+          
+          {!getApiKey() && (
+            <div className="p-3.5 bg-amber-50 border border-amber-200 text-amber-900 text-xs rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xs">
+              <div className="flex items-center gap-2">
+                <KeyRound className="w-4 h-4 text-amber-600 shrink-0" />
+                <span className="font-medium">Kunci API Gemini belum dikonfigurasi. Masukkan kunci agar AI Asesor dapat melakukan review.</span>
+              </div>
+              <button
+                onClick={onOpenApiKey}
+                className="px-3.5 py-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded-xl font-bold text-xs shrink-0 self-start sm:self-auto cursor-pointer shadow-xs transition-colors"
+              >
+                Atur Kunci API
+              </button>
+            </div>
+          )}
           
           {/* Form Input */}
           <div className="space-y-4">
@@ -119,9 +134,21 @@ export default function EvidenceReviewerModal({ isOpen, onClose, indicator }) {
           </div>
 
           {errorMsg && (
-            <div className="p-3.5 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-xl flex items-start gap-2">
-              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-              <div>{errorMsg}</div>
+            <div className="p-3.5 bg-rose-50 border border-rose-200 text-rose-800 text-xs rounded-2xl space-y-2.5">
+              <div className="flex items-start gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-rose-600" />
+                <div className="leading-relaxed font-medium">{errorMsg}</div>
+              </div>
+              <div className="pt-1">
+                <button
+                  type="button"
+                  onClick={onOpenApiKey}
+                  className="px-3.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold text-xs cursor-pointer shadow-xs inline-flex items-center gap-1.5 transition-colors"
+                >
+                  <KeyRound className="w-3.5 h-3.5" />
+                  Konfigurasi Kunci API Sekarang
+                </button>
+              </div>
             </div>
           )}
 
