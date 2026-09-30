@@ -2,6 +2,7 @@
 import React from 'react';
 import { FileCheck, Sparkles, ChevronRight, CheckCircle2, AlertCircle, FileSearch, FolderDown, Download } from 'lucide-react';
 import { MATURITY_LEVELS } from '../../data/domainsData';
+import { getTemplatesForIndicator } from '../../data/templatesData';
 
 export default function IndicatorCard({ 
   indicator, 
@@ -18,8 +19,9 @@ export default function IndicatorCard({
   const currentLevel = indicatorState?.selfLevel || 1;
   const levelInfo = MATURITY_LEVELS.find(l => l.level === currentLevel) || MATURITY_LEVELS[0];
 
-  const hasTemplates = ['ind-03', 'ind-07', 'ind-11', 'ind-16', 'ind-18'].includes(indicator.id) || 
-                       ['IND-03', 'IND-07', 'IND-11', 'IND-16', 'IND-18'].includes(indicator.code);
+  const templates = getTemplatesForIndicator(indicator.id) || getTemplatesForIndicator(indicator.code) || [];
+  const templateCount = templates.length;
+  const hasTemplates = templateCount > 0;
 
   return (
     <div className={`bg-white rounded-2xl border transition-all duration-200 p-4 sm:p-5 flex flex-col justify-between group ${
@@ -39,12 +41,12 @@ export default function IndicatorCard({
               {indicator.aspectName}
             </span>
             {hasTemplates && (
-              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-800 border border-indigo-200 animate-pulse">
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-100 text-indigo-800 border border-indigo-200">
                 <FolderDown className="w-3 h-3 text-indigo-600" />
-                5 Template Word & Excel
+                {templateCount} Template
               </span>
             )}
-            {indicator.weight && !hasTemplates && (
+            {indicator.weight && (
               <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">
                 Bobot {indicator.weight}%
               </span>

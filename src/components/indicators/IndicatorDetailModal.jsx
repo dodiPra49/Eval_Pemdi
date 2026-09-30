@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckSquare, Square, FileText, Sparkles, ExternalLink, Lightbulb, ShieldAlert, Award, ArrowRight, Download, FileSpreadsheet } from 'lucide-react';
+import { X, CheckSquare, Square, FileText, Sparkles, ExternalLink, Lightbulb, ShieldAlert, Award, ArrowRight, Download, FileSpreadsheet, ShieldCheck } from 'lucide-react';
 import { MATURITY_LEVELS } from '../../data/domainsData';
 import { getTemplatesForIndicator } from '../../data/templatesData';
 import EvidenceUploadManager from './EvidenceUploadManager';
@@ -89,6 +89,21 @@ export default function IndicatorDetailModal({
         {/* Content Body */}
         <div className="p-5 sm:p-6 overflow-y-auto space-y-6">
           
+          {/* Acuan Regulasi Banner */}
+          <div className="flex items-center gap-3 p-3.5 bg-gradient-to-r from-blue-50 via-indigo-50 to-sky-50 border border-blue-200 rounded-2xl text-xs text-blue-950 shadow-2xs">
+            <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+              <ShieldCheck className="w-4 h-4" />
+            </div>
+            <div className="leading-snug">
+              <div className="font-bold text-blue-900 sm:text-sm">
+                Acuan Regulasi: PermenPANRB Nomor 8 Tahun 2026
+              </div>
+              <div className="text-[11px] text-blue-700">
+                Evaluasi Kinerja Penyelenggaraan Pemerintahan Digital • Standar Resmi Nasional (Bukan SPBE Perpres 98/2018)
+              </div>
+            </div>
+          </div>
+
           {/* Definition */}
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5 flex items-center gap-1.5">
@@ -103,12 +118,17 @@ export default function IndicatorDetailModal({
           {/* MATRIKS KRITERIA LEVEL KEMATANGAN (1-5) */}
           <div>
             <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
-              <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                <Award className="w-4 h-4 text-sunshine-500" />
-                Matriks Kriteria Level Kematangan
-              </h4>
+              <div>
+                <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                  <Award className="w-4 h-4 text-sunshine-500" />
+                  Matriks Kriteria Level Kematangan PermenPANRB No. 8/2026
+                </h4>
+                <p className="text-[11px] text-slate-500">
+                  Klik pada level untuk melihat rincian bukti dukung yang harus disiapkan instansi
+                </p>
+              </div>
               <span className="text-xs text-brand-600 font-bold bg-brand-50 px-2.5 py-1 rounded-lg border border-brand-200">
-                Level Terpilih: Lvl {activeLevel} ({activeLevelObj.name})
+                Target Terpilih: Lvl {activeLevel} ({activeLevelObj.name})
               </span>
             </div>
 
@@ -204,45 +224,56 @@ export default function IndicatorDetailModal({
           })()}
 
           {/* NARASI DOKUMEN BUKTI BERUBAH DINAMIS SESUAI LEVEL TERPILIH */}
-          <div className="bg-gradient-to-br from-amber-50/90 via-white to-orange-50/90 border-2 border-amber-300 rounded-2xl p-4 sm:p-5 shadow-md transition-all">
+          <div className="bg-gradient-to-br from-amber-50/90 via-white to-orange-50/90 border-2 border-amber-300 rounded-2xl p-4 sm:p-5 shadow-md transition-all space-y-3.5">
             
-            <div className="flex items-center justify-between gap-2 mb-3 flex-wrap border-b border-amber-200/80 pb-3">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-amber-500 text-white flex items-center justify-center shadow-xs">
+            <div className="flex items-center justify-between gap-2 flex-wrap border-b border-amber-200/80 pb-3">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center shadow-xs">
                   <FileText className="w-4 h-4" />
                 </div>
                 <div>
                   <h4 className="text-sm sm:text-base font-black text-amber-950">
-                    Narasi Dokumen Bukti yang Diperlukan (Evidence Requirement)
+                    Dokumen Bukti Dukung Wajib Level {activeLevel} ({activeLevelObj.name})
                   </h4>
                   <div className="text-xs text-amber-800 font-medium">
-                    Kebutuhan bukti dukung khusus untuk target kematangan:
+                    Sesuai Standar Kriteria Penilaian PermenPANRB Nomor 8 Tahun 2026
                   </div>
                 </div>
               </div>
 
               {/* Badge Level Terpilih */}
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black shadow-xs bg-amber-500 text-white">
-                <span>Level {activeLevel}: {activeLevelObj.name}</span>
+                <span>Target: Level {activeLevel} ({activeLevelObj.name})</span>
               </div>
             </div>
 
-            {/* Kriteria ringkas level ini */}
-            <div className="mb-3 text-xs bg-amber-100/70 p-2.5 rounded-xl border border-amber-300/60 text-amber-900">
-              <span className="font-bold">Kriteria Resmi Level {activeLevel}: </span>
-              {indicator.criteria[activeLevel]}
+            {/* Kriteria resmi level ini */}
+            <div className="text-xs bg-amber-100/80 p-3 rounded-xl border border-amber-300/80 text-amber-950 space-y-1">
+              <div className="font-bold flex items-center gap-1.5 text-amber-900">
+                <Award className="w-3.5 h-3.5 text-amber-700" />
+                Kriteria Resmi Level {activeLevel} (PermenPANRB No. 8/2026):
+              </div>
+              <p className="leading-relaxed font-medium pl-5 text-amber-900/90">
+                {indicator.criteria[activeLevel]}
+              </p>
             </div>
 
             {/* Konten Narasi Bukti Dinamis */}
-            <div className="prose prose-sm max-w-none text-slate-800 text-xs sm:text-sm whitespace-pre-line leading-relaxed font-medium bg-white/95 p-4 rounded-xl border border-amber-200 shadow-inner">
-              {currentEvidenceNarration}
+            <div className="space-y-1.5">
+              <div className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                <CheckSquare className="w-3.5 h-3.5 text-brand-600" />
+                Rincian Berkas Bukti yang Harus Disiapkan:
+              </div>
+              <div className="prose prose-sm max-w-none text-slate-800 text-xs sm:text-sm whitespace-pre-line leading-relaxed font-medium bg-white p-4 rounded-xl border border-amber-200 shadow-inner">
+                {currentEvidenceNarration}
+              </div>
             </div>
 
             {indicator.tips && (
-              <div className="mt-3 flex items-start gap-2 text-xs text-amber-900 bg-amber-100/70 p-3 rounded-xl border border-amber-300/60">
+              <div className="flex items-start gap-2.5 text-xs text-amber-950 bg-amber-100/70 p-3 rounded-xl border border-amber-300/60">
                 <Lightbulb className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold">Tips Asesor Evaluator: </span>
+                <div className="leading-relaxed">
+                  <span className="font-bold text-amber-900">Tips Asesor Evaluator PermenPANRB 8/2026: </span>
                   {indicator.tips}
                 </div>
               </div>

@@ -34,7 +34,7 @@ export const TEMPLATES_DATA = [
         desc: 'Buku kerja 4 sheet: Dashboard Validasi Arsitektur Digital KemenPANRB, Pemetaan Referensi Arsitektur Nasional, Roadmap 2026-2030, dan Kamus Penyelarasan.',
         level: 'Standar Level 4 (Melembaga Nasional)',
         format: 'XLSX',
-        url: '/templates/ind_01/Template_Matriks_Penyelarasan_Arsitektur_SIA_SPBE_Indikator01.xlsx'
+        url: '/templates/ind_01/Template_Matriks_Penyelarasan_Arsitektur_Pemerintah_Digital_Indikator01.xlsx'
       },
       {
         name: 'Laporan Resmi Evaluasi Berkala & Reviu Tata Kelola Pemerintah Digital',
