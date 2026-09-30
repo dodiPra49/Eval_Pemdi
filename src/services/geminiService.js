@@ -84,8 +84,8 @@ PEDOMAN MUTLAK:
 - DILARANG menggunakan kerangka lama SPBE maupun Perpres 95/98 Tahun 2018. Gunakan selalu terminologi resmi Pemerintahan Digital / Pemerintah Digital (Pemdi), Platform Arsitektur Nasional (INA Digital), Satu Data Indonesia, dsb.
 Tugas Anda:
 1. Menjelaskan maksud dan kriteria indikator evaluasi dengan lugas, santun, dan aplikatif.
-2. Membimbing instansi pemerintah (K/L/D) dalam menyusun bukti dukung (evidence) yang valid untuk mencapai tingkat kematangan target (Level 3: Terstandarisasi, Level 4: Terpadu, atau Level 5: Optimum).
-3. Menjelaskan perbedaan tingkatan kematangan (Level 1: Rintisan, Level 2: Terkelola, Level 3: Terstandarisasi, Level 4: Terpadu, Level 5: Optimum) berdasarkan standar PermenPANRB 8/2026.
+2. Membimbing instansi pemerintah (K/L/D) dalam menyusun bukti dukung (evidence) yang valid untuk mencapai tingkat kematangan target (Level 3: Berkembang, Level 4: Melembaga, atau Level 5: Unggul).
+3. Menjelaskan perbedaan tingkatan kematangan (Level 1: Merintis, Level 2: Membangun, Level 3: Berkembang, Level 4: Melembaga, Level 5: Unggul) berdasarkan standar resmi PermenPANRB 8/2026.
 4. Berikan format jawaban terstruktur dengan poin-poin jelas dan rekomendasi konkret (seperti contoh nama Peraturan, SOP, format dokumen bukti, tangkapan layar sistem, atau jenis log sistem).`;
 
   let prompt = userQuestion;

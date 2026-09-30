@@ -22,23 +22,23 @@ export const INDICATORS = [
       5: 'Tata kelola pemerintah digital dievaluasi secara berkala (minimal 1 kali dalam 2 tahun) berbasis audit kinerja, dilakukan perbaikan berkelanjutan, dan adaptif terhadap arah kebijakan transformasi digital nasional.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Draf konsep awal tata kelola digital atau arsitektur teknologi informasi instansi.
 2. Undangan dan notula rapat inisiasi pembahasan tata kelola digital internal unit TIK.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 3. Naskah rancangan peraturan kepala daerah/menteri tentang arsitektur pemerintah digital instansi.
 4. Nota dinas pengajuan harmonisasi regulasi ke Bagian Hukum/Biro Hukum.
 5. Surat edaran pelaksanaan uji coba tata kelola digital pada unit kerja percontohan.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Salinan Berita Daerah / Lembaran Resmi penetapan Peraturan Kepala Instansi tentang Arsitektur dan Peta Rencana Pemerintah Digital.
 2. Dokumen Lampiran Utuh 6 Domain Arsitektur Pemerintah Digital (Domain Proses Bisnis, Data, Aplikasi, Infrastruktur, Keamanan, dan Layanan).
 3. Surat Keputusan (SK) Tim Penyelenggara Transformasi Digital Instansi yang disahkan pimpinan.
 4. Berita acara dan daftar hadir sosialisasi regulasi ke seluruh unit kerja/perangkat daerah.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Bukti keterpaduan dan penyelarasan Arsitektur Instansi ke dalam Platform Arsitektur Pemerintah Digital Nasional (INA Digital).
 2. Tangkapan layar status validasi dan persetujuan arsitektur digital dari Kementerian PANRB.
 3. Dokumen penjabaran program dan alokasi anggaran transformasi digital dalam Renja dan Dokumen Pelaksanaan Anggaran (DPA/RKA).`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Laporan Resmi Evaluasi dan Kaji Ulang Berkala Tata Kelola Pemerintah Digital (minimal 2 tahun sekali).
 2. Dokumen adendum/penyesuaian kebijakan tata kelola berdasarkan hasil audit dan dinamika regulasi nasional.
 3. Matriks tindak lanjut rekomendasi perbaikan tata kelola yang ditandatangani Pimpinan Instansi.`
@@ -71,21 +71,21 @@ export const INDICATORS = [
       5: 'Manajemen layanan digital telah melalui audit efektivitas berkala (standar ISO 20000 / ISO 31000), dilakukan perbaikan berkesinambungan (Continual Service Improvement), dan memiliki ketahanan operasional tinggi.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Catatan penanganan kendala server atau aplikasi yang bersifat insidental.
 2. Belum memiliki formulir register risiko digital resmi.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Draf panduan service desk atau penanganan gangguan yang dibuat oleh unit TIK.
 2. Matriks identifikasi risiko pada 1-2 aplikasi prioritas instansi.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Dokumen SOP Manajemen Layanan Digital & Service Desk Resmi Instansi.
 2. Formulir Register Risiko Pemerintah Digital terisi lengkap beserta Rencana Mitigasi (Risk Treatment Plan).
 3. SK Tim Pengelola Manajemen Risiko dan Tim Manajemen Perubahan Digital Instansi.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Tangkapan layar sistem Service Management / Ticketing Helpdesk terpadu instansi.
 2. Laporan pemantauan dan mitigasi risiko digital periodik (triwulanan/semesteran).
 3. Rekapitulasi pemenuhan Service Level Agreement (SLA) penanganan insiden digital.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Laporan Hasil Reviu/Audit Efektivitas Manajemen Layanan dan Risiko oleh Inspektorat/Auditor Eksternal.
 2. Sertifikat kesesuaian standar ISO 20000 (Service Management) / ISO 31000 (Risk Management).
 3. Bukti implementasi Continual Service Improvement (CSI) berdasarkan umpan balik berkala.`
@@ -119,21 +119,21 @@ export const INDICATORS = [
       5: 'Diterapkan Digital Talent Management berkelanjutan berbasis merit sistem, dilakukan evaluasi berkala dampak pemanfaatan AI terhadap efisiensi dan produktivitas birokrasi, serta melahirkan karya inovasi digital ASN.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Daftar staf pengelola IT tanpa rincian sertifikasi keahlian.
 2. Belum ada alokasi anggaran pelatihan digital khusus dalam perencanaan.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Sertifikat keikutsertaan pelatihan aplikasi atau bimbingan teknis dasar bagi operator OPD.
 2. Usulan kebutuhan pelatihan TIK dari unit kerja teknis.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Dokumen Training Needs Analysis (TNA) Keahlian Digital ASN Instansi.
 2. Salinan Sertifikat Kompetensi Profesi BNSP / Sertifikasi Internasional ASN (Cloud, Cyber Security, Data Science, Software Engineering).
 3. Bukti alokasi anggaran pengembangan SDM digital dalam DPA/RKA instansi.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Laporan implementasi pemanfaatan Artificial Intelligence (AI) dan analitik data mutakhir oleh ASN dalam pekerjaan operasional dan perumusan kebijakan.
 2. Surat Keputusan (SK) pembentukan Tim Pengembang Digital (In-house Software Engineer / Data Analyst).
 3. Laporan pengukuran Indeks Literasi Digital ASN instansi.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Laporan evaluasi berkala efisiensi jam kerja dan peningkatan produktivitas pasca pemanfaatan AI.
 2. Sistem Talent Pool ASN Digital dengan jenjang karier berbasis merit system teruji.
 3. Portofolio karya inovasi teknologi digital yang dihasilkan mandiri oleh ASN instansi.`
@@ -165,18 +165,18 @@ export const INDICATORS = [
       5: 'Kolaborasi dievaluasi kinerjanya secara berkala, menghasilkan efisiensi belanja teknologi dan replikasi solusi secara nasional, serta adaptif terhadap ekosistem inovasi terbuka (open government ecosystem).'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Notula diskusi penjajakan kerja sama awal tanpa naskah kesepakatan tertulis.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Naskah nota kesepahaman (MoU) umum yang belum ditindaklanjuti dengan PKS operasional teknis.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Salinan resmi Perjanjian Kerja Sama (PKS) Kolaborasi Digital dengan instansi mitra.
 2. Kerangka Acuan Kerja (KAK) dan rencana aksi kemitraan digital bersama.
 3. SK Tim Kerja Bersama Pelaksana Kolaborasi Digital.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Laporan pelaksanaan program kolaborasi digital aktif (misal: Digital Innovation Lab, co-development aplikasi, sharing infrastruktur antardaerah).
 2. Bukti adopsi bersama solusi digital hasil kemitraan antardaerah/antarinstansi.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Laporan Evaluasi Kemitraan Digital yang memuat analisis cost-benefit dan efisiensi anggaran belanja TIK.
 2. Model replikasi solusi digital oleh instansi lain tingkat nasional.
 3. Penghargaan atau pengakuan publik atas keberhasilan inovasi kolaboratif.`
@@ -209,19 +209,19 @@ export const INDICATORS = [
       5: 'Diterapkan tata kelola pembersihan data (data cleansing) otomatis secara berkala, audit kualitas data (Data Quality Assessment), serta pemanfaatan data terpadu untuk analitik preskriptif dan kebijakan berbasis bukti (Evidence-Based Policymaking).'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Rekapitulasi data tabel di spreadsheet lokal masing-masing perangkat daerah.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. SK Penunjukan Walidata di Diskominfo tanpa penetapan struktur Produsen Data dan Forum Satu Data.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Salinan Peraturan Kepala Daerah / Pimpinan Instansi tentang Penyelenggaraan Satu Data.
 2. SK Penetapan Forum Satu Data, Pembina Data, Walidata, dan Produsen Data.
 3. Pedoman Standar Data, Struktur Metadata, dan Kode Referensi Resmi Instansi.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Bukti interkoneksi API Portal Satu Data Daerah dengan Portal Satu Data Indonesia Nasional (data.go.id).
 2. Daftar Data dan Rencana Aksi Data tahunan yang disahkan Forum Satu Data.
 3. Rekomendasi Statistik resmi dari Pembina Data atas dataset prioritas.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Laporan Evaluasi Kualitas Data (Data Quality Assessment / Cleansing) berkala.
 2. Bukti pemanfaatan dataset Satu Data sebagai dasar analitik pengambilan kebijakan pimpinan (Dashboard Eksekutif).`
     },
@@ -252,19 +252,19 @@ export const INDICATORS = [
       5: 'Informasi geospasial dimanfaatkan optimal untuk kebijakan tata ruang digital (RDTR/KKPR), monitoring pajak daerah, mitigasi bencana terintegrasi sensor IoT, dan meraih penghargaan kinerja simpul jaringan (Bhumandala).'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Berkas peta format gambar (JPG/PNG) atau PDF tanpa metadata geospasial baku.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Kumpulan shapefile (SHP) peta tata ruang di dinas teknis tanpa geoportal terbuka.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. SK Kepala Instansi tentang Pembentukan Simpul Jaringan Informasi Geospasial.
 2. URL dan tangkapan layar Geoportal resmi instansi berbasis Web-GIS (MapServer/GeoServer).
 3. Metadata spasial standar ISO 19115 pada layer tematik peta.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Piagam / Surat Keterhubungan Simpul Jaringan dari Badan Informasi Geospasial (BIG) berstatus Operasional Penuh.
 2. Tangkapan layar integrasi katalog peta ke Portal JIGN Nasional (tanahair.indonesia.go.id).
 3. Layanan web map service (WMS/WFS) aktif yang dapat diakses publik.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Piagam Penghargaan Bhumandala Award atau Laporan Kinerja Simpul Jaringan Terbaik.
 2. Bukti pemanfaatan peta geospasial real-time untuk perizinan tata ruang dan mitigasi risiko bencana.`
     },
@@ -295,18 +295,18 @@ export const INDICATORS = [
       5: 'Hasil Evaluasi Penyelenggaraan Statistik Sektoral (EPSS) meraih predikat "Baik" atau "Sangat Baik" dari BPS, dan data statistik dimanfaatkan untuk pemodelan prediktif pengentasan kemiskinan dan stunting.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Buku publikasi angka statistik tahunan tanpa verifikasi metodologi BPS.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Formulir survei statistik sektoral yang baru dibuat mandiri oleh unit pelaksana.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Dokumen SOP Pengusulan Rekomendasi Kegiatan Statistik Sektoral ke BPS.
 2. Dokumen Kerangka Acuan Kerja (KAK) survei statistik sektoral yang memuat rancangan sampel dan kuesioner.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Surat Rekomendasi Statistik Resmi dari BPS (Persetujuan Aplikasi Romantik BPS).
 2. Dokumen Metadata Statistik Lengkap: Metadata Kegiatan (MS-Keg), Metadata Variabel (MS-Var), dan Indikator (MS-Ind).
 3. Publikasi dataset statistik sektoral yang telah tervalidasi di portal data.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Sertifikat Hasil Evaluasi Penyelenggaraan Statistik Sektoral (EPSS) dengan Indeks Pembangunan Statistik (IPS) Predikat Baik/Sangat Baik.
 2. Bukti pemanfaatan data statistik analitik dalam dokumen perencanaan pembangunan daerah.`
     },
@@ -337,19 +337,19 @@ export const INDICATORS = [
       5: 'Dilakukan audit kepatuhan PDP berkala oleh auditor independen, SOP dan simulasi penanganan insiden kebocoran data pribadi (notifikasi maks 3x24 jam), serta sertifikasi resmi bagi pejabat DPO.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Belum terdapat klausul kerahasiaan data pribadi pada formulir pengumpulan data warga.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Ketentuan syarat dan ketentuan (Terms & Conditions) sederhana pada website instansi tanpa rincian hak subjek data.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Keputusan Pimpinan Instansi tentang Penunjukan Pejabat Pelindung Data Pribadi (DPO / Data Protection Officer).
 2. Dokumen Kebijakan & SOP Pemrosesan, Penyimpanan, dan Penghapusan Data Pribadi.
 3. Format Lembar Persetujuan (Explicit Consent Form) pada seluruh aplikasi layanan masyarakat.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Dokumen Penilaian Dampak Pelindungan Data Pribadi (Data Protection Impact Assessment / DPIA) pada sistem kritikal.
 2. Bukti teknis enkripsi data pribadi (NIK, Rekam Medis, Biometrik) pada basis data (Data-at-rest & Data-in-transit).
 3. Fitur permohonan penghapusan/perbaikan data oleh subjek data (Hak Pemilik Data).`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Laporan Audit Kepatuhan PDP Eksternal independen tahunan.
 2. SOP dan simulasi notifikasi kebocoran data pribadi (maksimal 3x24 jam ke otoritas PDP dan subjek data).
 3. Sertifikasi personel DPO dari lembaga tersertifikasi resmi.`
@@ -383,19 +383,19 @@ export const INDICATORS = [
       5: 'Audit keamanan dilaksanakan secara berkala terjadwal (minimal setahun sekali), instansi memiliki Sertifikat ISO/IEC 27001 yang aktif berlaku, dan mengintegrasikan automated security testing (DevSecOps) dalam siklus rilis aplikasi.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Log antivirus pada workstation tanpa audit sistem terpusat.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Rekap hasil scan otomatis tools scanner gratisan oleh internal tanpa laporan formal dan tanda tangan auditor.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Laporan Resmi Hasil Vulnerability Assessment & Penetration Testing (VAPT Report) dari BSSN atau Auditor Bersertifikat (CISA/CEH).
 2. Surat Perintah Tugas / Kontrak Kerja pelaksanaan audit keamanan TIK.
 3. Matriks klasifikasi temuan kerentanan berstandar OWASP Top 10.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Lembar Hasil Tindak Lanjut (LHTL) atau Laporan Remediasi Penutupan Celah Keamanan.
 2. Berita Acara Re-Test Sign-off yang menyatakan seluruh celah kategori Critical dan High telah ditutup (Status: Closed/Patched).
 3. Surat Rekomendasi Keamanan dari BSSN.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Sertifikat ISO/IEC 27001 Sistem Manajemen Keamanan Informasi yang masih berlaku aktif.
 2. Laporan audit surveilans ISO tahunan dan audit kepatuhan regulasi keamanan siber.
 3. Penerapan automated security testing (DevSecOps) pada siklus pengembangan aplikasi.`
@@ -427,18 +427,18 @@ export const INDICATORS = [
       5: 'Kebijakan SMKI dievaluasi berkala, penerapan arsitektur keamanan Zero Trust (Zero Trust Architecture / ZTA), nihil insiden keamanan mayor (zero major incident), dan peningkatan berkelanjutan skor Indeks KAMI.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Tidak ada dokumen regulasi atau kebijakan keamanan tertulis.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Himbauan pergantian password berkala di lingkungan kantor.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Salinan Peraturan Pimpinan Instansi tentang Kebijakan Sistem Manajemen Keamanan Informasi (SMKI).
 2. Dokumen Hasil Pengisian dan Asesmen Indeks Keamanan Informasi (Indeks KAMI) BSSN.
 3. SOP Pengelolaan Hak Akses, SOP Backup Data, dan SOP Pengamanan Fisik Ruang Server.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Piagam / Surat Hasil Penilaian Indeks KAMI dari BSSN dengan status "Kesiapan Baik".
 2. Bukti penerapan segmentasi jaringan zona aman (DMZ) dan Multi-Factor Authentication (MFA) pada seluruh akses admin.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Dokumen Arsitektur Keamanan Zero Trust (ZTA) yang diimplementasikan penuh.
 2. Laporan reviu manajemen tahunan SMKI dan peningkatan skor Indeks KAMI secara konsisten.`
     },
@@ -469,19 +469,19 @@ export const INDICATORS = [
       5: 'Pemanfaatan modul keamanan perangkat keras (Hardware Security Module / HSM) tersertifikasi, otomatisasi pemantauan masa berlaku sertifikat, dan kepatuhan penuh siklus kriptografi tanpa kebocoran kunci privat.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Contoh berkas surat dinas dengan tanda tangan pulpen yang di-scan format gambar.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Barcode QR code sederhana yang hanya mengarahkan ke link website tanpa sertifikat digital tersertifikasi.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Perjanjian Kerja Sama (PKS) pemanfaatan Sertifikat Elektronik antara Kepala Instansi dengan Balai Sertifikasi Elektronik (BSrE) BSSN.
 2. Surat Keputusan penunjukan Pengelola Sertifikat Elektronik Instansi.
 3. Sampel Dokumen Resmi bertanda tangan TTE yang tervalidasi sah di portal verifikasi BSrE/Komdigi.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Tangkapan layar integrasi modul API TTE BSrE ke dalam aplikasi layanan publik, perizinan, persuratan, dan kepegawaian.
 2. Bukti implementasi protokol enkripsi TLS 1.3 dengan sertifikat SSL/TLS valid grade A.
 3. Laporan statistik volume penandatanganan TTE bulanan oleh seluruh pejabat instansi.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Bukti penggunaan Hardware Security Module (HSM) untuk pengamanan private key instansi.
 2. SOP otomatisasi audit masa kedaluwarsa sertifikat dan zero unencrypted sensitive data transmission.`
     },
@@ -512,19 +512,19 @@ export const INDICATORS = [
       5: 'Rutin melaksanakan simulasi penanganan krisis siber (Cyber Drill Exercise) bersama BSSN, memiliki dokumen Post-Incident Review (PIR) dan penguatan sistem berkelanjutan, serta program kesadaran keamanan siber bagi seluruh pegawai.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Catatan perbaikan web defacement secara mandiri tanpa laporan insiden resmi.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Nomor kontak darurat staf pengelola server jika terjadi insiden down.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Surat Keputusan (SK) Pimpinan Instansi tentang Pembentukan Tim CSIRT Instansi.
 2. SOP Penanganan Insiden Siber, SOP Triase Laporan, dan SOP Forensik Digital Sederhana.
 3. Portal atau kanal resmi pelaporan insiden siber instansi (csirt.daerah.go.id).`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Surat Tanda Registrasi (STR) CSIRT resmi yang diterbitkan oleh Badan Siber dan Sandi Negara (BSSN).
 2. Bukti interoperabilitas dan pelaporan berkala ke Pusat Operasi Keamanan Siber Nasional BSSN.
 3. Laporan penanganan tiket insiden siber yang diselesaikan sesuai target waktu tanggap (Mean Time to Respond).`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Laporan Pelaksanaan Cyber Drill / Simulasi Krisis Siber gabungan dengan BSSN.
 2. Dokumen Post-Incident Review (PIR) dan bukti hardening sistem pasca insiden.
 3. Program Cyber Security Awareness berkala bagi seluruh pegawai instansi.`
@@ -558,19 +558,19 @@ export const INDICATORS = [
       5: 'Diterapkannya otomatisasi Continuous Integration & Continuous Deployment (CI/CD), evaluasi efektivitas utilisasi aplikasi tahunan untuk konsolidasi dan penonaktifan aplikasi usang, serta kontribusi kode pada katalog berbagi pakai nasional.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Aplikasi dibuat oleh pihak ketiga tanpa serah terima kode sumber dan dokumentasi teknis.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Manual book panduan pengguna (User Guide) pada aplikasi-aplikasi yang berdiri sendiri.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Peraturan / Pedoman Pimpinan tentang Standar Pembangunan dan Pengembangan Aplikasi Pemerintah Digital.
 2. Dokumen Software Architecture Document (SAD), Entity Relationship Diagram (ERD), dan API Documentation.
 3. Buku Inventaris dan Registrasi Aplikasi Resmi Instansi.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Repositori kode sumber terpusat (GitLab/GitHub instansi) dengan manajemen versi teratur.
 2. Bukti audit kliring aplikasi oleh Diskominfo untuk mencegah duplikasi aplikasi baru di perangkat daerah.
 3. Arsitektur aplikasi berbasis REST API / microservices yang siap diinterkoneksikan.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Laporan Evaluasi Efektivitas Aplikasi Tahunan (Aplikasi yang dipertahankan, dikonsolidasikan, atau dinonaktifkan).
 2. Penerapan otomatisasi Continuous Integration & Continuous Deployment (CI/CD) teruji.
 3. Bukti integrasi ke katalog kode sumber nasional atau berbagi pakai kode dengan instansi lain.`
@@ -602,19 +602,19 @@ export const INDICATORS = [
       5: 'Seluruh sistem kritis beroperasi di ekosistem komputasi awan dengan Disaster Recovery Plan (DRP) teruji, simulasi failover ke Disaster Recovery Center (DRC) berkala, serta efisiensi belanja infrastruktur terukur.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Foto server PC desktop yang diletakkan di ruang kerja dinas.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Berita acara pemindahan server fisik dinas ke rak server Diskominfo.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Dokumen Topologi Pusat Data dan Jaringan Fiber Optic Intra Pemerintah Daerah.
 2. SOP Operasional Data Center, Pengaturan Suhu Ruang Server, dan Jadwal Backup Data Rutin.
 3. Bukti fasilitas keamanan fisik (UPS terpusat, Fire Suppression FM200, Akses Biometrik, CCTV).`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Surat Keputusan / Berita Acara Pemanfaatan Layanan Pusat Data Nasional (PDN) dari Kementerian Komdigi.
 2. Tangkapan layar alokasi cloud resources (vCPU, RAM, Cloud Storage) pada portal PDN.
 3. Daftar aplikasi strategis instansi yang telah live beroperasi di infrastruktur PDN.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Dokumen Disaster Recovery Plan (DRP) dan Business Continuity Plan (BCP) tervalidasi.
 2. Laporan Hasil Simulasi Uji Alih Beban (Failover Simulation Test) ke Disaster Recovery Center (DRC).
 3. Laporan efisiensi anggaran belanja server dan listrik pasca migrasi penuh ke PDN.`
@@ -648,18 +648,18 @@ export const INDICATORS = [
       5: 'Telah dilakukan reviu dan penyederhanaan proses bisnis (Business Process Reengineering / BPR) berkala, pemangkasan tahapan birokrasi berbasis evaluasi digital, dan terbukti mempercepat waktu pemrosesan layanan publik.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Uraian tugas fungsi staf dalam format teks tanpa diagram alur proses bisnis.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Diagram flowchart SOP teknis pada beberapa bidang terpisah tanpa keterpaduan lintas unit.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Salinan Peraturan Pimpinan Instansi tentang Peta Proses Bisnis Instansi.
 2. Lampiran Diagram Peta Proses Bisnis Level 0, Level 1, dan Level 2 (Core, Management, Support) berstandar BPMN.
 3. Berita acara penelaahan probis bersama Bagian Organisasi / Tata Laksana.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Bukti penyelarasan Peta Probis Instansi dengan Proses Bisnis Tematik Nasional KemenPANRB.
 2. Matriks integrasi alur kerja lintas perangkat daerah (misal: keterpaduan probis perizinan dengan dinas teknis terkait).`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Laporan Hasil Reviu dan Penyederhanaan Proses Bisnis (Business Process Reengineering).
 2. Bukti perbandingan pemangkasan tahapan alur birokrasi dan data percepatan durasi siklus layanan publik.`
     },
@@ -690,19 +690,19 @@ export const INDICATORS = [
       5: 'Integrasi aplikasi menyeluruh secara end-to-end dengan pemantauan otomatis performa sistem dan audit trail tanpa jeda manual.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Pengguna harus menginput ulang data yang sama di berbagai aplikasi yang berbeda.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Bukti script import database periodik secara semi-manual antar dua sistem.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Bukti integrasi sistem persuratan dinas dengan tanda tangan elektronik (TTE).
 2. Integrasi data presensi pegawai langsung ke perhitungan tunjangan kinerja di aplikasi e-Kinerja instansi.
 3. SOP integrasi sistem informasi di lingkungan instansi.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Log integrasi web service antara sistem kepegawaian lokal dengan SIASN BKN Nasional.
 2. Bukti sinkronisasi data perencanaan penganggaran ke SIPD-RI Kemendagri.
 3. Pemanfaatan aplikasi SRIKANDI Nasional untuk seluruh naskah dinas keluar-masuk lintas instansi.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Laporan pemantauan utilisasi integrasi sistem secara real-time dan dashboard status sinkronisasi.
 2. Zero data entry duplication pada seluruh rantai layanan administrasi pemerintahan.`
     },
@@ -733,19 +733,19 @@ export const INDICATORS = [
       5: 'Portal digital adaptif berbasis kecerdasan buatan, aksesibilitas disabilitas (WCAG compliant), dan pelacakan proses layanan real-time.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Masing-masing dinas menyebarkan aplikasi masing-masing di PlayStore tanpa portal payung.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Portal website instansi yang hanya berisi banner gambar tautan ke web dinas lain tanpa autentikasi tunggal.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. URL resmi dan tangkapan layar Portal Layanan Terpadu (Super-App / MPP Digital Instansi).
 2. Penerapan Single Sign-On (SSO) bagi masyarakat sehingga satu akun dapat mengakses seluruh layanan.
 3. Regulasi Pimpinan Instansi tentang Penyelenggaraan Portal Satu Pintu Layanan Digital.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Bukti integrasi portal instansi dengan Platform Portal Pelayanan Publik Nasional (INA Digital).
 2. Integrasi sistem login dengan Identitas Kependudukan Digital (IKD Ditjen Dukcapil).
 3. Integrasi pembayaran non-tunai melalui payment gateway terpadu (QRIS/VA).`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Fitur pelacakan status layanan (tracking proses) real-time via WhatsApp/SMS notification.
 2. Pemenuhan standar aksesibilitas bagi disabilitas (fitur pembaca suara, kontras tinggi).
 3. Laporan evaluasi peningkatan jumlah pengguna aktif harian (Daily Active Users) portal.`
@@ -777,19 +777,19 @@ export const INDICATORS = [
       5: 'Pertukaran data melalui SPLP berjalan otomatis dengan audit trail log lengkap, pemantauan trafik 24/7, dan enkripsi payload.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Berkas rekap data dikirimkan melalui lampiran pesan email atau flashdisk.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Dokumentasi script API point-to-point antara dua aplikasi tanpa gateway bersama.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Tangkapan layar antarmuka dashboard Sistem Penghubung Layanan Pemerintah (SPLP) Instansi.
 2. Dokumen Buku Katalog Layanan Berbagi Pakai (API Registry / Swagger Documentation).
 3. SOP Permohonan dan Integrasi Layanan Berbagi Pakai melalui SPLP.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Surat persetujuan dan Berita Acara Interkoneksi dengan SPLP Nasional Kementerian Komdigi.
 2. Contoh transaksi data antar-instansi melalui SPLP (misal: verifikasi NIK Dukcapil via SPLP).
 3. Perjanjian Kerja Sama (PKS) Berbagi Pakai Data Elektronik dengan instansi mitra.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Log audit trail transaksi data SPLP lengkap (Timestamp, IP, Endpoint, Status Code 200, Latensi ms).
 2. Laporan pemantauan trafik dan kepatuhan SLA ketersediaan API (> 99.8%).
 3. Evaluasi berkala efisiensi waktu pemrosesan layanan publik pasca penerapan integrasi SPLP.`
@@ -823,19 +823,19 @@ export const INDICATORS = [
       5: 'Kinerja fasilitas dukungan pengguna dievaluasi berkala dengan Response Time < 15 menit dan First Contact Resolution Rate > 90%.'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Tidak ada kontak bantuan pengguna yang tercantum di aplikasi layanan.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Nomor WhatsApp staf operator yang dicantumkan sebagai narahubung darurat tanpa sistem pencatatan tiket.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Tangkapan layar Helpdesk / Service Desk Layanan Digital Resmi Instansi.
 2. SOP Penanganan Keluhan Pengguna Layanan Digital dan Eskalasi Tiket Gangguan.
 3. Ketersediaan panduan pengguna (FAQ, Video Tutorial, Manual Book) yang mudah diakses di portal.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Pemanfaatan Asisten Virtual Cerdas / Chatbot AI yang dapat merespons pertanyaan pengguna secara otomatis 24/7.
 2. Bukti pemenuhan fitur aksesibilitas bagi penyandang disabilitas (Voice Screen Reader, Text-to-Speech, Pilihan Kontras).
 3. Laporan rekapitulasi penanganan tiket bantuan dengan pencapaian SLA waktu respon.`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Laporan Evaluasi Kinerja Helpdesk berkala dengan First Contact Resolution (FCR) > 90%.
 2. Analisis sentimen percakapan pengguna berbasis analitik AI untuk pencegahan kendala berulang.
 3. Penghargaan atau pengakuan pelayanan prima dukungan pengguna dari lembaga berwenang.`
@@ -867,19 +867,19 @@ export const INDICATORS = [
       5: 'Hasil kepuasan dianalisis berkala, seluruh masukan/kritik ditindaklanjuti dengan rencana perbaikan nyata (Continuous Service Improvement), dan meraih predikat "Sangat Memuaskan".'
     },
     evidenceByLevel: {
-      1: `Dokumen Bukti Level 1 (Rintisan):
+      1: `Dokumen Bukti Level 1 (Merintis):
 1. Belum ada instrumen survei kepuasan digital.`,
-      2: `Dokumen Bukti Level 2 (Terkelola):
+      2: `Dokumen Bukti Level 2 (Membangun):
 1. Kuesioner kepuasan format Google Form yang disebarkan tidak terstruktur.`,
-      3: `Dokumen Bukti Level 3 (Terstandarisasi):
+      3: `Dokumen Bukti Level 3 (Berkembang):
 1. Fitur kuesioner e-SKM otomatis yang muncul pada layar pengguna tepat setelah menyelesaikan layanan digital.
 2. Peraturan / SOP Pelaksanaan Survei Kepuasan Masyarakat Berbasis Elektronik sesuai pedoman PermenPANRB.
 3. Dokumen Laporan Hasil Survei Kepuasan Masyarakat (SKM) Elektronik Tahunan.`,
-      4: `Dokumen Bukti Level 4 (Terpadu):
+      4: `Dokumen Bukti Level 4 (Melembaga):
 1. Tangkapan layar widget nilai Indeks Kepuasan Masyarakat (IKM) yang tampil secara real-time dan transparan di beranda portal layanan publik.
 2. Integrasi sistem survei kepuasan dengan platform aduan nasional (SP4N-LAPOR!).
 3. Rekapitulasi nilai kepuasan pengguna mencapai kategori "Sangat Baik" (> 3.50 dari skala 4.00 atau > 88.00).`,
-      5: `Dokumen Bukti Level 5 (Optimum):
+      5: `Dokumen Bukti Level 5 (Unggul):
 1. Dokumen Rencana Aksi Tindak Lanjut Perbaikan Layanan berdasarkan ulasan dan komplain masyarakat.
 2. Laporan Pembuktian Perbaikan Fitur / Kebijakan Layanan pasca menerima masukan pengguna.
 3. Tren kenaikan nilai kepuasan pengguna secara konsisten dalam 3 tahun evaluasi berturut-turut.`

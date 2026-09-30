@@ -80,9 +80,9 @@ export const DOMAINS = [
 ];
 
 export const MATURITY_LEVELS = [
-  { level: 1, name: 'Rintisan', short: 'L1', description: 'Kegiatan penerapan belum teratur, ad-hoc, atau baru inisiatif perorangan/unit kerja tertentu.', color: 'bg-rose-500 text-white' },
-  { level: 2, name: 'Terkelola', short: 'L2', description: 'Kegiatan penerapan telah terorganisasi dan memiliki pedoman internal namun belum seragam di seluruh unit.', color: 'bg-amber-500 text-white' },
-  { level: 3, name: 'Terstandarisasi', short: 'L3', description: 'Penerapan telah memiliki standar baku, regulasi formal, dan diterapkan serentak di seluruh instansi.', color: 'bg-blue-500 text-white' },
-  { level: 4, name: 'Terpadu', short: 'L4', description: 'Penerapan telah terintegrasi secara elektronik antar-unit kerja atau lintas instansi pemerintah.', color: 'bg-teal-500 text-white' },
-  { level: 5, name: 'Optimum', short: 'L5', description: 'Penerapan telah dievaluasi berkala, adaptif terhadap inovasi baru, dan terus ditingkatkan kinerjanya.', color: 'bg-indigo-600 text-white' }
+  { level: 1, name: 'Merintis', short: 'L1', description: 'Inisiatif baru dimulai, belum terorganisir secara sistematis, masih sporadis/ad-hoc, dan belum didukung komitmen serta kapasitas yang memadai.', color: 'bg-rose-500 text-white' },
+  { level: 2, name: 'Membangun', short: 'L2', description: 'Telah mulai dibangun fondasi perencanaan, instrumen dasar, atau sistem awal pada sebagian unit kerja/sektor, namun belum terintegrasi.', color: 'bg-amber-500 text-white' },
+  { level: 3, name: 'Berkembang', short: 'L3', description: 'Penerapan telah berjalan formal dan konsisten di seluruh instansi berpedoman pada standar dan regulasi baku resmi (Target baseline).', color: 'bg-blue-500 text-white' },
+  { level: 4, name: 'Melembaga', short: 'L4', description: 'Penyelenggaraan telah melembaga dan terintegrasi penuh secara digital antarsektor/lintas instansi dan terhubung ke ekosistem nasional (INA Digital).', color: 'bg-teal-500 text-white' },
+  { level: 5, name: 'Unggul', short: 'L5', description: 'Mencapai performa terbaik dengan perbaikan berkesinambungan berbasis data, adaptif inovasi AI/otomasi, serta berdampak nyata bagi kepuasan publik.', color: 'bg-indigo-600 text-white' }
 ];

@@ -19,19 +19,19 @@ export default function SummaryDashboard({ stats, checklistData, onResetAll, onO
 
   // Evaluasi Predikat Kinerja Pemerintah Digital berdasarkan Indeks PermenPANRB 8/2026
   const indexNum = parseFloat(averageMaturityIndex);
-  let predikat = "Kurang";
+  let predikat = "Kurang (Merintis)";
   let predikatColor = "bg-rose-100 text-rose-800 border-rose-200";
-  if (indexNum >= 4.2) {
-    predikat = "Memuaskan (Optimum)";
+  if (indexNum >= 4.21) {
+    predikat = "Memuaskan (Unggul)";
     predikatColor = "bg-indigo-100 text-indigo-800 border-indigo-200";
-  } else if (indexNum >= 3.5) {
-    predikat = "Sangat Baik (Terpadu)";
+  } else if (indexNum >= 3.51) {
+    predikat = "Sangat Baik (Melembaga)";
     predikatColor = "bg-emerald-100 text-emerald-800 border-emerald-200";
   } else if (indexNum >= 2.6) {
-    predikat = "Baik (Terstandarisasi)";
+    predikat = "Baik (Berkembang)";
     predikatColor = "bg-blue-100 text-blue-800 border-blue-200";
   } else if (indexNum >= 1.8) {
-    predikat = "Cukup (Terkelola)";
+    predikat = "Cukup (Membangun)";
     predikatColor = "bg-amber-100 text-amber-800 border-amber-200";
   }
 

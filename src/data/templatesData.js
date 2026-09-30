@@ -18,28 +18,28 @@ export const TEMPLATES_DATA = [
       {
         name: 'Peraturan Kepala Daerah/Instansi tentang Arsitektur & Peta Rencana Pemdi',
         desc: 'Regulasi formal penetapan 6 domain arsitektur pemerintah digital instansi, peta rencana 5 tahunan & mekanisme evaluasi berkala.',
-        level: 'Standar Level 3 (Terstandarisasi)',
+        level: 'Standar Level 3 (Berkembang)',
         format: 'DOCX',
         url: '/templates/ind_01/Template_Peraturan_Arsitektur_dan_Peta_Rencana_Pemdi_Indikator01.docx'
       },
       {
         name: 'Buku Induk Dokumen Arsitektur Pemdi (Lampiran Utuh 6 Domain)',
         desc: 'Dokumen teknis komprehensif 6 domain arsitektur: Proses Bisnis, Data & Informasi, Layanan, Aplikasi, Infrastruktur, dan Keamanan.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'DOCX',
         url: '/templates/ind_01/Template_Buku_Induk_6_Domain_Arsitektur_Pemerintah_Digital_Indikator01.docx'
       },
       {
         name: 'Matriks Penyelarasan 6 Domain ke Platform Arsitektur Nasional & Roadmap Renja/DPA',
         desc: 'Buku kerja 4 sheet: Dashboard Validasi Arsitektur Digital KemenPANRB, Pemetaan Referensi Arsitektur Nasional, Roadmap 2026-2030, dan Kamus Penyelarasan.',
-        level: 'Standar Level 4 (Terpadu Nasional)',
+        level: 'Standar Level 4 (Melembaga Nasional)',
         format: 'XLSX',
         url: '/templates/ind_01/Template_Matriks_Penyelarasan_Arsitektur_SIA_SPBE_Indikator01.xlsx'
       },
       {
         name: 'Laporan Resmi Evaluasi Berkala & Reviu Tata Kelola Pemerintah Digital',
         desc: 'Laporan evaluasi 2 tahunan: audit keterpaduan arsitektur, gap analysis arah regulasi nasional (GovTech/Digital ID), dan adendum peta rencana.',
-        level: 'Standar Level 5 (Optimum)',
+        level: 'Standar Level 5 (Unggul)',
         format: 'DOCX',
         url: '/templates/ind_01/Template_Laporan_Evaluasi_Berkala_dan_Reviu_Tata_Kelola_Indikator01.docx'
       }
@@ -57,14 +57,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'SOP Manajemen Layanan Digital & Service Desk Terpadu',
         desc: 'Prosedur penanganan gangguan (incident), permintaan layanan, perubahan sistem (RFC) & pemenuhan SLA.',
-        level: 'Standar Level 3 (Terstandarisasi)',
+        level: 'Standar Level 3 (Berkembang)',
         format: 'DOCX',
         url: '/templates/ind_02/Template_SOP_Manajemen_Layanan_dan_Service_Desk_Indikator02.docx'
       },
       {
         name: 'Formulir Register Risiko Pemerintah Digital & Rencana Mitigasi Dampak',
         desc: 'Identifikasi ancaman, kerentanan sistem, kalkulasi tingkat kemungkinan/dampak dan mitigasi ISO 31000.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'XLSX',
         url: '/templates/ind_02/Template_Register_Risiko_Pemerintah_Digital_Indikator02.xlsx'
       }
@@ -82,21 +82,21 @@ export const TEMPLATES_DATA = [
       {
         name: 'Dokumen TNA & Rencana Pengembangan SDM Digital ASN',
         desc: 'Analisis Kebutuhan Pelatihan 4 klaster ASN, standar SKKNI & alokasi DPA anggaran.',
-        level: 'Standar Level 3 (Terstandarisasi)',
+        level: 'Standar Level 3 (Berkembang)',
         format: 'DOCX',
         url: '/templates/ind_03/Template_TNA_dan_Rencana_Pengembangan_SDM_Digital_Indikator03.docx'
       },
       {
         name: 'SK Tim Pengembang Digital Squad & AI Lab',
         desc: 'Surat Keputusan pimpinan pembentukan tim in-house Software Engineer, Data Scientist, AI & DevSecOps.',
-        level: 'Standar Level 4 (Terpadu)',
+        level: 'Standar Level 4 (Melembaga)',
         format: 'DOCX',
         url: '/templates/ind_03/Template_SK_Tim_Pengembang_Digital_Squad_Indikator03.docx'
       },
       {
         name: 'Laporan Pemanfaatan AI & Evaluasi Efisiensi ASN',
         desc: 'Portofolio use case GenAI naskah dinas, kalkulasi jam kerja dihemat & kepatuhan etika AI/UU PDP.',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        level: 'Standar Level 4 & 5 (Melembaga & Unggul)',
         format: 'DOCX',
         url: '/templates/ind_03/Template_Laporan_Pemanfaatan_AI_dan_Evaluasi_Efisiensi_Indikator03.docx'
       },
@@ -128,14 +128,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'Nota Kesepahaman (MoU) & Kerangka Kolaborasi Pemdi Lintas Sektor',
         desc: 'Dokumen kerja sama resmi penerapan sistem terpadu, cloud sharing & capacity building antar lembaga.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'DOCX',
         url: '/templates/ind_04/Template_MoU_dan_Kerangka_Kolaborasi_Digital_Indikator04.docx'
       },
       {
         name: 'Matriks Pemetaan Stakeholder & Agenda Kolaborasi Quadruple Helix',
         desc: 'Katalog mitra pemerintah, akademisi perguruan tinggi, BUMD/perbankan, dan komunitas pegiat digital.',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        level: 'Standar Level 4 & 5 (Melembaga & Unggul)',
         format: 'XLSX',
         url: '/templates/ind_04/Template_Matriks_Agenda_Kolaborasi_Lintas_Sektor_Indikator04.xlsx'
       }
@@ -153,14 +153,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'Surat Keputusan Forum Satu Data Indonesia & Sekretariat Daerah',
         desc: 'Penetapan Pembina Data (BPS), Walidata (Diskominfo), Walidata Pendukung & Produsen Data (OPD).',
-        level: 'Standar Level 3 (Terstandarisasi)',
+        level: 'Standar Level 3 (Berkembang)',
         format: 'DOCX',
         url: '/templates/ind_05/Template_Pedoman_dan_SK_Forum_Satu_Data_Indikator05.docx'
       },
       {
         name: 'Buku Induk Daftar Data Prioritas & Metadata Statistik SDI',
         desc: 'Katalog standar data, nama variabel, definisi operasional, klasifikasi, kode referensi & format API.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'XLSX',
         url: '/templates/ind_05/Template_Buku_Induk_Daftar_Data_dan_Metadata_SDI_Indikator05.xlsx'
       }
@@ -178,14 +178,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'SOP Operasionalisasi Simpul Jaringan Informasi Geospasial',
         desc: 'Prosedur pemeliharaan geoportal daerah terhubung ke Jaringan Informasi Geospasial Nasional (JIGN-BIG).',
-        level: 'Standar Level 3 (Terstandarisasi)',
+        level: 'Standar Level 3 (Berkembang)',
         format: 'DOCX',
         url: '/templates/ind_06/Template_SOP_Simpul_Jaringan_Informasi_Geospasial_Indikator06.docx'
       },
       {
         name: 'Katalog Unsur Geospasial KUGI & Status Integrasi JIGN BIG',
         desc: 'Daftar layer peta tematik (RTRW, rawan bencana, faskes, industri) dengan layanan WMS/WFS aktif.',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        level: 'Standar Level 4 & 5 (Melembaga & Unggul)',
         format: 'XLSX',
         url: '/templates/ind_06/Template_Katalog_Unsur_Geografis_dan_Node_Geoportal_Indikator06.xlsx'
       }
@@ -203,21 +203,21 @@ export const TEMPLATES_DATA = [
       {
         name: 'SOP Integrasi Layanan Sistem Penghubung Layanan Pemerintah (SPLP)',
         desc: 'Standar baku permohonan API, verifikasi keamanan transmisi data & SLA ketersediaan.',
-        level: 'Standar Level 3 (Terstandarisasi)',
+        level: 'Standar Level 3 (Berkembang)',
         format: 'DOCX',
         url: '/templates/ind_07/Template_SOP_Integrasi_Layanan_SPLP_Indikator07.docx'
       },
       {
         name: 'Naskah Perjanjian Kerja Sama (PKS) & NDA Pertukaran Data',
         desc: 'Format resmi PKS berbagi pakai data elektronik lintas instansi/OPD dengan klausul UU PDP.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'DOCX',
         url: '/templates/ind_07/Template_PKS_Pertukaran_Data_Elektronik_SPLP_Indikator07.docx'
       },
       {
         name: 'Laporan Evaluasi Kinerja & Utilisasi SPLP Berkala',
         desc: 'Laporan reviu triwulanan/semesteran performa SPLP, throughput transaksi & ketersediaan sistem.',
-        level: 'Standar Level 5 (Optimum / Monev)',
+        level: 'Standar Level 5 (Unggul / Monev)',
         format: 'DOCX',
         url: '/templates/ind_07/Template_Laporan_Evaluasi_Kinerja_SPLP_Indikator07.docx'
       },
@@ -249,14 +249,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'Dokumen Penilaian Dampak Pelindungan Data Pribadi (DPIA)',
         desc: 'Pedoman mitigasi risiko pemrosesan data pribadi pada sistem layanan publik sesuai amanat UU No. 27/2022.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'DOCX',
         url: '/templates/ind_08/Template_Kebijakan_dan_DPIA_Pelindungan_Data_Pribadi_Indikator08.docx'
       },
       {
         name: 'Matriks Record of Processing Activities (RoPA) Data Pribadi',
         desc: 'Inventarisasi kegiatan pemrosesan data, dasar hukum, kategori subjek data, retensi, dan enkripsi.',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        level: 'Standar Level 4 & 5 (Melembaga & Unggul)',
         format: 'XLSX',
         url: '/templates/ind_08/Template_Record_of_Processing_Activities_RoPA_PDP_Indikator08.xlsx'
       }
@@ -274,14 +274,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'Kerangka Acuan Kerja (KAK) & Laporan Audit TIK / VAPT',
         desc: 'Panduan uji penetrasi kerentanan (VAPT), audit infrastruktur dan audit aplikasi berstandar BSSN.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'DOCX',
         url: '/templates/ind_09/Template_KAK_dan_Laporan_Audit_TIK_Indikator09.docx'
       },
       {
         name: 'Matriks Temuan Audit TIK & Monitoring Tindak Lanjut',
         desc: 'Daftar temuan kerentanan (Critical/High/Med/Low), rekomendasi teknis dan verifikasi closed audit.',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        level: 'Standar Level 4 & 5 (Melembaga & Unggul)',
         format: 'XLSX',
         url: '/templates/ind_09/Template_Matriks_Temuan_dan_Tindak_Lanjut_Audit_TIK_Indikator09.xlsx'
       }
@@ -299,14 +299,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'Kebijakan Sistem Manajemen Keamanan Informasi (ISO 27001)',
         desc: 'Dokumen kebijakan keamanan informasi, kontrol akses multi-faktor (MFA), sandi & penanganan insiden.',
-        level: 'Standar Level 3 (Terstandarisasi)',
+        level: 'Standar Level 3 (Berkembang)',
         format: 'DOCX',
         url: '/templates/ind_10/Template_Kebijakan_Keamanan_Informasi_dan_SOP_Insiden_Indikator10.docx'
       },
       {
         name: 'Checklist Evaluasi Kepatuhan SMKI & Indeks KAMI BSSN',
         desc: 'Kertas kerja audit internal evaluasi klausul ISO 27001:2022 dan skor tingkat kematangan Indeks KAMI.',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        level: 'Standar Level 4 & 5 (Melembaga & Unggul)',
         format: 'XLSX',
         url: '/templates/ind_10/Template_Checklist_Evaluasi_Kepatuhan_SMKI_ISO27001_Indikator10.xlsx'
       }
@@ -324,21 +324,21 @@ export const TEMPLATES_DATA = [
       {
         name: 'SOP Layanan Kepegawaian Elektronik Instansi',
         desc: 'SOP standar pengusulan kenaikan pangkat, KGB, mutasi, dan pensiun digital.',
-        level: 'Standar Level 3 (Terstandarisasi)',
+        level: 'Standar Level 3 (Berkembang)',
         format: 'DOCX',
         url: '/templates/ind_11/Template_SOP_Layanan_Kepegawaian_Elektronik_Indikator11.docx'
       },
       {
         name: 'Berita Acara Integrasi SIMPEG Daerah dengan SIASN BKN',
         desc: 'Dokumen bukti resmi sinkronisasi web service API dua arah dengan portal BKN Pusat.',
-        level: 'Standar Level 4 (Terpadu Nasional)',
+        level: 'Standar Level 4 (Melembaga Nasional)',
         format: 'DOCX',
         url: '/templates/ind_11/Template_BA_Integrasi_SIMPEG_SIASN_BKN_Indikator11.docx'
       },
       {
         name: 'Laporan Evaluasi dan Reviu Penerapan Manajemen Talenta ASN',
         desc: 'Laporan periodik efektivitas layanan kepegawaian digital dan pemanfaatan sistem merit.',
-        level: 'Standar Level 5 (Optimum)',
+        level: 'Standar Level 5 (Unggul)',
         format: 'DOCX',
         url: '/templates/ind_11/Template_Laporan_Evaluasi_Talenta_ASN_Indikator11.docx'
       },
@@ -370,28 +370,28 @@ export const TEMPLATES_DATA = [
       {
         name: 'Surat Keputusan Tim CSIRT & Dokumen Profil Resmi (RFC 2350)',
         desc: 'Penetapan gugus tugas CSIRT, uraian tugas operasional, PGP key, dan profil publik standar RFC 2350 registrasi BSSN.',
-        level: 'Standar Level 3 (Terstandarisasi)',
+        level: 'Standar Level 3 (Berkembang)',
         format: 'DOCX',
         url: '/templates/ind_12/Template_SK_Tim_CSIRT_dan_Profil_RFC2350_Indikator12.docx'
       },
       {
         name: 'SOP Penanggulangan dan Pemulihan Insiden Keamanan Siber',
         desc: 'Prosedur baku 6 fase NIST SP 800-61/BSSN: Persiapan, Deteksi & Triase, Penahanan, Pembasmian, Pemulihan & PIR.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'DOCX',
         url: '/templates/ind_12/Template_SOP_Penanganan_Insiden_Keamanan_Siber_Indikator12.docx'
       },
       {
         name: 'Log Register Insiden Siber, Dashboard KPI & Lembar Kerja Forensik',
         desc: 'Buku kerja 4 sheet: Dashboard KPI MTTD/MTTR, Register Insiden, Triase Forensik Hash SHA-256 & Kontak Darurat BSSN.',
-        level: 'Standar Level 4 (Terpadu BSSN)',
+        level: 'Standar Level 4 (Melembaga BSSN)',
         format: 'XLSX',
         url: '/templates/ind_12/Template_Log_Register_Insiden_Keamanan_Siber_CSIRT_Indikator12.xlsx'
       },
       {
         name: 'Laporan Pelaksanaan Simulasi Cyber Drill & Post-Incident Review',
         desc: 'Uji kesiapsiagaan krisis siber skenario ransomware, pengukuran RTO/RPO pemulihan backup & rencana aksi hardening.',
-        level: 'Standar Level 5 (Optimum)',
+        level: 'Standar Level 5 (Unggul)',
         format: 'DOCX',
         url: '/templates/ind_12/Template_Laporan_Simulasi_Cyber_Drill_dan_PIR_Indikator12.docx'
       }
@@ -409,14 +409,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'Pedoman Standarisasi Pembangunan & Rasionalisasi Aplikasi',
         desc: 'Standar arsitektur microservices, REST API, secure coding OWASP dan moratorium pembuatan aplikasi silo.',
-        level: 'Standar Level 3 (Terstandarisasi)',
+        level: 'Standar Level 3 (Berkembang)',
         format: 'DOCX',
         url: '/templates/ind_13/Template_Pedoman_Standarisasi_dan_Rasionalisasi_Aplikasi_Indikator13.docx'
       },
       {
         name: 'Katalog Inventarisasi, Arsitektur & Rasionalisasi Aplikasi',
         desc: 'Database seluruh sistem elektronik instansi, kategori umum/khusus, status API dan rencana integrasi.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'XLSX',
         url: '/templates/ind_13/Template_Katalog_Inventarisasi_Aplikasi_Instansi_Indikator13.xlsx'
       }
@@ -434,14 +434,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'Rencana Kerja & Tahapan Migrasi Cloud ke Pusat Data Nasional',
         desc: 'Strategi konsolidasi server OPD ke komputasi awan PDN Kemenkominfo dan skenario Disaster Recovery (DRC).',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'DOCX',
         url: '/templates/ind_14/Template_Rencana_Migrasi_Cloud_ke_PDN_Indikator14.docx'
       },
       {
         name: 'Daftar Aset Server, Alokasi Virtual Machine (VM) & Utilisasi PDN',
         desc: 'Inventarisasi resource vCPU, RAM, Storage NVMe, IP publik dan status operasional cloud instansi.',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        level: 'Standar Level 4 & 5 (Melembaga & Unggul)',
         format: 'XLSX',
         url: '/templates/ind_14/Template_Daftar_Aset_Server_VM_dan_Utilisasi_PDN_Indikator14.xlsx'
       }
@@ -459,14 +459,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'Dokumen Peta Proses Bisnis (BPMN) Layanan Digital Terpadu',
         desc: 'Pemetaan proses bisnis Level 0 s.d. Level 2, integrasi lintas unit kerja dan Business Process Reengineering.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'DOCX',
         url: '/templates/ind_15/Template_Dokumen_Peta_Proses_Bisnis_Terintegrasi_Indikator15.docx'
       },
       {
         name: 'Matriks Silang Hubungan Proses Bisnis dan Layanan Digital',
         desc: 'Pemetaan keterhubungan aplikasi dan layanan publik dengan mandat urusan OPD serta KPI capaian waktu.',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        level: 'Standar Level 4 & 5 (Melembaga & Unggul)',
         format: 'XLSX',
         url: '/templates/ind_15/Template_Matriks_Silang_Layanan_dan_Proses_Bisnis_Indikator15.xlsx'
       }
@@ -484,21 +484,21 @@ export const TEMPLATES_DATA = [
       {
         name: 'SOP Tata Kelola Integrasi Aplikasi dan Sistem Layanan',
         desc: 'Standar baku alur permohonan API, penelaahan arsitektur, testing sandbox & SLA.',
-        level: 'Standar Level 3 (Terstandarisasi)',
+        level: 'Standar Level 3 (Berkembang)',
         format: 'DOCX',
         url: '/templates/ind_16/Template_SOP_Tata_Kelola_Integrasi_Aplikasi_dan_Sistem_Indikator16.docx'
       },
       {
         name: 'Dokumen Arsitektur & Topologi Integrasi Sistem Terpadu',
         desc: 'Arsitektur koneksi API Gateway menghubungkan sistem internal ke SIASN, SIPD, SRIKANDI & TTE BSrE.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'DOCX',
         url: '/templates/ind_16/Template_Dokumen_Arsitektur_dan_Topologi_Integrasi_Sistem_Indikator16.docx'
       },
       {
         name: 'Laporan Monitoring Kinerja Integrasi, Utilisasi API & Efisiensi',
         desc: 'Laporan resmi reviu SLA uptime 99.88%, eliminasi input manual ganda (Zero Data Duplication).',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        level: 'Standar Level 4 & 5 (Melembaga & Unggul)',
         format: 'DOCX',
         url: '/templates/ind_16/Template_Laporan_Monitoring_Kinerja_Integrasi_dan_Evaluasi_Efisiensi_Indikator16.docx'
       },
@@ -530,14 +530,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'Spesifikasi Kebutuhan Sistem Super-App & Portal Pelayanan Terpadu',
         desc: 'Arsitektur satu pintu portal warga (Citizen Portal), integrasi SSO NIK/IKD dan standar UI/UX modern.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'DOCX',
         url: '/templates/ind_17/Template_Spesifikasi_Kebutuhan_SuperApp_dan_Portal_Indikator17.docx'
       },
       {
         name: 'Daftar Layanan Terkonsolidasi dalam Single Sign-On (SSO) Portal',
         desc: 'Katalog modul layanan kesehatan, perizinan, perpajakan, adminduk dan trafik pengguna bulanan.',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        level: 'Standar Level 4 & 5 (Melembaga & Unggul)',
         format: 'XLSX',
         url: '/templates/ind_17/Template_Daftar_Layanan_Single_Sign_On_SSO_Portal_Indikator17.xlsx'
       }
@@ -555,14 +555,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'SOP Pemanfaatan Sertifikat Elektronik & TTE BSrE BSSN',
         desc: 'Alur pendaftaran, verifikasi identitas pejabat, penerbitan sertifikat digital dan penandatanganan SK.',
-        level: 'Standar Level 3 (Terstandarisasi)',
+        level: 'Standar Level 3 (Berkembang)',
         format: 'DOCX',
         url: '/templates/ind_18/Template_SOP_Pemanfaatan_TTE_Tersertifikasi_BSrE_Indikator18.docx'
       },
       {
         name: 'Log Penerbitan Sertifikat & Rekapitulasi Utilisasi TTE Naskah Dinas',
         desc: 'Pencatatan volume tanda tangan elektronik bulanan per pejabat dan status audit trail keabsahan hukum.',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        level: 'Standar Level 4 & 5 (Melembaga & Unggul)',
         format: 'XLSX',
         url: '/templates/ind_18/Template_Log_Penerbitan_dan_Utilisasi_TTE_Naskah_Dinas_Indikator18.xlsx'
       }
@@ -580,14 +580,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'SOP Penyelenggaraan Layanan Bantuan (Helpdesk) Multikanal 24/7',
         desc: 'Standar penanganan via Call Center 112, WhatsApp Bot, Web Chat, sistem tiket dan eskalasi petugas shift.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'DOCX',
         url: '/templates/ind_19/Template_SOP_Helpdesk_Multikanal_dan_Eskalasi_Tiket_Indikator19.docx'
       },
       {
         name: 'Laporan Monitoring Tiket Gangguan & Pencapaian SLA Helpdesk',
         desc: 'Rekapitulasi waktu respon awal (<5 menit), durasi penyelesaian tiket dan tingkat kepuasan pemohon.',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        level: 'Standar Level 4 & 5 (Melembaga & Unggul)',
         format: 'XLSX',
         url: '/templates/ind_19/Template_Laporan_Monitoring_Tiket_dan_SLA_Helpdesk_Indikator19.xlsx'
       }
@@ -605,14 +605,14 @@ export const TEMPLATES_DATA = [
       {
         name: 'Laporan Hasil Evaluasi Survei Kepuasan Masyarakat Elektronik (e-SKM)',
         desc: 'Laporan periodik 9 unsur pelayanan publik PermenPANRB No. 14/2017 dan matriks rencana tindak lanjut.',
-        level: 'Standar Level 3 & 4 (Terpadu)',
+        level: 'Standar Level 3 & 4 (Berkembang & Melembaga)',
         format: 'DOCX',
         url: '/templates/ind_20/Template_Laporan_Hasil_Survei_Kepuasan_Masyarakat_eSKM_Indikator20.docx'
       },
       {
         name: 'Rekapitulasi Kuesioner 9 Unsur & Kalkulasi Nilai IKM Layanan Digital',
         desc: 'Kertas kerja perhitungan Nilai Rata-rata Tertimbang, mutu pelayanan (A/B/C) dan tabulasi responden.',
-        level: 'Standar Level 4 & 5 (Optimum)',
+        level: 'Standar Level 4 & 5 (Melembaga & Unggul)',
         format: 'XLSX',
         url: '/templates/ind_20/Template_Rekapitulasi_Kuesioner_dan_Indeks_Kepuasan_SKM_Indikator20.xlsx'
       }

@@ -60,11 +60,11 @@ export default function IndicatorCard({
               aria-label="Pilih estimasi tingkat kematangan indikator ini"
               className="text-xs font-bold py-1 px-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800 hover:bg-slate-100 cursor-pointer focus:ring-2 focus:ring-brand-500 focus:outline-hidden"
             >
-              <option value={1}>Lvl 1 - Rintisan</option>
-              <option value={2}>Lvl 2 - Terkelola</option>
-              <option value={3}>Lvl 3 - Terstandar</option>
-              <option value={4}>Lvl 4 - Terpadu</option>
-              <option value={5}>Lvl 5 - Optimum</option>
+              <option value={1}>Lvl 1 - Merintis</option>
+              <option value={2}>Lvl 2 - Membangun</option>
+              <option value={3}>Lvl 3 - Berkembang</option>
+              <option value={4}>Lvl 4 - Melembaga</option>
+              <option value={5}>Lvl 5 - Unggul</option>
             </select>
           </div>
         </div>
