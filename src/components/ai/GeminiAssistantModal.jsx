@@ -20,11 +20,11 @@ export default function GeminiAssistantModal({ isOpen, onClose, contextIndicator
   const quickQuestions = contextIndicator ? [
     `Apa saja syarat bukti dukung wajib untuk indikator ini?`,
     `Bagaimana cara agar indikator ini bisa mencapai Level 4 atau Level 5?`,
-    `Berikan contoh format dokumen bukti (SK / SOP) yang benar untuk indikator ini.`
+    `Berikan contoh format dokumen bukti (Peraturan / SOP) yang benar untuk indikator ini.`
   ] : [
-    `Apa perbedaan kriteria Level 3 dan Level 4 dalam evaluasi pemerintahan digital?`,
-    `Apa saja dokumen bukti wajib untuk Domain Tata Kelola SPBE?`,
-    `Bagaimana cara instansi daerah menghubungkan layanan ke INA Digital / PDN?`
+    `Apa perbedaan kriteria Level 3 dan Level 4 dalam evaluasi pemerintah digital?`,
+    `Apa saja dokumen bukti wajib untuk Aspek Tata Kelola dan Manajemen Pemerintah Digital?`,
+    `Bagaimana cara instansi menghubungkan layanan ke INA Digital / PDN sesuai PermenPANRB 8/2026?`
   ];
 
   const handleSend = async (queryToSend = null) => {
@@ -59,7 +59,7 @@ export default function GeminiAssistantModal({ isOpen, onClose, contextIndicator
             </div>
             <div>
               <h3 className="font-extrabold text-base sm:text-lg flex items-center gap-2">
-                Asisten AI Regulasi SPBE
+                Asisten AI Evaluasi Pemerintah Digital
               </h3>
               <p className="text-xs text-brand-100 line-clamp-1">
                 {contextIndicator 

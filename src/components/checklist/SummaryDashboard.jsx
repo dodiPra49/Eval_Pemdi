@@ -17,7 +17,7 @@ export default function SummaryDashboard({ stats, checklistData, onResetAll, onO
     }
   }, [completionPercentage]);
 
-  // Evaluasi Predikat SPBE berdasarkan Indeks
+  // Evaluasi Predikat Kinerja Pemerintah Digital berdasarkan Indeks PermenPANRB 8/2026
   const indexNum = parseFloat(averageMaturityIndex);
   let predikat = "Kurang";
   let predikatColor = "bg-rose-100 text-rose-800 border-rose-200";
@@ -41,7 +41,7 @@ export default function SummaryDashboard({ stats, checklistData, onResetAll, onO
       {/* Top Banner Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         
-        {/* Card 1: Estimated SPBE Maturity Score */}
+        {/* Card 1: Estimated Digital Government Maturity Score */}
         <div className="bg-gradient-to-br from-brand-600 via-indigo-600 to-purple-700 rounded-3xl p-6 text-white shadow-xl flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-200">

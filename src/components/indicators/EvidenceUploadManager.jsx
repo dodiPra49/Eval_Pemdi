@@ -279,7 +279,7 @@ export default function EvidenceUploadManager({
             <input
               type="text"
               required
-              placeholder="Misal: Perbup Tata Kelola Arsitektur SPBE 2025"
+              placeholder="Misal: Perbup Tata Kelola Arsitektur Pemerintah Digital 2026"
               value={judulDokumen}
               onChange={(e) => setJudulDokumen(e.target.value)}
               className="w-full text-xs p-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-rose-500 focus:outline-hidden bg-white"

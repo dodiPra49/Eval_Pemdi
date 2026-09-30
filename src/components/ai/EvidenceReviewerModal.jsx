@@ -106,11 +106,11 @@ export default function EvidenceReviewerModal({ isOpen, onClose, indicator, onOp
                 rows={4}
                 value={docSummary}
                 onChange={(e) => setDocSummary(e.target.value)}
-                placeholder="Contoh: Kami memiliki SK Kepala Daerah tahun 2024 tentang arsitektur SPBE, tetapi lampiran 6 domain arsitektur belum disinkronkan ke SIA-SPBE nasional. Kami juga punya notula rapat pembahasan..."
+                placeholder="Contoh: Kami telah memiliki Peraturan Kepala Daerah tentang Arsitektur Pemerintah Digital 2026, tetapi lampiran 6 domain arsitektur belum disinkronkan ke Platform Arsitektur Nasional INA Digital. Kami juga memiliki notula rapat pembahasan dan draft SOP..."
                 className="w-full text-xs sm:text-sm p-3.5 rounded-2xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:outline-hidden"
               />
               <p className="text-[11px] text-slate-500 mt-1">
-                AI akan mencocokkan dokumen Anda dengan standar PermenPANRB 8/2026 dan memberitahukan gap kekurangannya.
+                AI Asesor akan mencocokkan dokumen Anda dengan kriteria resmi PermenPANRB 8/2026 dan memberitahukan gap kekurangannya.
               </p>
             </div>
 

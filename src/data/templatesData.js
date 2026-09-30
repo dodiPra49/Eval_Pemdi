@@ -17,7 +17,7 @@ export const TEMPLATES_DATA = [
     files: [
       {
         name: 'Peraturan Kepala Daerah/Instansi tentang Arsitektur & Peta Rencana Pemdi',
-        desc: 'Regulasi formal penetapan 6 domain arsitektur SPBE instansi, peta rencana 5 tahunan & mekanisme evaluasi berkala.',
+        desc: 'Regulasi formal penetapan 6 domain arsitektur pemerintah digital instansi, peta rencana 5 tahunan & mekanisme evaluasi berkala.',
         level: 'Standar Level 3 (Terstandarisasi)',
         format: 'DOCX',
         url: '/templates/ind_01/Template_Peraturan_Arsitektur_dan_Peta_Rencana_Pemdi_Indikator01.docx'
@@ -30,8 +30,8 @@ export const TEMPLATES_DATA = [
         url: '/templates/ind_01/Template_Buku_Induk_6_Domain_Arsitektur_Pemerintah_Digital_Indikator01.docx'
       },
       {
-        name: 'Matriks Penyelarasan 6 Domain ke SIA-SPBE Nasional & Roadmap Renja/DPA',
-        desc: 'Buku kerja 4 sheet: Dashboard Validasi SIA-SPBE KemenPANRB, Pemetaan Referensi Arsitektur Nasional, Roadmap 2026-2030, dan Kamus SIA.',
+        name: 'Matriks Penyelarasan 6 Domain ke Platform Arsitektur Nasional & Roadmap Renja/DPA',
+        desc: 'Buku kerja 4 sheet: Dashboard Validasi Arsitektur Digital KemenPANRB, Pemetaan Referensi Arsitektur Nasional, Roadmap 2026-2030, dan Kamus Penyelarasan.',
         level: 'Standar Level 4 (Terpadu Nasional)',
         format: 'XLSX',
         url: '/templates/ind_01/Template_Matriks_Penyelarasan_Arsitektur_SIA_SPBE_Indikator01.xlsx'
@@ -62,7 +62,7 @@ export const TEMPLATES_DATA = [
         url: '/templates/ind_02/Template_SOP_Manajemen_Layanan_dan_Service_Desk_Indikator02.docx'
       },
       {
-        name: 'Formulir Register Risiko SPBE & Rencana Mitigasi Dampak',
+        name: 'Formulir Register Risiko Pemerintah Digital & Rencana Mitigasi Dampak',
         desc: 'Identifikasi ancaman, kerentanan sistem, kalkulasi tingkat kemungkinan/dampak dan mitigasi ISO 31000.',
         level: 'Standar Level 3 & 4 (Terpadu)',
         format: 'XLSX',
@@ -402,8 +402,8 @@ export const TEMPLATES_DATA = [
   {
     indicatorId: 'ind-13',
     indicatorCode: 'IND-13',
-    indicatorName: 'Keterpaduan Aplikasi SPBE',
-    domain: 'Aspek 5: Teknologi (Aplikasi & PDN)',
+    indicatorName: 'Tingkat Kematangan Aplikasi Pemerintah Digital',
+    domain: 'Aspek 5: Teknologi Pemerintah Digital',
     badgeColor: 'bg-cyan-100 text-cyan-800 border-cyan-200',
     files: [
       {
