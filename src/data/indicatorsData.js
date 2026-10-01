@@ -123,8 +123,10 @@ export const INDICATORS = [
     },
     evidenceByLevel: {
       1: `Dokumen Bukti Level 1 (Merintis) - Acuan PermenPANRB No. 8/2026:
-1. [Daftar Personel] Rekap daftar nama staf pengelola TIK tanpa pemetaan kompetensi keahlian digital.
-2. [Perencanaan Umum] Dokumen perencanaan umum tanpa ada alokasi anggaran pelatihan digital terstruktur.`,
+            1.Peta Kompetensi untuk pelaksanaan Pemerintah Digital
+            2.Bukti menggunaaan aplikasi dasar dan sistem kerja digital internal
+            3.Dokumentasi pelaksanaan komunitas belajar
+            4.Laporan penggunaan microlearning internal(modul singkat,video e-learning sederhana .`,
       2: `Dokumen Bukti Level 2 (Membangun) - Acuan PermenPANRB No. 8/2026:
 1. [Sertifikat Bimtek] Sertifikat keikutsertaan bimbingan teknis / pelatihan dasar aplikasi bagi operator perangkat daerah.
 2. [Usulan Pelatihan] Formulir usulan kebutuhan pelatihan teknologi informasi dari unit kerja teknis.`,
